@@ -1,0 +1,23 @@
+{
+  "name": "enduro_scaffolding",
+  "description": "",
+  "main": "assets/vendor/enduro/index.js",
+  "authors": [
+    "author goes here"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "4",
+    "angular-directive.g-signin": "^0.1.2"
+  }
+}

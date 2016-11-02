@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="lego_labels">
+	<head>
+		<title>enduro.js page</title>
+		<link rel="stylesheet" href="/assets/css/main.css">
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<div ng-controller="ll_mainscreen_controller">
+
+		<google-plus-signin clientid="37980881473-3dadfrpvuv8rlpnahejpuqio09mbft52.apps.googleusercontent.com
+"></google-plus-signin>
+		</div>
+	</body>
+
+	<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/assets/vendor/angular/angular.js"></script>
+	<script src="/assets/vendor/angular-directive.g-signin/google-plus-signin.js"></script>
+
+	<script src="/assets/js/app.js"></script>
+
+	{{#files '/assets/js/services'}}
+		<script src="/assets/js/services{{this}}"></script>
+	{{/files}}
+
+	{{#files '/assets/js/controllers'}}
+		<script src="/assets/js/controllers{{this}}"></script>
+	{{/files}}
+
+	{{#files '/assets/js/directives'}}
+		<script src="/assets/js/directives{{this}}"></script>
+	{{/files}}
+
+	{{#files '/assets/js/utilities'}}
+		<script src="/assets/js/utilities{{this}}"></script>
+	{{/files}}
+
+</html>
