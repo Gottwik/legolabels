@@ -1,0 +1,49 @@
+.profile_menu {
+	float: right;
+	padding: 10px 20px;
+	position: relative;
+
+	.profile_info {
+		height: 30px;
+
+		img {
+			height: 100%;
+			border-radius: 50px;
+			vertical-align: middle;
+			display: inline-block;
+		}
+	}
+
+	.username {
+		display: inline-block;
+		position: relative;
+		top: 2px;
+		margin-right: 10px;
+	}
+
+	.provile_nav {
+		display: none;
+		position: absolute;
+		background-color: darken(scheme(1), 5%);
+		width: 100%;
+		left: 0;
+		top: 50px;
+
+		ul {
+			padding: 0 20px;
+
+			li {
+				cursor: pointer;
+			}
+		}
+	}
+
+	&:hover {
+		background-color: darken(scheme(1), 5%);
+
+		.provile_nav {
+			display: block;
+		}
+	}
+
+}

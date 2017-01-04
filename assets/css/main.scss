@@ -1,6 +1,4 @@
-p {
-	text-align: center;
-	font-size: 100px;
-	line-height: 30px;
-	color: #c188cf;
-}
+@import '/variables/*';
+@import '/mixins/*';
+@import '/vendor/*';
+@import '/components/*';

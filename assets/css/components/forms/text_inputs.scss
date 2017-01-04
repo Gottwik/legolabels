@@ -1,0 +1,15 @@
+input[type="text"] {
+	padding: 10px;
+
+	border-color: scheme(1);
+	border-width: 1px;
+	border-radius: 3px;
+
+	// modifiers
+	&.huge {
+		padding: 10px 20px;
+		margin: 30px;
+		text-align: center;
+		font-weight: 300;
+	}
+}

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html ng-app="lego_labels">
 	<head>
-		<title>enduro.js page</title>
+		<title>lego labels</title>
 		<link rel="stylesheet" href="/assets/css/main.css">
-		<style type="text/css"></style>
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
 	</head>
 	<body>
-		<div ng-controller="ll_mainscreen_controller">
-
-		<google-plus-signin clientid="37980881473-3dadfrpvuv8rlpnahejpuqio09mbft52.apps.googleusercontent.com
-"></google-plus-signin>
-		</div>
+		<div class="page-holder" ng-view ng-cloak></div>
 	</body>
 
 	<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="/assets/vendor/angular/angular.js"></script>
-	<script src="/assets/vendor/angular-directive.g-signin/google-plus-signin.js"></script>
+	<script src="/admin/assets/vendor/lodash/dist/lodash.js"></script>
 
+	<script src="/assets/vendor/angular/angular.js"></script>
+	<script src="/assets/vendor/angular-route/angular-route.js"></script>
+	<script src="/assets/vendor/angular-cookies/angular-cookies.js"></script>
+	<script src="/assets/vendor/a0-angular-storage/dist/angular-storage.min.js"></script>
+	<script src="/assets/vendor/angular-jwt/dist/angular-jwt.min.js"></script>
+	<script type="text/javascript" src="//cdn.auth0.com/js/lock-9.0.js"></script>
+	<script type="text/javascript" src="//cdn.auth0.com/w2/auth0-angular-4.2.6.js"></script>
 	<script src="/assets/js/app.js"></script>
 
 	{{#files '/assets/js/services'}}

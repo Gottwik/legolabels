@@ -1,0 +1,13 @@
+.panel {
+
+
+	// modifiers
+	&.blue {
+		background-color: scheme(1);
+		color: $white;
+	}
+
+	&.green {
+		background-color: scheme(2);
+	}
+}

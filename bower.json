@@ -18,6 +18,10 @@
   "dependencies": {
     "angular": "^1.5.8",
     "bootstrap": "4",
-    "angular-directive.g-signin": "^0.1.2"
+    "angular-route": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "auth0-angular": "^4.2.7",
+    "a0-angular-storage": "^0.0.15",
+    "angular-jwt": "^0.1.7"
   }
 }

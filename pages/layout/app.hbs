@@ -1,0 +1,48 @@
+<header class="panel blue" ng-controller="header_controller">
+	<div class="panel-body">
+
+		<div class="profile_menu">
+
+			<div class="profile_info">
+				<span class="username">\{{user.name}}</span>
+				<img src="\{{user.picture}}">
+			</div>
+			<div class="provile_nav">
+				<ul>
+					<li ng-click="logout()">Logout</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</header>
+
+<div class="search_bar panel green center" ng-controller="search_controller">
+	<div class="panel-body">
+		<input type="text" class="huge search_box" placeholder="Add part" ng-model="searchtext" />
+	</div>
+	<div class="results" ng-show="found_part.name">
+		<div class="result">
+			<img src="\{{found_part.part_img_url}}">
+			<div class="part_name">\{{found_part.name}}</div>
+			<button ng-click="add_part()">Add part</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="panel parts" ng-controller="parts_controller">
+	<div class="panel-body">
+		<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
+			<img src="\{{part.part_img_url}}">
+			<div class="part_name">\{{part.name}}</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<footer class="panel blue" ng-controller="footer_controller">
+	<div class="panel-body">
+		<button ng-click="print_labels()">Print labels</button>
+	</div>
+</footer>

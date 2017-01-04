@@ -1,0 +1,17 @@
+.parts .part {
+	width: calc(24% - 60px);
+	float: left;
+	padding: 20px;
+	border: 1px solid #888;
+	margin: 10px;
+	border-radius: 5px;
+	display: inline-block;
+
+	img {
+		width: 25%;
+	}
+
+	&.selected {
+		border-color: #0f0;
+	}
+}
