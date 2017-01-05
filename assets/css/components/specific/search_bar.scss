@@ -1,0 +1,14 @@
+.search_bar {
+
+	.results {
+		position: absolute;
+		border: 1px solid $black;
+		padding: 20px;
+
+		.result {
+			img {
+				height: 80px;
+			}
+		}
+	}
+}

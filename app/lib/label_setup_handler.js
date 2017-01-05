@@ -15,6 +15,9 @@ label_setup_handler.prototype.extend_with_default = function (label_setup) {
 		page_padding: 20,
 		crop_marks: true,
 		label_border: true,
+		part_font_size: 1,
+		image_padding: 1,
+		label_id_y_offset: 2,
 	}
 
 	return extend(true, label_setup, default_label_setup)

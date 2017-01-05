@@ -2,7 +2,7 @@
 $white: #fff;
 $black: #000;
 
-$scheme-colors: (#2980b9, #ecf0f1);
+$scheme-colors: (#2980b9, #ecf0f1, #2ecc71, #e67e22, #3498db);
 
 @function scheme($color) {
 	@return nth($scheme-colors, $color)
