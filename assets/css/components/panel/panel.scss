@@ -1,5 +1,6 @@
 .panel {
 
+	background-size: cover;
 
 	// modifiers
 	&.blue {
@@ -9,5 +10,9 @@
 
 	&.green {
 		background-color: scheme(2);
+	}
+
+	&.screen {
+		height: 100vh;
 	}
 }

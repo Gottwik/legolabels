@@ -1,0 +1,40 @@
+.close_button {
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+	border-top-right-radius: $standard-round-corners;
+	border-bottom-left-radius: $standard-round-corners;
+	transition: background-color $quick-transition;
+
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		width: 15px;
+		height: 1px;
+		background-color: $black;
+		position: absolute;
+		top: 17px;
+		left: 10px;
+		transition: transform $standard-transition;
+	}
+
+	&:before {
+		transform: rotate(45deg);
+	}
+
+	&:after {
+		transform: rotate(-45deg);
+	}
+
+	&:hover {
+
+		&:before,
+		&:after {
+			transform: scale(1);
+		}
+	}
+}

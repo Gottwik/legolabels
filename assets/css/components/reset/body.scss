@@ -1,4 +1,10 @@
 body {
 	@include no-smooth-font();
 	font-family: 'Lato', sans-serif;
+
+	// events
+	&.modal-open {
+		overflow: hidden;
+		// margin-right: 15px;
+	}
 }

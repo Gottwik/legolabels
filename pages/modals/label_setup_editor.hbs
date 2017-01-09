@@ -1,0 +1,39 @@
+<div class="modal label_setup_editor" en-modal ng-controller="label_setup_editor_controller">
+	<div class="modal-body">
+
+		<div class="close_button" ng-click="close()"></div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<ul>
+					<li class="setup" ng-repeat="setup in setups">
+						<span class="name">\{{setup.label_setup.name}}</span>
+
+						<span ng-click="edit(setup)" class="btn control_button"><i class="fa fa-cog"></i></span>
+						<span ng-click="delete_setup(setup)" class="btn control_button"><i class="fa fa-trash"></i></span>
+					</li>
+					<li class="setup add_new_setup">
+						<input class="tiny" type="text" placeholder="Add new setup" ng-model="new_setups_name">
+						<span ng-click="add_new_setup()" class="btn control_button"><i class="fa fa-save"></i></span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-8" ng-show="being_edited_setup">
+				<label>
+					<span class="label">name</span>
+					<input type="text" ng-model="being_edited_setup.label_setup.name">
+				</label>
+
+				<div class="row">
+					<label class="col-md-6" ng-repeat="(key, value) in being_edited_setup.label_setup.setup">
+						<span class="label">\{{key}}</span>
+						<input type="text" ng-model="being_edited_setup.label_setup.setup[key]">
+					</label>
+				</div>
+
+				<button class="btn" ng-click="save_setup()">Save setup</button>
+			</div>
+		</div>
+
+	</div>
+</div>

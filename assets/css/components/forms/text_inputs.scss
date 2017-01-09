@@ -1,15 +1,19 @@
 input[type="text"] {
 	padding: 10px;
-
-	border-color: scheme(1);
-	border-width: 1px;
+	border: 0px;
 	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
 
 	// modifiers
 	&.huge {
+		width: calc(100% - 40px);
 		padding: 10px 20px;
-		margin: 30px;
 		text-align: center;
 		font-weight: 300;
+	}
+
+	&.tiny {
+		padding: 0;
 	}
 }

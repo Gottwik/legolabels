@@ -1,9 +1,13 @@
 // basics
 $white: #fff;
-$black: #000;
+$black: #454c51;
 
-$scheme-colors: (#2980b9, #ecf0f1, #2ecc71, #e67e22, #3498db);
+$scheme-colors: (#3498db, #ecf0f1, #2ecc71, #e67e22, #9b59b6);
 
 @function scheme($color) {
 	@return nth($scheme-colors, $color)
 }
+
+// derived colors
+$hover_color: rgba(scheme(1), .8);
+$grey: mix($white, $black, 50%);

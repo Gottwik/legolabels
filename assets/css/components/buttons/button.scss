@@ -1,0 +1,42 @@
+.btn {
+	background: transparent;
+	border: 1px solid $black;
+	padding: 10px;
+	border-radius: 3px;
+	transition: background-color .1s ease, color .1s ease;
+	cursor: pointer;
+	position: relative;
+
+	&:after {
+		content: '';
+		bottom: 0px;
+		left: 0;
+		opacity: 0;
+		position: absolute;
+		border: solid 5px transparent;
+		border-left-color: $black;
+		border-bottom-color: $black;
+		transition: opacity $quick-transition;
+	}
+
+	.dark &,
+	.card & {
+		color: $white;
+		border-color: $white;
+
+		&:after {
+			border-left-color: $white;
+			border-bottom-color: $white;
+		}
+
+	}
+
+	&:hover {
+		// background-color: $hover_color;
+		// color: $white;
+
+		&:after {
+			opacity: 1;
+		}
+	}
+}

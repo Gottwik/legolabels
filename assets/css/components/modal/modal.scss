@@ -1,0 +1,35 @@
+$modal-width: 900px;
+
+.modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($black, .6);
+	top: 0;
+	left: 0;
+	z-index: 50;
+	animation: modal-in .3s ease 1;
+	overflow: auto;
+}
+
+.modal-body {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: - $modal-width / 2;
+	background-color: $white;
+	z-index: 50;
+	width: $modal-width;
+	margin-top: 100px;
+	padding: 50px 50px 40px;
+}
+
+@keyframes modal-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

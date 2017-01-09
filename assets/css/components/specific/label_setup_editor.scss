@@ -1,0 +1,19 @@
+.label_setup_editor {
+
+	.setup {
+		margin: 0 0 5px;
+		padding: 7px 0 11px;
+		border-bottom: 1px solid rgba($black, .1);
+		position: relative;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	.add_new_setup .control_button {
+		position: absolute;
+		top: 4px;
+		right: 0;
+	}
+}

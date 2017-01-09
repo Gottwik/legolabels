@@ -1,4 +1,10 @@
-.search_bar {
+.search_bar_card {
+
+	input {
+		position: absolute;
+		bottom: -10px;
+		width: calc(100% - 40px) !important;
+	}
 
 	.results {
 		position: absolute;

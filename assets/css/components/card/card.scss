@@ -1,0 +1,48 @@
+.card {
+	width: 33.33333%;
+	height: 200px;
+	float: left;
+	color: $white;
+	position: relative;
+
+	.card-body {
+		padding: 10px 20px;
+		z-index: 2;
+		position: relative;
+		height: calc(100% - 20px)
+	}
+
+	&.color1 {
+		background-color: scheme(3);
+
+		.card-next {
+			color: scheme(3);
+		}
+	}
+
+	&.color2 {
+		background-color: scheme(4);
+
+		.card-next {
+			color: scheme(4);
+		}
+	}
+
+	&.color3 {
+		background-color: scheme(5);
+
+		.card-next {
+			color: scheme(5);
+		}
+	}
+
+
+	// card next
+	.card-next {
+		position: absolute;
+		right: -26px;
+		top: 50%;
+		font-size: 85px;
+		z-index: 1;
+	}
+}

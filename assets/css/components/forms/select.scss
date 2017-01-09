@@ -1,0 +1,30 @@
+.select {
+
+	position: relative;
+
+	.label {
+		position: absolute;
+		top: -32px;
+
+	}
+
+	select {
+		background: transparent;
+		border: 1px solid $white;
+		padding: 10px 10px 10px 30px;
+		color: $white;
+		border-radius: 3px;
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		appearance:none;
+
+	}
+
+	&:before {
+		position: absolute;
+		left: 13px;
+		top: 2px;
+		content: "\f0d7";
+		font: normal normal normal 16px/1 FontAwesome;
+	}
+}

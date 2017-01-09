@@ -1,0 +1,23 @@
+<header class="panel blue" ng-controller="header_controller">
+	<div class="panel-body">
+
+		<div class="logo">
+			{{>logo}}
+		</div>
+
+		<div class="profile_menu" ng-class="{'profile_menu_open': profile_menu_open}">
+
+			<div class="profile_info" ng-click="open_profile_menu()">
+				<span class="username">\{{user.name}}</span>
+				<i class="fa fa-caret-down"></i>
+				<img src="\{{user.picture}}">
+			</div>
+			<div class="provile_nav">
+				<ul>
+					<li ng-click="logout()">Logout</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</header>

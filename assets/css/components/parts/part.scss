@@ -1,17 +1,21 @@
-.parts .part {
-	width: calc(24% - 60px);
-	float: left;
-	padding: 20px;
-	border: 1px solid #888;
-	margin: 10px;
-	border-radius: 5px;
-	display: inline-block;
+.parts {
+	margin: 0 -10px;
 
-	img {
-		width: 25%;
-	}
+	.part {
+		width: calc(25% - 20px);
+		float: left;
+		padding: 20px;
+		border: 1px solid #888;
+		margin: 10px;
+		border-radius: 5px;
+		display: inline-block;
 
-	&.selected {
-		border-color: #0f0;
+		img {
+			width: 25%;
+		}
+
+		&.selected {
+			border-color: #0f0;
+		}
 	}
 }

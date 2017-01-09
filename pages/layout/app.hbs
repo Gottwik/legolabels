@@ -1,29 +1,12 @@
-<header class="panel blue" ng-controller="header_controller">
-	<div class="panel-body">
-
-		<div class="profile_menu">
-
-			<div class="profile_info">
-				<span class="username">\{{user.name}}</span>
-				<img src="\{{user.picture}}">
-			</div>
-			<div class="provile_nav">
-				<ul>
-					<li ng-click="logout()">Logout</li>
-				</ul>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</header>
+{{>app_header}}
 
 <div class="panel green" ng-controller="control_controller">
 	<div class="panel-body">
-		<div class="row">
 
-			<div class="col-md-4">
-				<div class="search_bar">
-					<input type="text" class="huge search_box" placeholder="Add part" ng-model="searchtext" />
+			<div class="card color1 search_bar_card">
+				<div class="card-body">
+					<h1>1. Add Parts</h1>
+					<input type="text" class="huge search_box" placeholder="Input part number (3002)" ng-model="searchtext" />
 					<div class="results" ng-show="found_part.name">
 						<div class="result">
 							<img src="\{{found_part.part_img_url}}">
@@ -32,30 +15,49 @@
 						</div>
 					</div>
 				</div>
+				<div class="card-next"><i class="fa fa-share"></i></div>
 			</div>
 
-			<div class="col-md-4">
-
+			<div class="card color2 print_chooser_card">
+				<div class="card-body">
+					<h1>2. Setup labels</h1>
+					<div class="control_row">
+						<label class="select">
+							<span class="label">Label setup</span>
+							<select>
+								<option ng-repeat="setup in label_setups">\{{setup.label_setup.name}}</option>
+							</select>
+						</label>
+						<button class="btn" ng-click="open_label_setup_editor()">Label setup editor</button>
+					</div>
+				</div>
+				<div class="card-next"><i class="fa fa-share"></i></div>
 			</div>
 
-			<div class="col-md-4">
-				<div class="panel-body">
-					<button ng-click="print_labels()">Print labels</button>
+			<div class="card color3 print_labels_card">
+				<div class="card-body">
+					<h1>3. Print labels</h1>
+					<button class="btn" ng-click="print_labels()">Print labels</button>
 				</div>
 			</div>
 
-		</div>
+			<div class="clearfix"></div>
+
 	</div>
 
 </div>
 
 
-<div class="panel parts" ng-controller="parts_controller">
+<div class="panel" ng-controller="parts_controller">
 	<div class="panel-body">
-		<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
-			<img ng-src="\{{part.part_img_url}}">
-			<div class="part_name">\{{part.name}}</div>
+		<div class="parts">
+			<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
+				<img ng-src="\{{part.part_img_url}}">
+				<div class="part_name">\{{part.name}}</div>
+			</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>
 </div>
+
+<div ng-include="modal"></div>

@@ -1,7 +1,13 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	search controller
 // * ———————————————————————————————————————————————————————— * //
-lego_labels.controller('control_controller', function ($scope, $http, url_service, part_service, user_service, print_service) {
+lego_labels.controller('control_controller', function ($scope, $http, url_service, part_service, user_service, print_service, modal_service, label_service) {
+
+	label_service.get_setups()
+		.then((label_setups_response) => {
+			$scope.label_setups = label_setups_response.data
+			console.log($scope.label_setups)
+		})
 
 	var search_options = {
 		params: {
@@ -56,5 +62,9 @@ lego_labels.controller('control_controller', function ($scope, $http, url_servic
 				})
 		}
 
+	}
+
+	$scope.open_label_setup_editor = function () {
+		modal_service.open('label_setup_editor')
 	}
 })
