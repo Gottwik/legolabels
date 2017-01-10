@@ -3,7 +3,7 @@ lego_labels = angular
 
 // routing configuration
 lego_labels
-	.config(function ($routeProvider, authProvider, lockProvider) {
+	.config(function ($routeProvider, authProvider) {
 
 		$routeProvider
 			.when('/', {
@@ -15,20 +15,6 @@ lego_labels
 				// controller: 'pagesplit_controller'
 			})
 			.otherwise({ redirectTo: '/' })
-
-		lockProvider.init({
-			domain: 'legolabels.eu.auth0.com',
-			clientID: 'AtVGcLisv5hrs32LGSbJt2oBACFSn9OJ',
-			options: {
-				theme: {
-					logo: 'http://logonoid.com/images/fanta-logo.png',
-					primaryColor: '#b81b1c'
-				},
-				languageDictionary: {
-					title: 'Log me in'
-				}
-			}
-		})
 
 		authProvider.init({
 			domain: 'legolabels.eu.auth0.com',

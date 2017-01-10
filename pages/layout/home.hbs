@@ -1,9 +1,10 @@
-<header class="panel blue fixed">
+<header class="panel fixed white">
 	<div class="panel-body">
-		<div class="logo">
+		<div class="logo inverted">
 			{{>logo}}
 		</div>
 		<nav class="mainmenu">
+			<div ng-click="signin()" class="btn blue">Login</div>
 		</nav>
 	</div>
 </header>
@@ -12,7 +13,6 @@
 	{{!-- <div class="veil"></div> --}}
 	<div class="contentbox">
 		<div class="contentbox_content">
-			<div ng-click="signin()" class="btn huge blue">Start</div>
 		</div>
 	</div>
 </div>

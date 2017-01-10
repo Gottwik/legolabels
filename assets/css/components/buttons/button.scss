@@ -29,8 +29,8 @@
 
 	// modifiers
 	&.huge {
-		@include font-size(md);
-		border-width: 3px;
+		// @include font-size(md);
+		// border-width: 3px;
 		padding: 14px 30px 15px;
 		border-radius: 7px;
 	}
@@ -38,7 +38,6 @@
 	&.blue {
 		color: darken(scheme(1), 10%) !important;
 		border-color: darken(scheme(1), 10%) !important;
-		background-color: $white;
 
 		&:hover {
 			background-color: scheme(1);

@@ -1,5 +1,4 @@
 .panel {
-
 	background-size: cover;
 
 	// modifiers
@@ -10,6 +9,10 @@
 
 	&.green {
 		background-color: scheme(2);
+	}
+
+	&.white {
+		background-color: $white;
 	}
 
 	&.dark {
@@ -25,4 +28,5 @@
 		width: 100%;
 		z-index: 2;
 	}
+
 }

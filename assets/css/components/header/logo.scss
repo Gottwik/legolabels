@@ -1,0 +1,15 @@
+.logo {
+	float: left;
+
+	svg {
+		height: 50px;
+		width: 165px;
+		margin: 10px 0;
+	}
+
+	&.inverted {
+		.color1 {
+			stroke: scheme(1);
+		}
+	}
+}
