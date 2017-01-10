@@ -6,11 +6,11 @@ lego_labels.factory('label_service', function user_service ($http, user_service,
 	}
 
 	service.add_label_setup = function (label_setup) {
-		return $http.get(url_service.get_url('add_label_setup'), {params: {label_setup: label_setup, user_id: user_service.get_logged_in_user().user_id}})
+		return $http.get(url_service.get_url('add_label_setup'), {params: {label_setup: label_setup, user_id: user_service.get_logged_in_user().userId}})
 	}
 
 	service.get_setups = function () {
-		return $http.get(url_service.get_url('get_setups'), {params: {user_id: user_service.get_logged_in_user().user_id}})
+		return $http.get(url_service.get_url('get_setups'), {params: {user_id: user_service.get_logged_in_user().userId}})
 	}
 
 	service.delete_setup = function (setup_id) {

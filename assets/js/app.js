@@ -3,7 +3,7 @@ lego_labels = angular
 
 // routing configuration
 lego_labels
-	.config(function ($routeProvider, authProvider) {
+	.config(function ($routeProvider, lockProvider) {
 
 		$routeProvider
 			.when('/', {
@@ -16,10 +16,25 @@ lego_labels
 			})
 			.otherwise({ redirectTo: '/' })
 
-		authProvider.init({
+		lockProvider.init({
 			domain: 'legolabels.eu.auth0.com',
 			clientID: 'AtVGcLisv5hrs32LGSbJt2oBACFSn9OJ',
-			loginUrl: '/',
+			options: {
+				autoclose: true,
+				auth: {
+					redirect: false,
+					params: {
+						scope: 'openid email user_metadata app_metadata picture',
+					},
+				},
+				theme: {
+					logo: '/assets/img/logo/signin_logo.png',
+					primaryColor: '#3498db',
+				},
+				languageDictionary: {
+					title: 'Sort your LEGO like a pro'
+				},
+			}
 		})
 
 	})

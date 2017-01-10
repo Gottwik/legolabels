@@ -6,7 +6,8 @@ lego_labels.factory('part_service', function user_service ($http, user_service, 
 	}
 
 	service.get_parts = function () {
-		return $http.get(url_service.get_url('get_parts'), {params: {user_id: user_service.get_logged_in_user().user_id}})
+		console.log(user_service.get_logged_in_user())
+		return $http.get(url_service.get_url('get_parts'), {params: {user_id: user_service.get_logged_in_user().userId}})
 	}
 
 	return service
