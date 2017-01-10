@@ -1,6 +1,8 @@
 body {
 	@include no-smooth-font();
 	font-family: 'Lato', sans-serif;
+	color: $black;
+	font-weight: 300;
 
 	// events
 	&.modal-open {

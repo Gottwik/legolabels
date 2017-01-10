@@ -12,7 +12,17 @@
 		background-color: scheme(2);
 	}
 
+	&.dark {
+		background-color: $black;
+	}
+
 	&.screen {
 		height: 100vh;
+	}
+
+	&.fixed {
+		position: fixed;
+		width: 100%;
+		z-index: 2;
 	}
 }

@@ -1,63 +1,14 @@
 {{>app_header}}
 
-<div class="panel green" ng-controller="control_controller">
-	<div class="panel-body">
+{{>app_control_bar}}
 
-			<div class="card color1 search_bar_card">
-				<div class="card-body">
-					<h1>1. Add Parts</h1>
-					<input type="text" class="huge search_box" placeholder="Input part number (3002)" ng-model="searchtext" />
-					<div class="results" ng-show="found_part.name">
-						<div class="result">
-							<img src="\{{found_part.part_img_url}}">
-							<div class="part_name">\{{found_part.name}}</div>
-							<button ng-click="add_part()">Add part</button>
-						</div>
-					</div>
-				</div>
-				<div class="card-next"><i class="fa fa-share"></i></div>
-			</div>
-
-			<div class="card color2 print_chooser_card">
-				<div class="card-body">
-					<h1>2. Setup labels</h1>
-					<div class="control_row">
-						<label class="select">
-							<span class="label">Label setup</span>
-							<select>
-								<option ng-repeat="setup in label_setups">\{{setup.label_setup.name}}</option>
-							</select>
-						</label>
-						<button class="btn" ng-click="open_label_setup_editor()">Label setup editor</button>
-					</div>
-				</div>
-				<div class="card-next"><i class="fa fa-share"></i></div>
-			</div>
-
-			<div class="card color3 print_labels_card">
-				<div class="card-body">
-					<h1>3. Print labels</h1>
-					<button class="btn" ng-click="print_labels()">Print labels</button>
-				</div>
-			</div>
-
-			<div class="clearfix"></div>
-
-	</div>
-
-</div>
-
-
-<div class="panel" ng-controller="parts_controller">
-	<div class="panel-body">
-		<div class="parts">
-			<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
-				<img ng-src="\{{part.part_img_url}}">
-				<div class="part_name">\{{part.name}}</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</div>
+{{>app_parts}}
 
 <div ng-include="modal"></div>
+
+
+<footer class="panel">
+	<div class="panel-body">
+		Shout out to <a href="http://rebrickable.com//">rebrickable</a> for providing a great api
+	</div>
+</footer>

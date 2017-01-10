@@ -9,7 +9,7 @@ var labels_printer = require('./lib/labels_printer')
 var label_setup_handler = require('./lib/label_setup_handler')
 
 // constants
-var DATABASE_URL = 'mongodb://gottwik:Souvenir1902.@ds043952.mongolab.com:43952/gottwik'
+var DATABASE_URL = (global.config.secret && global.config.secret.DATABASE_URL) || process.env.DATABASE_URL
 
 local_app.prototype.init = function (app) {
 

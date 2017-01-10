@@ -1,0 +1,17 @@
+<div class="panel" ng-controller="parts_controller">
+	<div class="panel-body">
+		<div class="parts">
+			<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
+				<div class="row">
+					<div class="col col-md-4 part_image" style="background-image: url('\{{part.part_img_url}}')">
+					</div>
+					<div class="col col-md-8">
+						<div class="part_category">\{{part.category}}</div>
+						<div class="part_name">\{{part.name}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

@@ -6,6 +6,8 @@
 	transition: background-color .1s ease, color .1s ease;
 	cursor: pointer;
 	position: relative;
+	font-weight: 400;
+	display: inline-block;
 
 	&:after {
 		content: '';
@@ -19,6 +21,37 @@
 		transition: opacity $quick-transition;
 	}
 
+	&:hover {
+		&:after {
+			opacity: 1;
+		}
+	}
+
+	// modifiers
+	&.huge {
+		@include font-size(md);
+		border-width: 3px;
+		padding: 14px 30px 15px;
+		border-radius: 7px;
+	}
+
+	&.blue {
+		color: darken(scheme(1), 10%) !important;
+		border-color: darken(scheme(1), 10%) !important;
+		background-color: $white;
+
+		&:hover {
+			background-color: scheme(1);
+			color: $white !important;
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+
+	// environments
+	.blue &,
 	.dark &,
 	.card & {
 		color: $white;
@@ -31,12 +64,15 @@
 
 	}
 
-	&:hover {
-		// background-color: $hover_color;
-		// color: $white;
+	.light & {
+		color: $black;
+		border-color: $black;
 
 		&:after {
-			opacity: 1;
+			border-left-color: $black;
+			border-bottom-color: $black;
 		}
 	}
+
+
 }

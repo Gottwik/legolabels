@@ -1,9 +1,17 @@
 header {
 	.logo {
+		float: left;
+
 		svg {
 			height: 50px;
 			width: 165px;
 			margin: 10px 0;
+		}
+
+		&.dark {
+			.color2 {
+				fill: $black;
+			}
 		}
 	}
 }

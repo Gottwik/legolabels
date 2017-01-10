@@ -1,11 +1,18 @@
-<header class="panel blue">
+<header class="panel blue fixed">
 	<div class="panel-body">
 		<div class="logo">
 			{{>logo}}
 		</div>
+		<nav class="mainmenu">
+		</nav>
 	</div>
 </header>
 
-<div class="panel screen dark" style="background-image: url('https://image.shutterstock.com/display_pic_with_logo/809503/512239963/stock-photo-hilversum-the-netherlands-november-lego-blocks-plastic-construction-toy-manufactured-512239963.jpg')">
-	<a href="" ng-click="signin()" class="btn">Login</a>
+<div class="panel screen dark" style="background-image: url('/assets/img/bg.jpg')">
+	{{!-- <div class="veil"></div> --}}
+	<div class="contentbox">
+		<div class="contentbox_content">
+			<div ng-click="signin()" class="btn huge blue">Start</div>
+		</div>
+	</div>
 </div>
