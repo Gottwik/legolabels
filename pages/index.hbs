@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="lego_labels">
 	<head>
-		<title>lego labels</title>
+		<title>Lego Labels - Sort your lego like a pro</title>
 		<link rel="stylesheet" href="/assets/css/main.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		{{>favicon}}
 	</head>
 	<body>
 		<div class="page-holder" ng-view ng-cloak></div>
@@ -18,8 +19,12 @@
 	<script src="/assets/vendor/angular-cookies/angular-cookies.js"></script>
 	<script src="/assets/vendor/a0-angular-storage/dist/angular-storage.min.js"></script>
 	<script src="/assets/vendor/angular-jwt/dist/angular-jwt.min.js"></script>
-	<script type="text/javascript" src="//cdn.auth0.com/js/lock-9.0.js"></script>
-	<script type="text/javascript" src="//cdn.auth0.com/w2/auth0-angular-4.2.6.js"></script>
+
+	<script type="text/javascript" src="/assets/vendor/auth0-angular/build/auth0-angular.js"></script>
+
+	<script type="text/javascript" src="/assets/vendor/auth0-lock/build/lock.js"></script>
+    <script type="text/javascript" src="/assets/vendor/angular-lock/dist/angular-lock.js"></script>
+
 	<script src="/assets/js/app.js"></script>
 
 	{{#files '/assets/js/services'}}

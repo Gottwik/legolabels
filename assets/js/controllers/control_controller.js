@@ -6,7 +6,6 @@ lego_labels.controller('control_controller', function ($scope, $http, url_servic
 	label_service.get_setups()
 		.then((label_setups_response) => {
 			$scope.label_setups = label_setups_response.data
-			console.log($scope.label_setups)
 		})
 
 	var search_options = {

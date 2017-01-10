@@ -23,6 +23,8 @@
     "auth0-angular": "^4.2.7",
     "a0-angular-storage": "^0.0.15",
     "angular-jwt": "^0.1.7",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "auth0-lock": "^10.9.0",
+    "angular-lock": "^1.0.5"
   }
 }

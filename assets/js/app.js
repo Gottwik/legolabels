@@ -1,9 +1,9 @@
 lego_labels = angular
-	.module('lego_labels', ['ngRoute', 'ngCookies', 'auth0', 'angular-storage', 'angular-jwt'], function ($rootScopeProvider) {})
+	.module('lego_labels', ['ngRoute', 'auth0.lock', 'ngCookies', 'auth0', 'angular-storage', 'angular-jwt'], function ($rootScopeProvider) {})
 
 // routing configuration
 lego_labels
-	.config(function ($routeProvider, authProvider) {
+	.config(function ($routeProvider, authProvider, lockProvider) {
 
 		$routeProvider
 			.when('/', {
@@ -16,10 +16,24 @@ lego_labels
 			})
 			.otherwise({ redirectTo: '/' })
 
+		lockProvider.init({
+			domain: 'legolabels.eu.auth0.com',
+			clientID: 'AtVGcLisv5hrs32LGSbJt2oBACFSn9OJ',
+			options: {
+				theme: {
+					logo: 'http://logonoid.com/images/fanta-logo.png',
+					primaryColor: '#b81b1c'
+				},
+				languageDictionary: {
+					title: 'Log me in'
+				}
+			}
+		})
+
 		authProvider.init({
 			domain: 'legolabels.eu.auth0.com',
 			clientID: 'AtVGcLisv5hrs32LGSbJt2oBACFSn9OJ',
-			loginUrl: '/'
+			loginUrl: '/',
 		})
 
 	})
