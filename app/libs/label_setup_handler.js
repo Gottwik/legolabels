@@ -20,6 +20,7 @@ label_setup_handler.prototype.default_label_setup = {
 	part_font_size: 1,
 	image_padding: 1,
 	label_id_y_offset: 2,
+	product_link: ''
 }
 
 // local dependencies

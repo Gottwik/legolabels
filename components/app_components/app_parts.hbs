@@ -1,17 +1,49 @@
-<div class="panel" ng-controller="parts_controller">
-	<div class="panel-body">
-		<div class="parts">
-			<div class="part" ng-class="{'selected': part.selected}" ng-click="select(part.part_id)" ng-repeat="part in parts">
-				<div class="row">
-					<div class="col col-md-4 part_image" style="background-image: url('\{{part.part_img_url}}')">
-					</div>
-					<div class="col col-md-8">
-						<div class="part_category">\{{part.category}}</div>
-						<div class="part_name">\{{part.name}}</div>
+<div class="parts" ng-controller="parts_controller">
+
+	<div class="panel parts">
+		<div class="panel-body">
+			<div class="select_controls">
+				<div class="btn" ng-class="{'disabled': parts.length <= get_selected_part_count()}" ng-click="select_app_parts()"><i class="fa fa-check-square-o"></i>select all</div>
+				<div class="btn" ng-class="{'disabled': get_selected_part_count() == 0}" ng-click="deselect_app_parts()"><i class="fa fa-square-o"></i> deselect all</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="panel-body">
+
+
+			<div class="parts_padder">
+				<div class="part" ng-class="{'selected': part.selected, 'overlay_open': part.color_overlay_open}" ng-click="select($event)" ng-repeat="part in parts" ng-controller="part_controller">
+					<div class="row">
+
+						<div class="part_overlay">
+							<div class="overlay" ng-click="close_color_overlay(); $event.stopPropagation()"></div>
+							<div class="part_overlay_body">
+								<span>\{{part.part.color_code}}</span>
+								<select ng-model="part.part.color_code">
+									<option ng-repeat="color in part.part.colors" value="\{{color.rb_color_id}}">\{{color.color_name}}</option>
+								</select>
+							</div>
+						</div>
+
+						<ul class="tiny_controls">
+							<li ng-click="delete(); $event.stopPropagation()"><i class="fa fa-trash"></i></li>
+							<li ng-click="choose_color(); $event.stopPropagation()"><i class="fa fa-paint-brush"></i></li>
+						</ul>
+
+
+						<div class="col col-md-4 part_image" style="background-image: url('\{{part.part.image}}')">
+						</div>
+						<div class="col col-md-8">
+							<div class="part_id">\{{part.part.part_id}}</div>
+							<div class="part_category">\{{part.part.category}}</div>
+							<div class="part_name">\{{part.part.name}}</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>

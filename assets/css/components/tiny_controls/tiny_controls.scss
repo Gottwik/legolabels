@@ -1,0 +1,27 @@
+.tiny_controls {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	transition: opacity $standard-transition;
+
+	li {
+		padding: 1px 4px 4px 5px;
+		cursor: pointer;
+		float: right;
+
+		&:hover {
+			background-color: scheme(1);
+			color: $white;
+		}
+
+		&:last-child {
+			border-bottom-left-radius: $standard-round-corners;
+		}
+
+		i {
+			font-size: 14px;
+		}
+	}
+
+}

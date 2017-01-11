@@ -25,6 +25,7 @@
     "angular-jwt": "^0.1.7",
     "lodash": "^4.17.4",
     "auth0-lock": "^10.9.0",
-    "angular-lock": "^1.0.5"
+    "angular-lock": "^1.0.5",
+    "kiskabricks_wedgecss": "wedgecss#^1.0.0"
   }
 }

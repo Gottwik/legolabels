@@ -15,30 +15,54 @@ lego_labels.controller('control_controller', function ($scope, $http, url_servic
 		}
 	}
 
+	var search_trotter
+	const THROTTLE_DELAY = 200
+
 	$scope.$watch('searchtext', function (new_value, old_value) {
-		if (new_value) {
+		$scope.found_part = {}
+		if (new_value && new_value != old_value) {
+			$scope.loading = true
+			$scope.no_part = false
 
-			// set the part_id
-			search_options.params.part_id = new_value
+			clearTimeout(search_trotter)
+			search_trotter = setTimeout(search_for_part, THROTTLE_DELAY, new_value)
 
-			$http.get(url_service.get_url('search_for_parts'), search_options)
-				.then(function (data) {
-					$scope.found_part = data.data
-				})
-		} else {
-			$scope.found_part = {}
 		}
 	})
 
+	function search_for_part (part_id) {
+
+		// set the part_id
+		search_options.params.part_id = part_id
+
+		$http.get(url_service.get_url('search_for_parts'), search_options)
+			.then(function (data) {
+				$scope.loading = false
+				console.log(data)
+				if (data.data == 'NOPART' || !data.data.name) {
+					$scope.no_part = true
+					$scope.found_part = {}
+					return
+				}
+
+				$scope.found_part = data.data
+			})
+	}
+
 	$scope.add_part = function () {
+
+		$scope.searchtext = ''
+
 		part_service.add_part($scope.found_part, user_service.get_logged_in_user())
 			.then((response) => {
 
+				var new_part = response.data.inserted_part
+
 				// select the part
-				$scope.found_part.selected = true
+				new_part.selected = true
 
 				// add the part to the beginning
-				$('.parts').scope().parts.unshift($scope.found_part)
+				$('.parts').scope().parts.unshift(new_part)
 
 				// clear the search result to allow for subsequent searches
 				$scope.found_part = {}

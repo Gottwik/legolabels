@@ -1,0 +1,15 @@
+.grouped_btn {
+	> *:first-child select,
+	> *:first-child {
+		border-right: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	> *:last-child {
+		border-left-color: rgba($white, .7);
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin-left: -4px;
+	}
+}

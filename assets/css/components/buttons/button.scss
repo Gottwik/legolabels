@@ -1,7 +1,7 @@
 .btn {
 	background: transparent;
 	border: 1px solid $black;
-	padding: 10px;
+	padding: $button_padding_horizontal $button_padding_vertical;
 	border-radius: 3px;
 	transition: background-color .1s ease, color .1s ease;
 	cursor: pointer;
@@ -29,8 +29,6 @@
 
 	// modifiers
 	&.huge {
-		// @include font-size(md);
-		// border-width: 3px;
 		padding: 14px 30px 15px;
 		border-radius: 7px;
 	}
@@ -47,6 +45,12 @@
 		&:after {
 			display: none;
 		}
+	}
+
+	&.disabled {
+		color: $grey !important;
+		border-color: $grey !important;
+		pointer-events: none;
 	}
 
 	// environments
@@ -73,5 +77,9 @@
 		}
 	}
 
+	// children
+	i {
+		margin: 0 4px;
+	}
 
 }

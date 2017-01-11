@@ -1,19 +1,25 @@
+$part_border_color: rgba($grey, .3);
+
 .parts {
-	margin: 10px -10px;
+
+	.parts_padder {
+		margin: 10px -10px;
+	}
 
 	.part {
 		width: calc(25% - 20px);
 		float: left;
 		padding: 10px 20px;
-		border: 1px solid rgba($grey, .3);
+		border: 1px solid $part_border_color;
 		margin: 10px;
-		border-radius: 5px;
+		border-radius: $standard-round-corners;
 		display: inline-block;
 		height: 90px;
 		transition: border-color $standard-transition;
 		cursor: pointer;
 		overflow: hidden;
 		position: relative;
+		user-select: none;
 
 		&:after {
 			content: '';
@@ -40,19 +46,43 @@
 		&.selected {
 			border-color: rgba(scheme(1), .5);
 			border-width: 3px;
-			padding: 18px;
+			padding: 8px 18px;
+
+			.tiny_controls {
+				margin: -2px;
+			}
 		}
 
+		// hover
 		&:hover {
 			border-color: scheme(1);
+
+			.tiny_controls {
+				opacity: 1;
+			}
+		}
+
+		&.overlay_open {
+			.tiny_controls {
+				opacity: 1;
+			}
+		}
+
+		// children
+		.part_id {
+			font-weight: 400;
 		}
 
 		.part_category {
-			font-weight: 400;
 		}
 
 		.part_image {
 			z-index: 1;
+		}
+
+		.tiny_controls {
+			color: lighten($black, 10%);
+			opacity: 0;
 		}
 	}
 }

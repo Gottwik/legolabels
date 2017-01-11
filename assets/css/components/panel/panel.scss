@@ -19,6 +19,11 @@
 		background-color: $black;
 	}
 
+	&.grey {
+		background-color: $grey;
+		color: $white;
+	}
+
 	&.screen {
 		height: 100vh;
 	}

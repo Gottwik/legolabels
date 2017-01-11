@@ -1,0 +1,8 @@
+.select_controls {
+	margin: 0 #{-$button_padding_horizontal};
+
+	.btn {
+		border: 0;
+		padding: 3px $button_padding_horizontal;
+	}
+}

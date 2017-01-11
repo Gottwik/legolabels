@@ -1,0 +1,32 @@
+.part_overlay {
+	@include full();
+	@include inset_shadow();
+	text-align: center;
+	z-index: 3;
+	opacity: 0;
+	display: none;
+	transition: opacity $standard-transition;
+
+	.overlay {
+		@include full()
+		background-color: rgba($black, .4);
+	}
+
+	&:before {
+		content: '';
+		height: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.part_overlay_body {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+	}
+
+	.overlay_open & {
+		opacity: 1;
+		display: block;
+	}
+}

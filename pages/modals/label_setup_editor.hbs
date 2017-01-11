@@ -14,7 +14,7 @@
 					</li>
 					<li class="setup add_new_setup">
 						<input class="tiny" type="text" placeholder="Add new setup" ng-model="new_setups_name">
-						<span ng-click="add_new_setup()" class="btn control_button"><i class="fa fa-save"></i></span>
+						<span ng-class="{'disabled': !new_setups_name}" ng-click="add_new_setup()" class="btn control_button"><i class="fa fa-save"></i></span>
 					</li>
 				</ul>
 			</div>
@@ -25,12 +25,22 @@
 				</label>
 
 				<div class="row">
-					<label class="col-md-6" ng-repeat="(key, value) in being_edited_setup.label_setup.setup">
-						<span class="label">\{{key}}</span>
-						<input type="text" ng-model="being_edited_setup.label_setup.setup[key]">
+					<label class="col-md-6" ng-repeat="(key, value) in being_edited_setup.label_setup.setup" ng-controller="setup_editor_control_controller">
+
+						<div ng-if="control_type == 'number'">
+							<span class="label">\{{key}}</span>
+							<input type="text" ng-model="being_edited_setup.label_setup.setup[key]">
+						</div>
+
+						<div class="checkbox" ng-if="control_type == 'checkbox'">
+							<span class="label">\{{key}}</span>
+							<input type="checkbox" ng-model="being_edited_setup.label_setup.setup[key]">
+						</div>
+
 					</label>
 				</div>
 
+				<div class="wedge-2x"></div>
 				<button class="btn" ng-click="save_setup()">Save setup</button>
 			</div>
 		</div>

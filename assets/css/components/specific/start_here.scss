@@ -1,0 +1,12 @@
+.start_here {
+	position: absolute;
+	transform: translateX(-110%);
+	left: 0;
+	top: 0;
+	pointer-events: none;
+
+	svg {
+		width: 150px;
+		height: 40px
+	}
+}

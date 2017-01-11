@@ -1,0 +1,25 @@
+.loader {
+	text-align: center;
+
+	svg {
+		animation: loader .5s ease infinite;
+	}
+}
+
+@keyframes loader{
+	0% {
+		transform: rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(10deg);
+	}
+
+	75% {
+		transform: rotate(-10deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
+}

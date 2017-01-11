@@ -1,17 +1,29 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	search controller
+// * 	parts controller
 // * ———————————————————————————————————————————————————————— * //
-lego_labels.controller('parts_controller', function ($scope, $http, url_service, part_service, user_service) {
+lego_labels.controller('parts_controller', function ($scope, $rootScope, part_service) {
 
-	$scope.parts = {}
+	$rootScope.parts = {}
 
 	part_service.get_parts()
 		.then(function (get_parts_response) {
-			$scope.parts = get_parts_response.data.parts
+			$rootScope.parts = get_parts_response.data.parts
 		})
 
-	$scope.select = function (part_id) {
-		var found_part = _.find($scope.parts, {part_id: part_id})
-		found_part.selected = found_part.selected ? false : true
+	$scope.select_app_parts = function () {
+		_.map($rootScope.parts, function (part) {
+			part.selected = true
+		})
 	}
+
+	$scope.deselect_app_parts = function () {
+		_.map($rootScope.parts, function (part) {
+			part.selected = false
+		})
+	}
+
+	$rootScope.get_selected_part_count = function () {
+		return _.sumBy($rootScope.parts, function (part) { return part.selected ? 1 : 0 })
+	}
+
 })

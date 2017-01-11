@@ -8,14 +8,15 @@
 
 	.results {
 		position: absolute;
-		padding: 20px;
+		padding: 40px 20px 50px;
 		bottom: -20px;
 		left: 0;
 		transform: translateY(100%);
 		background-color: $white;
 		width: 100%;
-		box-shadow: 1px 1px 8px $black;
+		box-shadow: 1px 1px 18px rgba($black, .2);
 		color: $black;
+		height: 200px;
 
 		.result {
 			height: 90px;
@@ -25,13 +26,15 @@
 				height: 100%;
 			}
 
-			.col {
-				background-size: contain;
-				background-repeat: no-repeat;
-			}
-
 			.result_category {
 				font-weight: 400;
+			}
+
+			.result_image {
+				height: 100%;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center center;
 			}
 
 		}

@@ -6,8 +6,15 @@ lego_labels.factory('part_service', function user_service ($http, user_service, 
 	}
 
 	service.get_parts = function () {
-		console.log(user_service.get_logged_in_user())
 		return $http.get(url_service.get_url('get_parts'), {params: {user_id: user_service.get_logged_in_user().userId}})
+	}
+
+	service.delete_part = function (part_id) {
+		return $http.get(url_service.get_url('delete_part'), {params: {part_id: part_id}})
+	}
+
+	service.update_color = function (part_id, new_color) {
+		return $http.get(url_service.get_url('update_color'), {params: {part_id: part_id, new_color: new_color}})
 	}
 
 	return service

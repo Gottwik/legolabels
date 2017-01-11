@@ -139,7 +139,7 @@ function print_labels (doc, parts, label_setup) {
 		var current_row = 0
 		_.each(parts, (part) => {
 
-			label_promises.push(print_part(doc, part, label_setup, label_variables, current_col, current_row))
+			label_promises.push(print_part(doc, part.part, label_setup, label_variables, current_col, current_row))
 
 			current_part++
 			current_col = current_part % label_variables.number_of_cols
@@ -212,7 +212,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	image
 		// * ———————————————————————————————————————————————————————— * //
-		get_part_image(part.part_img_url)
+		get_part_image(part.image)
 			.then((image_buffer) => {
 
 				var image_area_width = label_setup.label_width * label_variables.image_percentage

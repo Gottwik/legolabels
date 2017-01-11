@@ -1,10 +1,12 @@
 .select {
 	font-weight: 400;
 	position: relative;
+	min-width: 120px;
+	display: inline-block;
 
 	.label {
 		position: absolute;
-		top: -32px;
+		top: -22px;
 
 	}
 
@@ -17,13 +19,13 @@
 		-webkit-appearance:none;
 		-moz-appearance:none;
 		appearance:none;
-
+		width: 100%;
 	}
 
 	&:before {
 		position: absolute;
 		left: 13px;
-		top: 2px;
+		top: 12px;
 		content: "\f0d7";
 		font: normal normal normal 16px/1 FontAwesome;
 	}
