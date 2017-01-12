@@ -11,7 +11,7 @@ lego_labels.controller('part_controller', function ($scope, $rootScope, part_ser
 			var last_selected_part_index = $scope.parts.indexOf($rootScope.last_selected_part)
 			var current_part_index = $scope.parts.indexOf($scope.part)
 
-			var interval_start = Math.min(last_selected_part_index, current_part_index) + 1
+			var interval_start = Math.min(last_selected_part_index, current_part_index)
 			var interval_end = Math.max(last_selected_part_index, current_part_index) + 1
 
 			_.chain($scope.parts)
@@ -33,7 +33,7 @@ lego_labels.controller('part_controller', function ($scope, $rootScope, part_ser
 
 	$scope.delete = function () {
 		var found_part_index = $scope.parts.indexOf($scope.part)
-				$scope.parts.splice(found_part_index, 1)
+		$scope.parts.splice(found_part_index, 1)
 
 		part_service.delete_part($scope.part._id)
 			.then(function () {

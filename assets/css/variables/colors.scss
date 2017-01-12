@@ -11,3 +11,4 @@ $scheme-colors: (#3498db, #ecf0f1, #2ecc71, #e67e22, #9b59b6);
 // derived colors
 $hover_color: rgba(scheme(1), .8);
 $grey: mix($white, $black, 50%);
+$light_grey: rgba($grey, .25);

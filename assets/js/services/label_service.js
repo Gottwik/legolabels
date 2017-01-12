@@ -1,4 +1,4 @@
-lego_labels.factory('label_service', function user_service ($http, user_service, url_service) {
+lego_labels.factory('label_service', function ($http, user_service, url_service) {
 	var service = {}
 
 	service.get_default_setup = function () {

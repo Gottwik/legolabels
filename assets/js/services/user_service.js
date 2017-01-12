@@ -1,4 +1,4 @@
-lego_labels.factory('user_service', function user_service ($http, store, authManager, $location) {
+lego_labels.factory('user_service', function ($http, store, authManager, $location) {
 	var service = {}
 
 	service.get_logged_in_user = function () {

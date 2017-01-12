@@ -6,37 +6,8 @@
 		width: calc(100% - 40px) !important;
 	}
 
-	.results {
-		position: absolute;
-		padding: 40px 20px 50px;
-		bottom: -20px;
-		left: 0;
-		transform: translateY(100%);
-		background-color: $white;
-		width: 100%;
-		box-shadow: 1px 1px 18px rgba($black, .2);
-		color: $black;
-		height: 200px;
-
-		.result {
-			height: 90px;
-
-			.row,
-			.col {
-				height: 100%;
-			}
-
-			.result_category {
-				font-weight: 400;
-			}
-
-			.result_image {
-				height: 100%;
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center center;
-			}
-
-		}
+	.no_part {
+		text-align: center;
+		padding: 30px 20px 40px;
 	}
 }

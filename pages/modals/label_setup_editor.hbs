@@ -4,10 +4,12 @@
 		<div class="close_button" ng-click="close()"></div>
 
 		<div class="row">
+
+			{{!-- setup list --}}
 			<div class="col-md-4">
 				<ul>
 					<li class="setup" ng-repeat="setup in setups">
-						<span class="name">\{{setup.label_setup.name}}</span>
+						<span class="name">\{{setup.label_setup.label_info.name}}</span>
 
 						<span ng-click="edit(setup)" class="btn control_button"><i class="fa fa-cog"></i></span>
 						<span ng-click="delete_setup(setup)" class="btn control_button"><i class="fa fa-trash"></i></span>
@@ -18,32 +20,41 @@
 					</li>
 				</ul>
 			</div>
-			<div class="col-md-8" ng-show="being_edited_setup">
-				<label>
-					<span class="label">name</span>
-					<input type="text" ng-model="being_edited_setup.label_setup.name">
-				</label>
 
-				<div class="row">
-					<label class="col-md-6" ng-repeat="(key, value) in being_edited_setup.label_setup.setup" ng-controller="setup_editor_control_controller">
+			{{!-- setup editor --}}
+			<div class="col-md-8" ng-show="being_edited_setup">
+
+				<div class="row setup_category" ng-repeat="(setup_group_name, setup_group) in being_edited_setup.label_setup">
+					<div class="col-md-12">
+						<h3 class="setup_category_title"><i class="fa fa-cogs inline"></i>\{{deslug(setup_group_name)}}</h3>
+					</div>
+					<label class="col-md-6" ng-repeat="(key, value) in setup_group" ng-controller="setup_editor_control_controller">
+
+						<div ng-if="control_type == 'text'">
+							<span class="label">\{{deslug(key)}}</span>
+							<input class="full" type="text" ng-model="setup_group[key]">
+						</div>
 
 						<div ng-if="control_type == 'number'">
-							<span class="label">\{{key}}</span>
-							<input type="text" ng-model="being_edited_setup.label_setup.setup[key]">
+							<span class="label">\{{deslug(key)}}</span>
+							<input class="full" type="number" ng-model="setup_group[key]">
 						</div>
 
 						<div class="checkbox" ng-if="control_type == 'checkbox'">
-							<span class="label">\{{key}}</span>
-							<input type="checkbox" ng-model="being_edited_setup.label_setup.setup[key]">
+							<input type="checkbox" ng-model="setup_group[key]">
+							<span class="label">\{{deslug(key)}}</span>
 						</div>
 
 					</label>
 				</div>
 
-				<div class="wedge-2x"></div>
-				<button class="btn" ng-click="save_setup()">Save setup</button>
+				<div class="wedge-3x"></div>
+				<div class="btn_row">
+					<button class="btn" ng-click="save_setup()">Save setup</button>
+					<button class="btn" ng-click="test_print()">Test print</button>
+				</div>
 			</div>
-		</div>
 
+		</div>
 	</div>
 </div>

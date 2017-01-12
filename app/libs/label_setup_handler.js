@@ -10,24 +10,42 @@ label_setup_handler.prototype.init = function (db) {
 
 // units in mm
 label_setup_handler.prototype.default_label_setup = {
-	label_width: 50,
-	label_height: 20,
-	page_width: 210,
-	page_height: 297,
-	page_padding: 20,
-	crop_marks: true,
-	label_border: true,
-	part_font_size: 1,
-	image_padding: 1,
-	label_id_y_offset: 2,
-	product_link: ''
+	label_info: {
+		name: 'default setup',
+		product_link: '',
+	},
+	page_setup: {
+		page_width: 210,
+		page_height: 297,
+		page_padding: 20,
+	},
+	label_size: {
+		label_width: 50,
+		label_height: 20,
+	},
+	label_layout: {
+		image_padding: 1,
+		label_part_id_y_offset: 2,
+		image_percentage: .3,
+		image_separation: .1,
+		text_align: 'left',
+	},
+	markings: {
+		crop_marks: true,
+		label_border: true,
+	},
+	font_sizes: {
+		part_id: .5,
+		part_name: .25,
+		part_category: .25,
+	}
 }
 
 // local dependencies
 label_setup_handler.prototype.extend_with_default = function (label_setup) {
 	var self = this
 
-	return extend(true, label_setup, self.default_label_setup)
+	return extend(true, self.default_label_setup, label_setup)
 }
 
 label_setup_handler.prototype.add_label_setup = function (label_setup, user_id) {

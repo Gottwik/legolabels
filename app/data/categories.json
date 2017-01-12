@@ -1,728 +1,229 @@
-{
-	"Wheel": {
-		"count": 103,
-		"color": "#8e44ad",
-		"rebrickable_category": "Wheels",
-		"lego_color": 18
-	},
-	"Wheelbarrow": {
-		"count": 6,
-		"color": "#e74c3c",
-		"rebrickable_category": "Wheelbarrows",
-		"lego_color": 70
-	},
-	"Wheels": {
-		"count": 1,
-		"color": "#e67e22",
-		"rebrickable_category": "Wheelss",
-		"lego_color": 115
-	},
-	"Umbrella": {
-		"count": 3,
-		"color": "#1abc9c",
-		"rebrickable_category": "Umbrellas",
-		"lego_color": 88
-	},
-	"Wing": {
-		"count": 50,
-		"color": "#e67e22",
-		"rebrickable_category": "Wings",
-		"lego_color": 27
-	},
-	"Scala": {
-		"count": 13,
-		"color": "#34495e",
-		"rebrickable_category": "Scalas",
-		"lego_color": 47
-	},
-	"Tail": {
-		"count": 22,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Tails",
-		"lego_color": 41
-	},
-	"Animal": {
-		"count": 133,
-		"color": "#3498db",
-		"rebrickable_category": "Animals",
-		"lego_color": 12
-	},
-	"Plane": {
-		"count": 23,
-		"color": "#e74c3c",
-		"rebrickable_category": "Planes",
-		"lego_color": 37
-	},
-	"Windscreen": {
-		"count": 103,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Windscreens",
-		"lego_color": 19
-	},
-	"Tyre": {
-		"count": 69,
-		"color": "#3498db",
-		"rebrickable_category": "Tyres",
-		"lego_color": 23
-	},
-	"Lamppost\n": {
-		"count": 1,
-		"color": "#e74c3c",
-		"rebrickable_category": "Lamppost\ns",
-		"lego_color": 103
-	},
-	"Sticker": {
-		"count": 542,
-		"color": "#34495e",
-		"rebrickable_category": "Stickers",
-		"lego_color": 3
-	},
-	"Lamppost": {
-		"count": 1,
-		"color": "#e67e22",
-		"rebrickable_category": "Lampposts",
-		"lego_color": 104
-	},
-	"Brick": {
-		"count": 571,
-		"color": "#9b59b6",
-		"rebrickable_category": "Bricks",
-		"lego_color": 8
-	},
-	"Cylinder": {
-		"count": 41,
-		"color": "#16a085",
-		"rebrickable_category": "Cylinders",
-		"lego_color": 31
-	},
-	"Handle": {
-		"count": 2,
-		"color": "#e67e22",
-		"rebrickable_category": "Handles",
-		"lego_color": 93
-	},
-	"Wedge": {
-		"count": 90,
-		"color": "#c0392b",
-		"rebrickable_category": "Wedges",
-		"lego_color": 21
-	},
-	"Monorail": {
-		"count": 17,
-		"color": "#9b59b6",
-		"rebrickable_category": "Monorails",
-		"lego_color": 46
-	},
-	"Mursten": {
-		"count": 31,
-		"color": "#c0392b",
-		"rebrickable_category": "Murstens",
-		"lego_color": 32
-	},
-	"Bike": {
-		"count": 18,
-		"color": "#3498db",
-		"rebrickable_category": "Bikes",
-		"lego_color": 45
-	},
-	"Staircase": {
-		"count": 8,
-		"color": "#27ae60",
-		"rebrickable_category": "Staircases",
-		"lego_color": 61
-	},
-	"Boat": {
-		"count": 63,
-		"color": "#9b59b6",
-		"rebrickable_category": "Boats",
-		"lego_color": 24
-	},
-	"Container": {
-		"count": 62,
-		"color": "#34495e",
-		"rebrickable_category": "Containers",
-		"lego_color": 25
-	},
-	"Exhaust": {
-		"count": 6,
-		"color": "#e67e22",
-		"rebrickable_category": "Exhausts",
-		"lego_color": 71
-	},
-	"Trailer": {
-		"count": 6,
-		"color": "#27ae60",
-		"rebrickable_category": "Trailers",
-		"lego_color": 72
-	},
-	"Barrel": {
-		"count": 4,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Barrels",
-		"lego_color": 85
-	},
-	"Slope": {
-		"count": 332,
-		"color": "#27ae60",
-		"rebrickable_category": "Slopes",
-		"lego_color": 6
-	},
-	"Belville": {
-		"count": 6,
-		"color": "#8e44ad",
-		"rebrickable_category": "Belvilles",
-		"lego_color": 73
-	},
-	"Fence": {
-		"count": 11,
-		"color": "#27ae60",
-		"rebrickable_category": "Fences",
-		"lego_color": 50
-	},
-	"Pov-RAY": {
-		"count": 1,
-		"color": "#27ae60",
-		"rebrickable_category": "Pov-RAYs",
-		"lego_color": 105
-	},
-	"Antenna": {
-		"count": 9,
-		"color": "#1abc9c",
-		"rebrickable_category": "Antennas",
-		"lego_color": 55
-	},
-	"Hose": {
-		"count": 13,
-		"color": "#e74c3c",
-		"rebrickable_category": "Hoses",
-		"lego_color": 48
-	},
-	"Dome": {
-		"count": 3,
-		"color": "#3498db",
-		"rebrickable_category": "Domes",
-		"lego_color": 89
-	},
-	"Support": {
-		"count": 22,
-		"color": "#27ae60",
-		"rebrickable_category": "Supports",
-		"lego_color": 39
-	},
-	"Die": {
-		"count": 2,
-		"color": "#c0392b",
-		"rebrickable_category": "Dies",
-		"lego_color": 98
-	},
-	"Bone": {
-		"count": 2,
-		"color": "#27ae60",
-		"rebrickable_category": "Bones",
-		"lego_color": 94
-	},
-	"Flag": {
-		"count": 115,
-		"color": "#e67e22",
-		"rebrickable_category": "Flags",
-		"lego_color": 16
-	},
-	"Bigfig": {
-		"count": 7,
-		"color": "#1abc9c",
-		"rebrickable_category": "Bigfigs",
-		"lego_color": 66
-	},
-	"Garage": {
-		"count": 6,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Garages",
-		"lego_color": 74
-	},
-	"Duplo": {
-		"count": 120,
-		"color": "#34495e",
-		"rebrickable_category": "Duplos",
-		"lego_color": 14
-	},
-	"Jack": {
-		"count": 5,
-		"color": "#34495e",
-		"rebrickable_category": "Jacks",
-		"lego_color": 80
-	},
-	"Roof": {
-		"count": 5,
-		"color": "#1abc9c",
-		"rebrickable_category": "Roofs",
-		"lego_color": 77
-	},
-	"Roller": {
-		"count": 3,
-		"color": "#9b59b6",
-		"rebrickable_category": "Rollers",
-		"lego_color": 90
-	},
-	"Arm": {
-		"count": 13,
-		"color": "#e67e22",
-		"rebrickable_category": "Arms",
-		"lego_color": 49
-	},
-	"Medical": {
-		"count": 1,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Medicals",
-		"lego_color": 107
-	},
-	"Cockpit": {
-		"count": 7,
-		"color": "#c0392b",
-		"rebrickable_category": "Cockpits",
-		"lego_color": 65
-	},
-	"Window": {
-		"count": 91,
-		"color": "#16a085",
-		"rebrickable_category": "Windows",
-		"lego_color": 20
-	},
-	"Maxifig": {
-		"count": 4,
-		"color": "#e74c3c",
-		"rebrickable_category": "Maxifigs",
-		"lego_color": 81
-	},
-	"Tap": {
-		"count": 9,
-		"color": "#3498db",
-		"rebrickable_category": "Taps",
-		"lego_color": 56
-	},
-	"Platform": {
-		"count": 2,
-		"color": "#8e44ad",
-		"rebrickable_category": "Platforms",
-		"lego_color": 95
-	},
-	"Spring": {
-		"count": 2,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Springs",
-		"lego_color": 96
-	},
-	"Jet": {
-		"count": 2,
-		"color": "#16a085",
-		"rebrickable_category": "Jets",
-		"lego_color": 97
-	},
-	"Key": {
-		"count": 1,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Keys",
-		"lego_color": 118
-	},
-	"Motor": {
-		"count": 11,
-		"color": "#8e44ad",
-		"rebrickable_category": "Motors",
-		"lego_color": 51
-	},
-	"Homemaker": {
-		"count": 8,
-		"color": "#8e44ad",
-		"rebrickable_category": "Homemakers",
-		"lego_color": 62
-	},
-	"Battery": {
-		"count": 1,
-		"color": "#c0392b",
-		"rebrickable_category": "Batterys",
-		"lego_color": 109
-	},
-	"Train": {
-		"count": 219,
-		"color": "#16a085",
-		"rebrickable_category": "Trains",
-		"lego_color": 9
-	},
-	"Hemisphere": {
-		"count": 5,
-		"color": "#3498db",
-		"rebrickable_category": "Hemispheres",
-		"lego_color": 78
-	},
-	"Crane": {
-		"count": 21,
-		"color": "#16a085",
-		"rebrickable_category": "Cranes",
-		"lego_color": 42
-	},
-	"Sports": {
-		"count": 1,
-		"color": "#1abc9c",
-		"rebrickable_category": "Sportss",
-		"lego_color": 110
-	},
-	"Space": {
-		"count": 1,
-		"color": "#3498db",
-		"rebrickable_category": "Spaces",
-		"lego_color": 111
-	},
-	"Winch": {
-		"count": 4,
-		"color": "#e67e22",
-		"rebrickable_category": "Winchs",
-		"lego_color": 82
-	},
-	"Magnet": {
-		"count": 10,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Magnets",
-		"lego_color": 52
-	},
-	"Electric": {
-		"count": 235,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Electrics",
-		"lego_color": 8
-	},
-	"Roadsign": {
-		"count": 131,
-		"color": "#9b59b6",
-		"rebrickable_category": "Roadsigns",
-		"lego_color": 13
-	},
-	"Fabuland": {
-		"count": 51,
-		"color": "#e74c3c",
-		"rebrickable_category": "Fabulands",
-		"lego_color": 26
-	},
-	"Gold": {
-		"count": 1,
-		"color": "#9b59b6",
-		"rebrickable_category": "Golds",
-		"lego_color": 112
-	},
-	"Quatro": {
-		"count": 7,
-		"color": "#3498db",
-		"rebrickable_category": "Quatros",
-		"lego_color": 67
-	},
-	"Turntable": {
-		"count": 20,
-		"color": "#c0392b",
-		"rebrickable_category": "Turntables",
-		"lego_color": 43
-	},
-	"Plant": {
-		"count": 46,
-		"color": "#8e44ad",
-		"rebrickable_category": "Plants",
-		"lego_color": 29
-	},
-	"Znap": {
-		"count": 22,
-		"color": "#8e44ad",
-		"rebrickable_category": "Znaps",
-		"lego_color": 40
-	},
-	"Hook": {
-		"count": 1,
-		"color": "#34495e",
-		"rebrickable_category": "Hooks",
-		"lego_color": 113
-	},
-	"Brush": {
-		"count": 3,
-		"color": "#34495e",
-		"rebrickable_category": "Brushs",
-		"lego_color": 91
-	},
-	"Glass": {
-		"count": 29,
-		"color": "#3498db",
-		"rebrickable_category": "Glasss",
-		"lego_color": 34
-	},
-	"Technic": {
-		"count": 724,
-		"color": "#3498db",
-		"rebrickable_category": "Technics",
-		"lego_color": 1
-	},
-	"Rope": {
-		"count": 1,
-		"color": "#8e44ad",
-		"rebrickable_category": "Ropes",
-		"lego_color": 106
-	},
-	"Microfig\n": {
-		"count": 1,
-		"color": "#e74c3c",
-		"rebrickable_category": "Microfig\ns",
-		"lego_color": 114
-	},
-	"Ball": {
-		"count": 6,
-		"color": "#16a085",
-		"rebrickable_category": "Balls",
-		"lego_color": 75
-	},
-	"Ladder": {
-		"count": 7,
-		"color": "#9b59b6",
-		"rebrickable_category": "Ladders",
-		"lego_color": 68
-	},
-	"Rubber": {
-		"count": 4,
-		"color": "#27ae60",
-		"rebrickable_category": "Rubbers",
-		"lego_color": 83
-	},
-	"Bucket": {
-		"count": 10,
-		"color": "#c0392b",
-		"rebrickable_category": "Buckets",
-		"lego_color": 54
-	},
-	"Rack": {
-		"count": 4,
-		"color": "#8e44ad",
-		"rebrickable_category": "Racks",
-		"lego_color": 84
-	},
-	"Axle": {
-		"count": 1,
-		"color": "#34495e",
-		"rebrickable_category": "Axles",
-		"lego_color": 102
-	},
-	"Motorcycle": {
-		"count": 2,
-		"color": "#1abc9c",
-		"rebrickable_category": "Motorcycles",
-		"lego_color": 99
-	},
-	"Castle": {
-		"count": 1,
-		"color": "#27ae60",
-		"rebrickable_category": "Castles",
-		"lego_color": 116
-	},
-	"Cardboard": {
-		"count": 1,
-		"color": "#16a085",
-		"rebrickable_category": "Cardboards",
-		"lego_color": 108
-	},
-	"Plate": {
-		"count": 283,
-		"color": "#8e44ad",
-		"rebrickable_category": "Plates",
-		"lego_color": 6
-	},
-	"Stretcher": {
-		"count": 1,
-		"color": "#8e44ad",
-		"rebrickable_category": "Stretchers",
-		"lego_color": 117
-	},
-	"Signpost": {
-		"count": 5,
-		"color": "#c0392b",
-		"rebrickable_category": "Signposts",
-		"lego_color": 76
-	},
-	"Tipper": {
-		"count": 9,
-		"color": "#9b59b6",
-		"rebrickable_category": "Tippers",
-		"lego_color": 57
-	},
-	"Sheet": {
-		"count": 10,
-		"color": "#16a085",
-		"rebrickable_category": "Sheets",
-		"lego_color": 53
-	},
-	"Landing": {
-		"count": 2,
-		"color": "#3498db",
-		"rebrickable_category": "Landings",
-		"lego_color": 100
-	},
-	"Bracket": {
-		"count": 28,
-		"color": "#9b59b6",
-		"rebrickable_category": "Brackets",
-		"lego_color": 35
-	},
-	"Claw": {
-		"count": 4,
-		"color": "#16a085",
-		"rebrickable_category": "Claws",
-		"lego_color": 86
-	},
-	"Minifig": {
-		"count": 1436,
-		"color": "#1abc9c",
-		"rebrickable_category": "Minifigs",
-		"lego_color": 0
-	},
-	"Forklift": {
-		"count": 9,
-		"color": "#34495e",
-		"rebrickable_category": "Forklifts",
-		"lego_color": 58
-	},
-	"String": {
-		"count": 4,
-		"color": "#c0392b",
-		"rebrickable_category": "Strings",
-		"lego_color": 87
-	},
-	"Canvas": {
-		"count": 3,
-		"color": "#e74c3c",
-		"rebrickable_category": "Canvass",
-		"lego_color": 92
-	},
-	"Door": {
-		"count": 107,
-		"color": "#27ae60",
-		"rebrickable_category": "Doors",
-		"lego_color": 17
-	},
-	"Cone": {
-		"count": 23,
-		"color": "#e67e22",
-		"rebrickable_category": "Cones",
-		"lego_color": 38
-	},
-	"Figure": {
-		"count": 441,
-		"color": "#e67e22",
-		"rebrickable_category": "Figures",
-		"lego_color": 5
-	},
-	"Panel": {
-		"count": 174,
-		"color": "#1abc9c",
-		"rebrickable_category": "Panels",
-		"lego_color": 11
-	},
-	"Vehicle": {
-		"count": 8,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Vehicles",
-		"lego_color": 63
-	},
-	"Sail": {
-		"count": 9,
-		"color": "#e74c3c",
-		"rebrickable_category": "Sails",
-		"lego_color": 59
-	},
-	"Propellor": {
-		"count": 19,
-		"color": "#1abc9c",
-		"rebrickable_category": "Propellors",
-		"lego_color": 44
-	},
-	"Cocoon": {
-		"count": 2,
-		"color": "#9b59b6",
-		"rebrickable_category": "Cocoons",
-		"lego_color": 101
-	},
-	"Snow": {
-		"count": 1,
-		"color": "#16a085",
-		"rebrickable_category": "Snows",
-		"lego_color": 119
-	},
-	"Arch": {
-		"count": 30,
-		"color": "#1abc9c",
-		"rebrickable_category": "Archs",
-		"lego_color": 33
-	},
-	"Rock": {
-		"count": 24,
-		"color": "#34495e",
-		"rebrickable_category": "Rocks",
-		"lego_color": 36
-	},
-	"Gate": {
-		"count": 5,
-		"color": "#9b59b6",
-		"rebrickable_category": "Gates",
-		"lego_color": 79
-	},
-	"Tile": {
-		"count": 514,
-		"color": "#e74c3c",
-		"rebrickable_category": "Tiles",
-		"lego_color": 4
-	},
-	"Baseplate": {
-		"count": 180,
-		"color": "#c0392b",
-		"rebrickable_category": "Baseplates",
-		"lego_color": 10
-	},
-	"Dish": {
-		"count": 50,
-		"color": "#27ae60",
-		"rebrickable_category": "Dishs",
-		"lego_color": 28
-	},
-	"Hinge": {
-		"count": 120,
-		"color": "#e74c3c",
-		"rebrickable_category": "Hinges",
-		"lego_color": 15
-	},
-	"Excavator": {
-		"count": 7,
-		"color": "#34495e",
-		"rebrickable_category": "Excavators",
-		"lego_color": 69
-	},
-	"Slide": {
-		"count": 1,
-		"color": "#c0392b",
-		"rebrickable_category": "Slides",
-		"lego_color": 120
-	},
-	"Conveyor": {
-		"count": 8,
-		"color": "#16a085",
-		"rebrickable_category": "Conveyors",
-		"lego_color": 64
-	},
-	"Tractor": {
-		"count": 9,
-		"color": "#e67e22",
-		"rebrickable_category": "Tractors",
-		"lego_color": 60
-	},
-	"Car": {
-		"count": 71,
-		"color": "#1abc9c",
-		"rebrickable_category": "Cars",
-		"lego_color": 22
-	},
-	"Bar": {
-		"count": 45,
-		"color": "#7f8c8d",
-		"rebrickable_category": "Bars",
-		"lego_color": 30
-	}
-}
+[{
+	"lego_color": 0,
+	"part_type_id": "16",
+	"desc": "Bars, Ladders and Fences"
+}, {
+	"lego_color": 1,
+	"part_type_id": "15",
+	"desc": "Baseplates"
+}, {
+	"lego_color": 2,
+	"part_type_id": "52",
+	"desc": "Belville, Scala and Fabuland"
+}, {
+	"lego_color": 3,
+	"part_type_id": "42",
+	"desc": "Bionicle, Hero Factory and Constraction"
+}, {
+	"lego_color": 4,
+	"part_type_id": "3",
+	"desc": "Bricks"
+}, {
+	"lego_color": 5,
+	"part_type_id": "20",
+	"desc": "Bricks Curved"
+}, {
+	"lego_color": 6,
+	"part_type_id": "18",
+	"desc": "Bricks Printed"
+}, {
+	"lego_color": 7,
+	"part_type_id": "38",
+	"desc": "Bricks Round and Cones"
+}, {
+	"lego_color": 8,
+	"part_type_id": "19",
+	"desc": "Bricks Sloped"
+}, {
+	"lego_color": 9,
+	"part_type_id": "21",
+	"desc": "Bricks Special"
+}, {
+	"lego_color": 10,
+	"part_type_id": "22",
+	"desc": "Bricks Wedged"
+}, {
+	"lego_color": 11,
+	"part_type_id": "51",
+	"desc": "Clikits"
+}, {
+	"lego_color": 12,
+	"part_type_id": "23",
+	"desc": "Containers"
+}, {
+	"lego_color": 13,
+	"part_type_id": "49",
+	"desc": "Duplo, Quatro and Primo"
+}, {
+	"lego_color": 14,
+	"part_type_id": "43",
+	"desc": "Flags, Signs, Plastics and Cloth"
+}, {
+	"lego_color": 15,
+	"part_type_id": "35",
+	"desc": "Hinges, Arms and Turntables"
+}, {
+	"lego_color": 16,
+	"part_type_id": "54",
+	"desc": "HO Scale"
+}, {
+	"lego_color": 17,
+	"part_type_id": "48",
+	"desc": "Magnets and Holders"
+}, {
+	"lego_color": 18,
+	"part_type_id": "32",
+	"desc": "Mechanical"
+}, {
+	"lego_color": 19,
+	"part_type_id": "26",
+	"desc": "Minifig Accessories"
+}, {
+	"lego_color": 20,
+	"part_type_id": "6",
+	"desc": "Minifigs"
+}, {
+	"lego_color": 21,
+	"part_type_id": "56",
+	"desc": "Non-Buildable Figures (Duplo, Fabuland, etc)"
+}, {
+	"lego_color": 22,
+	"part_type_id": "14",
+	"desc": "Non-LEGO"
+}, {
+	"lego_color": 23,
+	"part_type_id": "999",
+	"desc": "Other"
+}, {
+	"lego_color": 24,
+	"part_type_id": "27",
+	"desc": "Panels"
+}, {
+	"lego_color": 25,
+	"part_type_id": "28",
+	"desc": "Plants and Animals"
+}, {
+	"lego_color": 1,
+	"part_type_id": "10",
+	"desc": "Plates"
+}, {
+	"lego_color": 27,
+	"part_type_id": "13",
+	"desc": "Plates Angled"
+}, {
+	"lego_color": 28,
+	"part_type_id": "39",
+	"desc": "Plates Round and Dishes"
+}, {
+	"lego_color": 29,
+	"part_type_id": "29",
+	"desc": "Plates Special"
+}, {
+	"lego_color": 30,
+	"part_type_id": "11",
+	"desc": "Pneumatics"
+}, {
+	"lego_color": 31,
+	"part_type_id": "8",
+	"desc": "Power Functions, Mindstorms and Electric"
+}, {
+	"lego_color": 32,
+	"part_type_id": "44",
+	"desc": "Rock"
+}, {
+	"lego_color": 33,
+	"part_type_id": "41",
+	"desc": "String, Bands and Reels"
+}, {
+	"lego_color": 34,
+	"part_type_id": "45",
+	"desc": "Supports, Girders and Cranes"
+}, {
+	"lego_color": 35,
+	"part_type_id": "1",
+	"desc": "Technic Axles"
+}, {
+	"lego_color": 36,
+	"part_type_id": "2",
+	"desc": "Technic Beams"
+}, {
+	"lego_color": 37,
+	"part_type_id": "17",
+	"desc": "Technic Beams Special"
+}, {
+	"lego_color": 38,
+	"part_type_id": "24",
+	"desc": "Technic Bricks"
+}, {
+	"lego_color": 39,
+	"part_type_id": "4",
+	"desc": "Technic Bushes"
+}, {
+	"lego_color": 40,
+	"part_type_id": "5",
+	"desc": "Technic Connectors"
+}, {
+	"lego_color": 41,
+	"part_type_id": "7",
+	"desc": "Technic Gears"
+}, {
+	"lego_color": 42,
+	"part_type_id": "50",
+	"desc": "Technic Panels"
+}, {
+	"lego_color": 43,
+	"part_type_id": "9",
+	"desc": "Technic Pins"
+}, {
+	"lego_color": 44,
+	"part_type_id": "25",
+	"desc": "Technic Special"
+}, {
+	"lego_color": 45,
+	"part_type_id": "46",
+	"desc": "Technic Steering, Suspension and Engine"
+}, {
+	"lego_color": 46,
+	"part_type_id": "12",
+	"desc": "Tiles"
+}, {
+	"lego_color": 47,
+	"part_type_id": "30",
+	"desc": "Tiles Printed"
+}, {
+	"lego_color": 48,
+	"part_type_id": "31",
+	"desc": "Tiles Special"
+}, {
+	"lego_color": 49,
+	"part_type_id": "55",
+	"desc": "Tools"
+}, {
+	"lego_color": 50,
+	"part_type_id": "36",
+	"desc": "Transportation - Land"
+}, {
+	"lego_color": 51,
+	"part_type_id": "47",
+	"desc": "Transportation - Sea and Air"
+}, {
+	"lego_color": 52,
+	"part_type_id": "37",
+	"desc": "Tubes and Hoses"
+}, {
+	"lego_color": 53,
+	"part_type_id": "33",
+	"desc": "Wheels and Tyres"
+}, {
+	"lego_color": 54,
+	"part_type_id": "34",
+	"desc": "Windows and Doors"
+}, {
+	"lego_color": 55,
+	"part_type_id": "40",
+	"desc": "Windscreens and Fuselage"
+}, {
+	"lego_color": 56,
+	"part_type_id": "53",
+	"desc": "Znap"
+}]

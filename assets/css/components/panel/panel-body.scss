@@ -3,4 +3,9 @@
 	margin: 0 auto;
 	padding: 0 $panel_body_padding;
 	position: relative;
+
+	// modifiers
+	&.padded {
+		padding: 10px 0;
+	}
 }

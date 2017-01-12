@@ -1,0 +1,14 @@
+i {
+
+	&.inline {
+		margin-right: 10px;
+	}
+
+	// modifiers
+	&.large {
+		@include font-size(icon2x);
+		margin-right: 10px;
+		position: relative;
+		top: 3px;
+	}
+}

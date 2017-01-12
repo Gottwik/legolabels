@@ -11,9 +11,12 @@
 
 	<div class="panel">
 		<div class="panel-body">
-
-
 			<div class="parts_padder">
+
+				<div class="part" ng-show="loader_part">
+					<div class="loader">{{>loader}}</div>
+				</div>
+
 				<div class="part" ng-class="{'selected': part.selected, 'overlay_open': part.color_overlay_open}" ng-click="select($event)" ng-repeat="part in parts" ng-controller="part_controller">
 					<div class="row">
 
@@ -22,7 +25,7 @@
 							<div class="part_overlay_body">
 								<span>\{{part.part.color_code}}</span>
 								<select ng-model="part.part.color_code">
-									<option ng-repeat="color in part.part.colors" value="\{{color.rb_color_id}}">\{{color.color_name}}</option>
+									<option ng-repeat="color in part.part.colors" value="\{{color.rb_color_id}}">\{{color.color_name}} (\{{color.rb_color_id}})</option>
 								</select>
 							</div>
 						</div>
@@ -42,6 +45,7 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 			<div class="clearfix"></div>
 		</div>

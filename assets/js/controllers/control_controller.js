@@ -1,22 +1,26 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	search controller
 // * ———————————————————————————————————————————————————————— * //
-lego_labels.controller('control_controller', function ($scope, $http, url_service, part_service, user_service, print_service, modal_service, label_service) {
+lego_labels.controller('control_controller', function ($scope, $rootScope, $http, url_service, part_service, user_service, print_service, modal_service, label_service) {
 
 	label_service.get_setups()
 		.then((label_setups_response) => {
 			$scope.label_setups = label_setups_response.data
+			if ($scope.label_setups) {
+				$scope.selected_setup_id = $scope.label_setups[0]._id
+			}
 		})
 
 	var search_options = {
 		params: {
 			key: 'Ajz15RKnAW',
 			format: 'json',
+			type: 'P',
 		}
 	}
 
-	var search_trotter
-	const THROTTLE_DELAY = 200
+	var search_trotter // will store the timeout reference
+	const THROTTLE_DELAY = 500 // time before searching for parts
 
 	$scope.$watch('searchtext', function (new_value, old_value) {
 		$scope.found_part = {}
@@ -33,28 +37,39 @@ lego_labels.controller('control_controller', function ($scope, $http, url_servic
 	function search_for_part (part_id) {
 
 		// set the part_id
-		search_options.params.part_id = part_id
+		search_options.params.query = part_id
 
 		$http.get(url_service.get_url('search_for_parts'), search_options)
 			.then(function (data) {
 				$scope.loading = false
-				console.log(data)
-				if (data.data == 'NOPART' || !data.data.name) {
+				if (!data.data.results || data.data.results.length == 0) {
 					$scope.no_part = true
-					$scope.found_part = {}
+					$scope.found_parts = []
 					return
 				}
 
-				$scope.found_part = data.data
+				$scope.found_parts = _.take(data.data.results, 10)
 			})
 	}
 
-	$scope.add_part = function () {
+	$scope.print_labels = function () {
+
+		// find selected setup by it's id
+		var selected_label_setup = _.find($scope.label_setups, {_id: $scope.selected_setup_id}).label_setup
+
+		print_service.print_selected_labels(selected_label_setup)
+	}
+
+	$scope.add_part = function (part_id) {
 
 		$scope.searchtext = ''
+		$scope.found_parts = []
+		$rootScope.loader_part = true
 
-		part_service.add_part($scope.found_part, user_service.get_logged_in_user())
+		part_service.add_part(part_id)
 			.then((response) => {
+
+				$rootScope.loader_part = false
 
 				var new_part = response.data.inserted_part
 
@@ -62,32 +77,17 @@ lego_labels.controller('control_controller', function ($scope, $http, url_servic
 				new_part.selected = true
 
 				// add the part to the beginning
-				$('.parts').scope().parts.unshift(new_part)
+				$rootScope.parts.unshift(new_part)
 
-				// clear the search result to allow for subsequent searches
-				$scope.found_part = {}
 			})
-	}
-
-	$scope.print_labels = function () {
-		var selected_parts = _.filter($('.parts').scope().parts, function (part) {
-			return part.selected
-		})
-
-		if (selected_parts) {
-			print_service.print_labels(selected_parts, {})
-				.then(function (data) {
-					var blob = new Blob([data.data, { type: 'application/pdf' }])
-					var link = document.createElement('a')
-					link.href = window.URL.createObjectURL(blob)
-					link.download = 'Labels.pdf'
-					link.click()
-				})
-		}
-
 	}
 
 	$scope.open_label_setup_editor = function () {
 		modal_service.open('label_setup_editor')
+	}
+
+	$scope.clear_searchtext = function () {
+		$scope.searchtext = ''
+		$scope.found_parts = []
 	}
 })

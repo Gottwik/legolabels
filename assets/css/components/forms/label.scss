@@ -1,7 +1,12 @@
 label {
+
+	.label {
+		@include font-size(xs);
+	}
+
 	input {
 		display: block;
-		border: 1px solid $black !important;
-		padding: 4px 10px;
+		border: 1px solid $light_grey !important;
+		padding: 6px 10px !important;
 	}
 }

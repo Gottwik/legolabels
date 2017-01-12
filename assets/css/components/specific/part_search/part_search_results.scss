@@ -1,0 +1,52 @@
+.part_search_results {
+	position: absolute;
+	padding: 10px 20px 10px;
+	bottom: -20px;
+	left: 0;
+	transform: translateY(100%);
+	background-color: $white;
+	width: 100%;
+	box-shadow: 1px 1px 18px rgba($black, .2);
+	color: $black;
+	z-index: 5;
+
+	.result {
+		padding: 10px 0;
+		border-bottom: 1px solid rgba($grey, .3);
+
+		.row,
+		.col {
+			height: 100%;
+			overflow: hidden;
+		}
+
+		.result_part_id {
+			font-weight: 400;
+		}
+
+		.result_image {
+			height: 100%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			margin: 0 -5px;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.result_name {
+			white-space: nowrap;
+		}
+
+		.btn {
+			margin-top: 10px;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+	}
+}

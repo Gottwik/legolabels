@@ -6,6 +6,7 @@ var fs = require('fs')
 var path = require('path')
 var object_id = require('mongodb').ObjectId
 var _ = require('lodash')
+var request = require('request')
 
 parts_manager.prototype.init = function (db) {
 	var self = this
@@ -18,22 +19,27 @@ parts_manager.prototype.init = function (db) {
 	})
 }
 
-parts_manager.prototype.add_part = function (part, user) {
+parts_manager.prototype.add_part = function (part_id, user_id) {
 	var self = this
 
-	return new Promise(function (resolve, reject) {
-		part_to_be_inserted = {}
+	return self.get_part_by_part_id(part_id)
+		.then((part) => {
+			return new Promise(function (resolve, reject) {
 
-		part_to_be_inserted.user_id = user.userId
-		part_to_be_inserted.timestamp = +new Date
+				part_to_be_inserted = {}
 
-		self.resolve_part_color(part)
+				part_to_be_inserted.user_id = user_id
+				part_to_be_inserted.timestamp = +new Date
 
-		part_to_be_inserted.part = part
-		self.parts_collection.insert(part_to_be_inserted, () => {
-			resolve(part_to_be_inserted)
+				self.resolve_part_color(part)
+
+				part_to_be_inserted.part = part
+				self.parts_collection.insert(part_to_be_inserted, () => {
+					resolve(part_to_be_inserted)
+				})
+			})
+
 		})
-	})
 
 }
 
@@ -54,13 +60,13 @@ parts_manager.prototype.resolve_part_color = function (part) {
 
 	var rebrickable_category = part.category
 
-	var legolabels_category = _.find(self.categories, {rebrickable_category: rebrickable_category})
-
 	var color_code = 8 // default to black color
 
+	var category = _.find(self.categories, {desc: part.category})
+
 	// set the color code to the predefined
-	if (legolabels_category) {
-		color_code = legolabels_category.lego_color
+	if (category) {
+		color_code = category.lego_color
 	}
 
 	// checks if parts is available in that color and pick the closest if not
@@ -104,6 +110,30 @@ parts_manager.prototype.update_color = function (part_id, new_color) {
 
 		self.parts_collection.update({_id: object_id(part_id)}, { $set: updated_attributes }, () => {
 			resolve({new_image_url: new_image_url})
+		})
+	})
+}
+
+parts_manager.prototype.get_part_by_part_id = function (part_id) {
+	return new Promise(function (resolve, reject) {
+
+		var part_request_options = {
+			key: 'Ajz15RKnAW',
+			format: 'json',
+			part_id: part_id,
+		}
+
+		request.get({
+			url: 'https://rebrickable.com/api/get_part',
+			qs: part_request_options
+		}, function (error, response, body) {
+			if (error || response.statusCode != 200) {
+				return reject()
+			}
+
+			var parsed_part = JSON.parse(body)
+
+			resolve(parsed_part)
 		})
 	})
 }

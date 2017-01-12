@@ -1,34 +1,43 @@
 <div class="panel green" ng-controller="control_controller">
 	<div class="panel-body">
 
+
+			{{!-- add parts --}}
 			<div class="card color1 search_bar_card">
 				<div class="card-body">
 					<h1>1. Add Parts</h1>
-					<input type="text" class="huge search_box" placeholder="Input part number (3002)" ng-model="searchtext" />
-					<div class="results light" ng-show="searchtext">
+					<input type="text" class="huge search_box" placeholder="Input part number (3002)" ng-model="searchtext" {{!-- ng-blur="clear_searchtext()" --}} />
+					<div class="part_search_results light" ng-show="searchtext">
 
 						<div class="loader" ng-show="loading">{{>loader}}</div>
-						<div class="no_part" ng-show="no_part">No part found</div>
+						<div class="no_part" ng-show="no_part"><i class="fa fa-frown-o large"></i>No parts found</div>
 
-						<div class="result row" ng-show="found_part.name">
-							<div class="col col-md-4">
-								<div class="result_image" style="background-image: url('\{{found_part.part_img_url}}')"></div>
+						<div class="result row" ng-repeat="found_part in found_parts">
+							<div class="col col-md-2">
+								<div class="result_image">
+									<img ng-src="\{{found_part.img_url}}">
+								</div>
 							</div>
-							<div class="col col-md-8">
-								<div class="result_category">\{{found_part.category}}</div>
-								<div class="result_name">\{{found_part.name}}</div>
+							<div class="col col-md-7">
+								<div class="result_part_id">\{{found_part.part_id}}</div>
+								<div class="result_category">\{{found_part.part_type}}</div>
+								<div class="result_name">\{{found_part.descr}}</div>
 							</div>
+
+							<div class="col col-md-3">
+								<button class="btn " ng-click="add_part(found_part.part_id)"><i class="fa fa-save"></i>Add</button>
+							</div>
+
 						</div>
 
-						<div class="fixed_controls">
-							<button class="btn " ng-click="add_part()">Add part</button>
-						</div>
 
 					</div>
 				</div>
 				<div class="card-next"><i class="fa fa-share"></i></div>
 			</div>
 
+
+			{{!-- setup labels --}}
 			<div class="card color2 print_chooser_card">
 				<div class="card-body">
 					<h1>2. Setup labels</h1>
@@ -37,8 +46,8 @@
 						<div class="grouped_btn">
 							<label class="select">
 								<span class="label">Label setup</span>
-								<select>
-									<option ng-repeat="setup in label_setups">\{{setup.label_setup.name}}</option>
+								<select ng-model="selected_setup_id">
+									<option ng-repeat="setup in label_setups" value="\{{setup._id}}">\{{setup.label_setup.label_info.name}}</option>
 								</select>
 							</label>
 							<button class="btn" ng-click="open_label_setup_editor()"><i class="fa fa-cog"></i></button>
@@ -48,6 +57,8 @@
 				<div class="card-next"><i class="fa fa-share"></i></div>
 			</div>
 
+
+			{{!-- print labels --}}
 			<div class="card color3 print_labels_card">
 				<div class="card-body">
 					<h1>3. Print labels</h1>
@@ -55,8 +66,7 @@
 				</div>
 			</div>
 
+
 			<div class="clearfix"></div>
-
 	</div>
-
 </div>

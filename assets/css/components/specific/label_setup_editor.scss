@@ -16,4 +16,17 @@
 		top: 4px;
 		right: 0;
 	}
+
+	.setup_category {
+		border-top: 1px solid $light-grey;
+		margin-top: 10px;
+
+		.setup_category_title {
+			margin-top: 10px;
+		}
+
+		&:first-child {
+			border-top: 0;
+		}
+	}
 }

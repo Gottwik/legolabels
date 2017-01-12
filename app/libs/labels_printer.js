@@ -16,7 +16,7 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 
 	// initialize the pdfkit
 	var doc = new pdfkit({
-		size: [mm(label_setup.page_width), mm(label_setup.page_height)]
+		size: [mm(label_setup.page_setup.page_width), mm(label_setup.page_setup.page_height)]
 	})
 
 	// makes the pdfkit write directly into response without saving the file
@@ -44,7 +44,7 @@ function get_part_image (image_url) {
 		image_url = image_url.replace('https', 'http')
 
 		var system_prefix = CMD_FOLDER + '/'
-		var output_filename = 'temp/' + image_url.substr(image_url.lastIndexOf('/') + 1)
+		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
 		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
 			resolve(output_filename)
@@ -77,9 +77,15 @@ function print_labels (doc, parts, label_setup) {
 		var label_variables = {}
 
 		// * ———————————————————————————————————————————————————————— * //
+		// * 	preps doc
+		// * ———————————————————————————————————————————————————————— * //
+		doc.lineWidth(.1)
+
+		// * ———————————————————————————————————————————————————————— * //
 		// * 	constants
 		// * ———————————————————————————————————————————————————————— * //
-		label_variables.image_percentage = 0.3
+		label_variables.image_width = 100
+		label_variables.image_height = 75
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	precalculates variables
@@ -87,46 +93,70 @@ function print_labels (doc, parts, label_setup) {
 		label_variables.number_of_parts = parts.length
 
 		// page width without the margins
-		label_variables.clean_page_width = label_setup.page_width - label_setup.page_padding * 2
+		label_variables.clean_page_width = label_setup.page_setup.page_width - label_setup.page_setup.page_padding * 2
 
-		label_variables.number_of_cols = Math.min(label_variables.number_of_parts, Math.floor(label_variables.clean_page_width / label_setup.label_width))
+		label_variables.number_of_cols = Math.min(label_variables.number_of_parts, Math.floor(label_variables.clean_page_width / label_setup.label_size.label_width))
 
 		label_variables.number_of_rows = Math.ceil(label_variables.number_of_parts / label_variables.number_of_cols)
 
-		label_variables.label_area_height = label_variables.number_of_rows * label_setup.label_height
-		label_variables.label_area_width = label_variables.number_of_cols * label_setup.label_width
+		label_variables.label_area_height = label_variables.number_of_rows * label_setup.label_size.label_height
+		label_variables.label_area_width = label_variables.number_of_cols * label_setup.label_size.label_width
 
-		label_variables.start_x = (label_setup.page_width - label_variables.label_area_width) / 2
-		label_variables.start_y = (label_setup.page_height - label_variables.label_area_height) / 2
+		label_variables.start_x = (label_setup.page_setup.page_width - label_variables.label_area_width) / 2
+		label_variables.start_y = (label_setup.page_setup.page_height - label_variables.label_area_height) / 2
+
+		label_variables.image_ratio = label_variables.image_width / label_variables.image_height
+
+		label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
+
+		label_variables.font_sizes = {
+
+		}
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	crop marks
 		// * ———————————————————————————————————————————————————————— * //
-		if (label_setup.crop_marks) {
+		if (label_setup.markings.crop_marks) {
 
 			// horizontal crop marks
 			for (current_row in _.range(label_variables.number_of_rows + 1)) {
 				doc
-					.moveTo(mm(label_variables.start_x - 13), mm(label_variables.start_y + label_setup.label_height * current_row))
-					.lineTo(mm(label_variables.start_x - 3), mm(label_variables.start_y + label_setup.label_height * current_row))
+					.moveTo(mm(label_variables.start_x - 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+					.lineTo(mm(label_variables.start_x - 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+					.stroke()
 
 				doc
-					.moveTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_width + 3), mm(label_variables.start_y + label_setup.label_height * current_row))
-					.lineTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_width + 13), mm(label_variables.start_y + label_setup.label_height * current_row))
+					.moveTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+					.lineTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+					.stroke()
 			}
 
 			// vertical crop marks
 			for (current_col in _.range(label_variables.number_of_cols + 1)) {
 				doc
-					.moveTo(mm(label_variables.start_x + label_setup.label_width * current_col), mm(label_variables.start_y - 13))
-					.lineTo(mm(label_variables.start_x + label_setup.label_width * current_col), mm(label_variables.start_y - 3))
+					.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 13))
+					.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 3))
+					.stroke()
 
 				doc
-					.moveTo(mm(label_variables.start_x + label_setup.label_width * current_col), mm(label_variables.start_y + label_setup.label_height * label_variables.number_of_rows + 3))
-					.lineTo(mm(label_variables.start_x + label_setup.label_width * current_col), mm(label_variables.start_y + label_setup.label_height * label_variables.number_of_rows + 13))
+					.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 3))
+					.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 13))
+					.stroke()
 
 			}
 		}
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	legolabels stamp
+		// * ———————————————————————————————————————————————————————— * //
+		doc
+			.image(
+				CMD_FOLDER + '/assets/img/pdf_elements/pdf_stamp.png',
+				mm(label_setup.page_setup.page_width - 35),
+				mm(5), {
+					width: mm(30)
+				}
+			)
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	labels
@@ -160,51 +190,68 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 	return new Promise(function (resolve, reject) {
 
 		// calculates the label top left position
-		var current_x = label_variables.start_x + current_col * label_setup.label_width
-		var current_y = label_variables.start_y + label_setup.label_height * current_row
+		var current_x = label_variables.start_x + current_col * label_setup.label_size.label_width
+		var current_y = label_variables.start_y + label_setup.label_size.label_height * current_row
 
 		// set the font
-		doc.font('assets/fonts/Lato-Light.ttf')
+		doc.font('assets/fonts/Lato-Regular.ttf')
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	white background
+		// * ———————————————————————————————————————————————————————— * //
+		doc
+			.rect(
+				mm(current_x),
+				mm(current_y),
+				mm(label_setup.label_size.label_width),
+				mm(label_setup.label_size.label_height)
+			)
+			.fill('white')
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	part id
 		// * ———————————————————————————————————————————————————————— * //
 		doc
-			.fontSize(label_setup.label_height * label_setup.part_font_size)
+			.fillColor('#454c51')
+			.fontSize(process_font_size(label_setup.font_sizes.part_id))
 			.text(
 				part.part_id,
-				mm(current_x + label_setup.label_width * label_variables.image_percentage),
-				mm(current_y + label_setup.label_id_y_offset), {
-					align: 'center',
-					width: mm(label_setup.label_width * (1 - label_variables.image_percentage)),
-				}
+				mm(current_x + label_variables.text_block_start_x),
+				mm(current_y + label_setup.label_layout.label_part_id_y_offset)
 			)
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	part name
 		// * ———————————————————————————————————————————————————————— * //
 		doc
-			.fontSize(label_setup.label_height / 2 * label_setup.part_font_size)
+			.fontSize(process_font_size(label_setup.font_sizes.part_name))
 			.text(
 				part.name,
-				mm(current_x + label_setup.label_width * label_variables.image_percentage),
-				mm(current_y + label_setup.label_height / 2), {
-					align: 'center',
-					width: mm(label_setup.label_width * (1 - label_variables.image_percentage)),
-				}
+				mm(current_x + label_variables.text_block_start_x),
+				mm(current_y + label_setup.label_size.label_height / 2)
+			)
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	part category
+		// * ———————————————————————————————————————————————————————— * //
+		doc
+			.fontSize(process_font_size(label_setup.font_sizes.part_category))
+			.text(
+				part.category,
+				mm(current_x + label_variables.text_block_start_x),
+				mm(current_y + label_setup.label_size.label_height / 3 * 2)
 			)
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	border
 		// * ———————————————————————————————————————————————————————— * //
-		if (label_setup.label_border) {
+		if (label_setup.markings.label_border) {
 			doc
-				.lineWidth(1)
 				.rect(
 					mm(current_x),
 					mm(current_y),
-					mm(label_setup.label_width),
-					mm(label_setup.label_height)
+					mm(label_setup.label_size.label_width),
+					mm(label_setup.label_size.label_height)
 				)
 				.stroke()
 		}
@@ -215,15 +262,17 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		get_part_image(part.image)
 			.then((image_buffer) => {
 
-				var image_area_width = label_setup.label_width * label_variables.image_percentage
+				var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
 				// image area is higher than wide
-				var image_x_offset = label_setup.image_padding
-				var image_size = image_area_width - label_setup.image_padding * 2
-				var image_y_offset = (label_setup.label_height - image_size) / 2
+				var image_width = image_area_width - label_setup.label_layout.image_padding * 2
+				var image_height = image_width / label_variables.image_ratio
+
+				var image_x_offset = label_setup.label_layout.image_padding
+				var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
 
 				// image area is wider than high
-				if (image_area_width > label_setup.label_height) {
+				if (image_area_width > label_setup.label_size.label_height) {
 
 				}
 
@@ -233,13 +282,16 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 						image_buffer,
 						mm(current_x + image_x_offset),
 						mm(current_y + image_y_offset), {
-							width: mm(image_size),
-							height: mm(image_size)
+							width: mm(image_width),
+							height: mm(image_height)
 						}
 					)
 				resolve()
 			})
 
+		function process_font_size (font_size) {
+			return font_size * label_setup.label_size.label_height * 2
+		}
 	})
 }
 
@@ -251,5 +303,6 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 function mm (mms) {
 	return (mms * 72) / 25.4
 }
+
 
 module.exports = new labels_printer()

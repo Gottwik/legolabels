@@ -11,19 +11,13 @@ lego_labels.controller('parts_controller', function ($scope, $rootScope, part_se
 		})
 
 	$scope.select_app_parts = function () {
-		_.map($rootScope.parts, function (part) {
-			part.selected = true
-		})
+		part_service.select_all()
 	}
 
 	$scope.deselect_app_parts = function () {
-		_.map($rootScope.parts, function (part) {
-			part.selected = false
-		})
+		part_service.deselect_all()
 	}
 
-	$rootScope.get_selected_part_count = function () {
-		return _.sumBy($rootScope.parts, function (part) { return part.selected ? 1 : 0 })
-	}
+	$rootScope.get_selected_part_count = part_service.get_selected_part_count
 
 })

@@ -10,18 +10,22 @@ $modal-width: 900px;
 	z-index: 50;
 	animation: modal-in .3s ease 1;
 	overflow: auto;
-}
 
-.modal-body {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin-left: - $modal-width / 2;
-	background-color: $white;
-	z-index: 50;
-	width: $modal-width;
-	margin-top: 100px;
-	padding: 50px 50px 40px;
+	.modal-body {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		margin-left: - $modal-width / 2;
+		background-color: $white;
+		z-index: 50;
+		width: $modal-width;
+		margin-top: 30px;
+		padding: 50px 50px 40px;
+
+		.btn {
+			font-weight: 300;
+		}
+	}
 }
 
 @keyframes modal-in {

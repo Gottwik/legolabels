@@ -4,7 +4,7 @@
 // *	handles opening and closing of modal window
 // *	todo: refactor all modal interaction throughout the project to this service
 // * ———————————————————————————————————————————————————————— * //
-lego_labels.factory('modal_service', function modal_service ($rootScope, $q) {
+lego_labels.factory('modal_service', function ($rootScope, $q) {
 	var modal_service = {}
 
 	modal_service.close = function () {
