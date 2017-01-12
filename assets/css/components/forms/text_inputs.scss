@@ -8,7 +8,6 @@ input[type="text"] {
 
 	// modifiers
 	&.huge {
-		width: calc(100% - 40px);
 		padding: 10px 20px;
 		text-align: center;
 		font-weight: 300;

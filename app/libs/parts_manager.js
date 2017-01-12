@@ -125,20 +125,26 @@ parts_manager.prototype.delete_part = function (part_id) {
 parts_manager.prototype.update_color = function (part_id, new_color) {
 	var self = this
 
-	return new Promise(function (resolve, reject) {
-
-		var new_image_url = self.get_image_url(new_color.color_code, new_color.part_id)
-
-		var updated_attributes = {
-			'part.image': new_image_url,
-			'part.color_code': new_color.color_code,
-			'part.color_name': new_color.color_name,
-		}
-
-		self.parts_collection.update({_id: object_id(part_id)}, { $set: updated_attributes }, () => {
-			resolve({new_image_url: new_image_url})
+	return self.get_part_by_part_id(new_color.part_id)
+		.then((part) => {
+			part.color_code = new_color.color_code
+			return self.get_image_url(part)
 		})
-	})
+		.then((new_image_url) => {
+			console.log(new_image_url)
+			return new Promise(function (resolve, reject) {
+
+				var updated_attributes = {
+					'part.image': new_image_url,
+					'part.color_code': new_color.color_code,
+					'part.color_name': new_color.color_name,
+				}
+
+				self.parts_collection.update({_id: object_id(part_id)}, { $set: updated_attributes }, () => {
+					resolve({new_image_url: new_image_url})
+				})
+			})
+		})
 }
 
 parts_manager.prototype.get_part_by_part_id = function (part_id) {

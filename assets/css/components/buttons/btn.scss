@@ -8,6 +8,7 @@
 	position: relative;
 	font-weight: 400;
 	display: inline-block;
+	text-align: center;
 
 	&:after {
 		content: '';
@@ -50,6 +51,11 @@
 		color: $grey !important;
 		border-color: $grey !important;
 		pointer-events: none;
+	}
+
+	&.shadowed {
+		background-color: rgba(#000, .2);
+		box-shadow: 0px 0px 50px rgba(#000, .7)
 	}
 
 	// environments

@@ -1,15 +1,26 @@
 .logo {
 	float: left;
+	cursor: pointer;
 
 	svg {
 		height: #{$header_height - 2 * $header_vertical_padding};
 		width: 180px;
 		margin: $header_vertical_padding 0 #{$header_vertical_padding - 3px};
+
+		path {
+			transition: fill $standard-transition;
+		}
 	}
 
 	&.inverted {
 		path {
 			fill: scheme(1);
+		}
+	}
+
+	&:hover {
+		path {
+			fill: scheme(3);
 		}
 	}
 }

@@ -20,13 +20,15 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 	}
 
 	var search_trotter // will store the timeout reference
-	const THROTTLE_DELAY = 500 // time before searching for parts
+	const THROTTLE_DELAY = 800 // time before searching for parts
+	var last_query = ''
 
 	$scope.$watch('searchtext', function (new_value, old_value) {
 		$scope.found_part = {}
 		if (new_value && new_value != old_value) {
 			$scope.loading = true
 			$scope.no_part = false
+			$scope.found_parts = []
 
 			clearTimeout(search_trotter)
 			search_trotter = setTimeout(search_for_part, THROTTLE_DELAY, new_value)
@@ -34,13 +36,26 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 		}
 	})
 
-	function search_for_part (part_id) {
+	function search_for_part (query) {
 
-		// set the part_id
-		search_options.params.query = part_id
+		// store the last query to only show last searched-for query
+		// in case older search comes later
+		last_query = query
+
+		// set the query
+		search_options.params.query = query
+		search_options.query = query // to check which query it was
+
+		search_options.cache = true
 
 		$http.get(url_service.get_url('search_for_parts'), search_options)
 			.then(function (data) {
+
+				// check if this result is for the last query
+				if (data.config.query != last_query) {
+					return
+				}
+
 				$scope.loading = false
 				if (!data.data.results || data.data.results.length == 0) {
 					$scope.no_part = true
