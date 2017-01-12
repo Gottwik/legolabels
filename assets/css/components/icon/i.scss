@@ -11,4 +11,11 @@ i {
 		position: relative;
 		top: 3px;
 	}
+
+	&.overflow {
+		height: 14px;
+		float: left;
+		position: relative;
+		top: -4px;
+	}
 }

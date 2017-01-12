@@ -28,7 +28,7 @@ label_setup_handler.prototype.default_label_setup = {
 		label_part_id_y_offset: 2,
 		image_percentage: .3,
 		image_separation: .1,
-		text_align: 'left',
+		text_color: '#3498db',
 	},
 	markings: {
 		crop_marks: true,
@@ -36,8 +36,9 @@ label_setup_handler.prototype.default_label_setup = {
 	},
 	font_sizes: {
 		part_id: .5,
-		part_name: .25,
 		part_category: .25,
+		part_name: .25,
+		part_name_maxlength: 10,
 	}
 }
 

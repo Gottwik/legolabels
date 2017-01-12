@@ -1,3 +1,17 @@
 a {
 	color: darken(scheme(1), 20%);
+	transition: color $quick-transition;
+
+	&:visited {
+		color: inherit;
+	}
+
+	// modifiers
+	&.subtle {
+		text-decoration: none;
+
+		&:hover {
+			color: scheme(1) !important;
+		}
+	}
 }

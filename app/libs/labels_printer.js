@@ -152,9 +152,9 @@ function print_labels (doc, parts, label_setup) {
 		doc
 			.image(
 				CMD_FOLDER + '/assets/img/pdf_elements/pdf_stamp.png',
-				mm(label_setup.page_setup.page_width - 35),
-				mm(5), {
-					width: mm(30)
+				mm(label_setup.page_setup.page_width - 55),
+				mm(15), {
+					width: mm(40)
 				}
 			)
 
@@ -212,23 +212,12 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// * 	part id
 		// * ———————————————————————————————————————————————————————— * //
 		doc
-			.fillColor('#454c51')
+			.fillColor(label_setup.label_layout.text_color)
 			.fontSize(process_font_size(label_setup.font_sizes.part_id))
 			.text(
 				part.part_id,
 				mm(current_x + label_variables.text_block_start_x),
 				mm(current_y + label_setup.label_layout.label_part_id_y_offset)
-			)
-
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	part name
-		// * ———————————————————————————————————————————————————————— * //
-		doc
-			.fontSize(process_font_size(label_setup.font_sizes.part_name))
-			.text(
-				part.name,
-				mm(current_x + label_variables.text_block_start_x),
-				mm(current_y + label_setup.label_size.label_height / 2)
 			)
 
 		// * ———————————————————————————————————————————————————————— * //
@@ -239,7 +228,20 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 			.text(
 				part.category,
 				mm(current_x + label_variables.text_block_start_x),
-				mm(current_y + label_setup.label_size.label_height / 3 * 2)
+				mm(current_y + label_setup.label_size.label_height / 2)
+			)
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	part name
+		// * ———————————————————————————————————————————————————————— * //
+		doc
+			.fontSize(process_font_size(label_setup.font_sizes.part_name))
+			.text(
+				cutoff(part.name, label_setup.font_sizes.part_name_maxlength),
+				mm(current_x + label_variables.text_block_start_x),
+				mm(current_y + label_setup.label_size.label_height / 3 * 2), {
+					width: mm(500),
+				}
 			)
 
 		// * ———————————————————————————————————————————————————————— * //
@@ -304,5 +306,15 @@ function mm (mms) {
 	return (mms * 72) / 25.4
 }
 
+// shortens text and adds ...
+function cutoff (str, length) {
+
+	// don't do anything if str is not longer than length
+	if (str.length <= length) {
+		return str
+	}
+
+	return str.substring(0, length - 3) + '...'
+}
 
 module.exports = new labels_printer()

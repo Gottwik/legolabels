@@ -2,10 +2,11 @@
 
 	<div class="panel parts">
 		<div class="panel-body">
-			<div class="select_controls">
-				<div class="btn" ng-class="{'disabled': parts.length <= get_selected_part_count()}" ng-click="select_app_parts()"><i class="fa fa-check-square-o"></i>select all</div>
-				<div class="btn" ng-class="{'disabled': get_selected_part_count() == 0}" ng-click="deselect_app_parts()"><i class="fa fa-square-o"></i> deselect all</div>
-			</div>
+			<ul class="select_controls">
+				<li class="btn" ng-class="{'disabled': parts.length <= get_selected_part_count()}" ng-click="select_app_parts()"><i class="fa fa-check-square-o"></i>select all</li>
+				<li class="btn" ng-class="{'disabled': get_selected_part_count() == 0}" ng-click="deselect_app_parts()"><i class="fa fa-square-o"></i> deselect all</li>
+				<li class="btn" ng-click="sort_parts('part.category')">Sort by category</li>
+			</ul>
 		</div>
 	</div>
 

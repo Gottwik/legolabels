@@ -2,14 +2,14 @@
 	float: left;
 
 	svg {
-		height: 50px;
+		height: #{$header_height - 2 * $header_vertical_padding};
 		width: 180px;
-		margin: 10px 0;
+		margin: $header_vertical_padding 0 #{$header_vertical_padding - 3px};
 	}
 
 	&.inverted {
-		.color1 {
-			stroke: scheme(1);
+		path {
+			fill: scheme(1);
 		}
 	}
 }

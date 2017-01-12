@@ -1,21 +1,23 @@
-<header class="panel fixed white">
+<header class="panel white">
 	<div class="panel-body">
 		<div class="logo inverted">
 			{{>logo}}
 		</div>
 		<nav class="mainmenu">
-
-			<div ng-click="signin()" class="btn blue"><div class="start_here">{{>start_here}}</div>Login</div>
+			<ul>
+				<li>App</li>
+			</ul>
 		</nav>
+		<div class="clearfix"></div>
 	</div>
 </header>
 
-<div class="panel screen dark" style="background-image: url('/assets/img/bg.jpg')">
-	{{!-- <div class="veil"></div> --}}
+<div class="panel screen dark" style="background-image: url('https://c1.staticflickr.com/9/8654/16573528171_8aeaa528de_k.jpg')">
+	<div class="attribution"><i class="fa fa-camera inline"></i>photo by <a href="https://www.flickr.com/photos/jlmelo/">Leonardo Melo</a></div>
+	<div class="veil"></div>
 	<div class="contentbox">
 		<div class="contentbox_content">
+			<div ng-click="signin()" class="btn huge">Login to access the App</div>
 		</div>
 	</div>
 </div>
-
-{{>footer}}

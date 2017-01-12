@@ -1,6 +1,6 @@
 .card {
 	width: 33.33333%;
-	height: 200px;
+	height: 150px;
 	float: left;
 	color: $white;
 	position: relative;
@@ -41,7 +41,7 @@
 	.card-next {
 		position: absolute;
 		right: -26px;
-		top: 50%;
+		top: 30%;
 		font-size: 85px;
 		z-index: 1;
 	}
