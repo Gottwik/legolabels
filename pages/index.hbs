@@ -8,8 +8,10 @@
 		{{>favicon}}
 	</head>
 	<body>
-		<div class="page_holder" ng-view ng-cloak></div>
-		{{>footer}}
+		<div class="page_wrapper">
+			<div class="page_holder" ng-view ng-cloak></div>
+			{{>footer}}
+		</div>
 	</body>
 
 	<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>

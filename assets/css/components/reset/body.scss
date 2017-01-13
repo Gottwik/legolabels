@@ -3,6 +3,7 @@ body {
 	font-family: 'Lato', sans-serif;
 	color: $black;
 	font-weight: 300;
+	min-height: 100%;
 
 	// events
 	&.modal-open {

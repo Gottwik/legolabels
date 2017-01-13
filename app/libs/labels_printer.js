@@ -109,9 +109,7 @@ function print_labels (doc, parts, label_setup) {
 
 		label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
 
-		label_variables.font_sizes = {
-
-		}
+		label_variables.category_stamp_radius = label_setup.label_size.label_height / 6
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	crop marks
@@ -243,6 +241,20 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 					width: mm(500),
 				}
 			)
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	category stamp
+		// * ———————————————————————————————————————————————————————— * //
+		if (part.category_color) {
+			doc
+				.lineWidth(mm(.7))
+				.circle(
+					mm(current_x + label_setup.label_size.label_width - label_variables.category_stamp_radius - 1),
+					mm(current_y + label_variables.category_stamp_radius + 1),
+					mm(label_variables.category_stamp_radius)
+				)
+				.fillAndStroke(part.category_color, '#666')
+		}
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	border

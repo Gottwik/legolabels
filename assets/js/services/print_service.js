@@ -8,10 +8,20 @@ lego_labels.factory('print_service', function ($rootScope, $http, url_service, p
 
 	service.print_labels = function (parts, label_setup) {
 
+		// strip colors to make the transfer package smaller
+		// eventuelly this might have to be switched to post
+		// to handle the data volume
+		var request_parts = []
+		_.map(parts, function (part) {
+			filtered_part = _.cloneDeep(part)
+			filtered_part.part.colors = []
+			request_parts.push(filtered_part)
+		})
+
 		var print_labels_options = {
 			responseType: 'arraybuffer',
 			params: {
-				parts: JSON.stringify(parts),
+				parts: JSON.stringify(request_parts),
 				label_setup: label_setup
 			}
 		}

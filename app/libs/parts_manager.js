@@ -84,10 +84,10 @@ parts_manager.prototype.resolve_part_image = function (part) {
 			return Math.abs(parseInt(color.rb_color_id) - color_code)
 		}).value()[0]
 
-		color_code = closest_color.rb_color_id
-
-		part.color_code = color_code
+		part.color_code = closest_color.rb_color_id
 		part.color_name = closest_color.color_name
+
+		part.category_color = '#' + _.find(self.colors, {rb_color_id: part.color_code}).rgb
 
 		self.get_image_url(part)
 			.then((image) => {
