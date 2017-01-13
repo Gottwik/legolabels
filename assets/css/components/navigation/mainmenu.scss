@@ -7,5 +7,10 @@
 	li {
 		display: inline-block;
 		margin-left: 20px;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
