@@ -1,7 +1,7 @@
 <div class="parts" ng-controller="parts_controller">
 
 	<div class="panel parts" data-hint='Hello step one!'>
-		<div class="panel-body">
+		<div class="panel_body">
 			<ul class="select_controls">
 				<li class="btn" ng-class="{'disabled': parts.length <= get_selected_part_count()}" ng-click="select_app_parts()"><i class="fa fa-check-square-o"></i>select all</li>
 				<li class="btn" ng-class="{'disabled': get_selected_part_count() == 0}" ng-click="deselect_app_parts()"><i class="fa fa-square-o"></i> deselect all</li>
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="panel">
-		<div class="panel-body">
+		<div class="panel_body">
 			<div class="parts_padder">
 
 				<div class="part" ng-show="loader_part">

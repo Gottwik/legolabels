@@ -1,6 +1,7 @@
 .panel {
 	background-size: cover;
 	position: relative;
+	overflow: hidden;
 
 	// modifiers
 	&.blue {

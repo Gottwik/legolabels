@@ -109,7 +109,7 @@ function print_labels (doc, parts, label_setup) {
 
 		label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
 
-		label_variables.category_stamp_radius = label_setup.label_size.label_height / 6
+		label_variables.category_stamp_radius = 2
 
 		// * ———————————————————————————————————————————————————————— * //
 		// * 	crop marks
@@ -247,7 +247,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// * ———————————————————————————————————————————————————————— * //
 		if (part.category_color) {
 			doc
-				.lineWidth(mm(.7))
+				.lineWidth(mm(.5))
 				.circle(
 					mm(current_x + label_setup.label_size.label_width - label_variables.category_stamp_radius - 1),
 					mm(current_y + label_variables.category_stamp_radius + 1),

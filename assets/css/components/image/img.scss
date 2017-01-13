@@ -1,0 +1,14 @@
+img {
+
+	// modifiers
+	&.fluid {
+		max-width: 100%;
+	}
+
+	&.overflow {
+		position: relative;
+		left: -10%;
+		top: -50px;
+		width: 120%;
+	}
+}

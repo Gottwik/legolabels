@@ -1,4 +1,4 @@
-.panel-body {
+.panel_body {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 0 $panel_body_padding;
@@ -7,5 +7,17 @@
 	// modifiers
 	&.padded {
 		padding: 10px $panel_body_padding;
+	}
+
+	&.extra_padded {
+		padding: 50px $panel_body_padding;
+
+		&:first-child {
+			padding-top: 100px;
+		}
+
+		&:last-child {
+			padding-bottom: 100px;
+		}
 	}
 }

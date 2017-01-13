@@ -3,5 +3,13 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
+	@include font-size(xl);
+	font-weight: 100;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+h2 {
+	@include font-size(lg);
 	margin-top: 0;
 }

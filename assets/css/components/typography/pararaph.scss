@@ -1,0 +1,5 @@
+p {
+	&.large {
+		@include font-size(md)
+	}
+}
