@@ -131,7 +131,6 @@ parts_manager.prototype.update_color = function (part_id, new_color) {
 			return self.get_image_url(part)
 		})
 		.then((new_image_url) => {
-			console.log(new_image_url)
 			return new Promise(function (resolve, reject) {
 
 				var updated_attributes = {
@@ -168,6 +167,27 @@ parts_manager.prototype.get_part_by_part_id = function (part_id) {
 
 			resolve(parsed_part)
 		})
+	})
+}
+
+parts_manager.prototype.insert_firstlogin_parts = function (user_id) {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.parts_collection.find({firstlogin_part: true}).toArray((err, firstlogin_parts) => {
+			if (err) { return reject(err) }
+
+			_.map(firstlogin_parts, (part) => {
+				part.user_id = user_id
+				delete part.firstlogin_part
+				delete part._id
+			})
+
+			self.parts_collection.insertMany(firstlogin_parts, () => {
+				resolve()
+			})
+		})
+
 	})
 }
 

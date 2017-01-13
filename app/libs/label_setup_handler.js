@@ -96,4 +96,25 @@ label_setup_handler.prototype.edit_setup = function (label_setup) {
 	})
 }
 
+label_setup_handler.prototype.insert_firstlogin_setups = function (user_id) {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.label_setup_collection.find({firstlogin_setup: true}).toArray((err, firstlogin_setups) => {
+			if (err) { return reject(err) }
+
+			_.map(firstlogin_setups, (setup) => {
+				setup.user_id = user_id
+				delete setup.firstlogin_part
+				delete setup._id
+			})
+
+			self.label_setup_collection.insertMany(firstlogin_setups, () => {
+				resolve()
+			})
+		})
+
+	})
+}
+
 module.exports = new label_setup_handler()

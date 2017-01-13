@@ -7,6 +7,7 @@ var path = require('path')
 
 // local dependencies
 global.parts_manager = require('./libs/parts_manager')
+global.user_manager = require('./libs/user_manager')
 global.labels_printer = require('./libs/labels_printer')
 global.label_setup_handler = require('./libs/label_setup_handler')
 
@@ -21,6 +22,7 @@ local_app.prototype.init = function (app) {
 
 		parts_manager.init(mongo_db)
 		label_setup_handler.init(mongo_db)
+		user_manager.init(mongo_db)
 	})
 
 	// hook up /api_endpoints folder

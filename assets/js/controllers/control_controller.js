@@ -6,7 +6,7 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 	label_service.get_setups()
 		.then((label_setups_response) => {
 			$scope.label_setups = label_setups_response.data
-			if ($scope.label_setups) {
+			if ($scope.label_setups.length) {
 				$scope.selected_setup_id = $scope.label_setups[0]._id
 			}
 		})
