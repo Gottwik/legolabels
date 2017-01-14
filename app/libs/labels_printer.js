@@ -279,7 +279,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// get_part_image(part.image)
 		// 	.then((image_buffer) => {
 
-		// 		console.log('image exists', image_buffer)
+				console.log('>>>>>')
 
 		// 		var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
