@@ -276,10 +276,10 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// // * ———————————————————————————————————————————————————————— * //
 		// // * 	image
 		// // * ———————————————————————————————————————————————————————— * //
-		// get_part_image(part.image)
-		// 	.then((image_buffer) => {
+		get_part_image(part.image)
+			.then((image_buffer) => {
 
-				console.log('>>>>>')
+				console.log('image should be downloaded...', image_buffer)
 
 		// 		var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
@@ -306,7 +306,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// 				}
 		// 			)
 				resolve()
-			// })
+			})
 
 		function process_font_size (font_size) {
 			return font_size * label_setup.label_size.label_height * 2
