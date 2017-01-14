@@ -273,40 +273,40 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 				.stroke()
 		}
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	image
-		// * ———————————————————————————————————————————————————————— * //
-		get_part_image(part.image)
-			.then((image_buffer) => {
+		// // * ———————————————————————————————————————————————————————— * //
+		// // * 	image
+		// // * ———————————————————————————————————————————————————————— * //
+		// get_part_image(part.image)
+		// 	.then((image_buffer) => {
 
-				console.log('image exists', image_buffer)
+		// 		console.log('image exists', image_buffer)
 
-				var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
+		// 		var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
-				// image area is higher than wide
-				var image_width = image_area_width - label_setup.label_layout.image_padding * 2
-				var image_height = image_width / label_variables.image_ratio
+		// 		// image area is higher than wide
+		// 		var image_width = image_area_width - label_setup.label_layout.image_padding * 2
+		// 		var image_height = image_width / label_variables.image_ratio
 
-				var image_x_offset = label_setup.label_layout.image_padding
-				var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
+		// 		var image_x_offset = label_setup.label_layout.image_padding
+		// 		var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
 
-				// image area is wider than high
-				if (image_area_width > label_setup.label_size.label_height) {
+		// 		// image area is wider than high
+		// 		if (image_area_width > label_setup.label_size.label_height) {
 
-				}
+		// 		}
 
-				// image
-				doc
-					.image(
-						image_buffer,
-						mm(current_x + image_x_offset),
-						mm(current_y + image_y_offset), {
-							width: mm(image_width),
-							height: mm(image_height)
-						}
-					)
+		// 		// image
+		// 		doc
+		// 			.image(
+		// 				image_buffer,
+		// 				mm(current_x + image_x_offset),
+		// 				mm(current_y + image_y_offset), {
+		// 					width: mm(image_width),
+		// 					height: mm(image_height)
+		// 				}
+		// 			)
 				resolve()
-			})
+			// })
 
 		function process_font_size (font_size) {
 			return font_size * label_setup.label_size.label_height * 2
