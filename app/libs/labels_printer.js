@@ -48,10 +48,14 @@ function get_part_image (image_url) {
 
 		console.log('trying to save an image', output_filename)
 
+		console.log('checking if file exists', enduro_helpers.file_exists_sync(system_prefix + output_filename))
+
 		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
+			console.log('file exists')
 			resolve(output_filename)
 		} else {
 			var output_file = fs.createWriteStream(system_prefix + output_filename)
+			console.log('file does not existexists')
 
 			enduro_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
