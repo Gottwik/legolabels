@@ -4,6 +4,7 @@ body {
 	color: $black;
 	font-weight: 300;
 	min-height: 100%;
+	overflow-x: hidden;
 
 	// events
 	&.modal-open {
