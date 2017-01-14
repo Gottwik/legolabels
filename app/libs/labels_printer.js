@@ -4,6 +4,7 @@ var labels_printer = function () {}
 var pdfkit = require('pdfkit')
 var http = require('http')
 var fs = require('fs')
+var mkdirp = require('mkdirp')
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
