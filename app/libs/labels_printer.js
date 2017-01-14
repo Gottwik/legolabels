@@ -42,6 +42,7 @@ function ensure_directory_existence (file_path) {
 	return new Promise(function (resolve, reject) {
 		mkdirp(file_path, function (err) {
 			if (err) {
+				console.log(err)
 				kiska_logger.err_block(err)
 				return reject()
 			}
