@@ -37,6 +37,19 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 
 }
 
+function ensure_directory_existence (file_path) {
+	return new Promise(function (resolve, reject) {
+		mkdirp(file_path, function (err) {
+			if (err) {
+				kiska_logger.err_block(err)
+				return reject()
+			}
+			resolve()
+
+		})
+	})
+}
+
 function get_part_image (image_url) {
 	return new Promise(function (resolve, reject) {
 
@@ -59,10 +72,10 @@ function get_part_image (image_url) {
 
 			console.log('enduro_helpers', enduro_helpers.ensure_directory_existence)
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			enduro_helpers.ensure_directory_existence('temp/image.png')
+			ensure_directory_existence('temp/image.png')
 				.then(() => {
 					console.log('WHOOOOAAAAAA')
-					resolve('crap§')
+					resolve('crap')
 					// http.get(image_url)
 					// .on('response', function (res) {
 
