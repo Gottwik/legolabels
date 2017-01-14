@@ -60,20 +60,15 @@ function get_part_image (image_url) {
 		var system_prefix = CMD_FOLDER + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
-		console.log('trying to save an image', output_filename)
-
-		console.log('checking if file exists', enduro_helpers.file_exists_sync(system_prefix + output_filename))
-
 		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
 			console.log('file exists')
 			resolve(output_filename)
 		} else {
 			var output_file = fs.createWriteStream(system_prefix + output_filename)
-			console.log('file does not exist')
+			console.log('BBBBBBBBBBBBBBBBBBBBB')
 
-			console.log('enduro_helpers', enduro_helpers.ensure_directory_existence)
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			ensure_directory_existence('assets/image.png')
+			ensure_directory_existence('/assets/image.png')
 				.then(() => {
 					console.log('WHOOOOAAAAAA')
 					resolve('crap')
