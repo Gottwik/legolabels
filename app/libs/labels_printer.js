@@ -39,8 +39,11 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 }
 
 function ensure_directory_existence (file_path) {
+	console.log('111111111')
 	return new Promise(function (resolve, reject) {
+		console.log('2222222222')
 		mkdirp(file_path, function (err) {
+			console.log('33333333s')
 			if (err) {
 				console.log(err)
 				kiska_logger.err_block(err)
