@@ -46,6 +46,8 @@ function get_part_image (image_url) {
 		var system_prefix = CMD_FOLDER + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
+		console.log('trying to save an image', output_filename)
+
 		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
 			resolve(output_filename)
 		} else {
@@ -53,6 +55,7 @@ function get_part_image (image_url) {
 
 			enduro_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
+					console.log('file exists')
 					http.get(image_url)
 					.on('response', function (res) {
 
@@ -275,6 +278,8 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// * ———————————————————————————————————————————————————————— * //
 		get_part_image(part.image)
 			.then((image_buffer) => {
+
+				console.log('image exists', image_buffer)
 
 				var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
