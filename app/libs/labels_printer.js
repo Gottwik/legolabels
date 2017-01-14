@@ -42,7 +42,7 @@ function get_part_image (image_url) {
 
 		// use http
 		image_url = image_url.replace('https', 'http')
-
+		console.log('CMD_FOLDER', CMD_FOLDER)
 		var system_prefix = CMD_FOLDER + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
