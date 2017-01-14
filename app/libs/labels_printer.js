@@ -38,23 +38,6 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 
 }
 
-function ensure_directory_existence (file_path) {
-	console.log('111111111')
-	return new Promise(function (resolve, reject) {
-		console.log('2222222222', file_path)
-		mkdirp(file_path, function (err) {
-			console.log('33333333')
-			if (err) {
-				console.log(err)
-				kiska_logger.err_block(err)
-				return reject()
-			}
-			resolve()
-
-		})
-	})
-}
-
 function get_part_image (image_url) {
 	return new Promise(function (resolve, reject) {
 
@@ -67,7 +50,7 @@ function get_part_image (image_url) {
 			resolve(output_filename)
 		} else {
 
-			ensure_directory_existence('/assets/image.png')
+			enduro_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
 					var output_file = fs.createWriteStream(system_prefix + output_filename)
 
