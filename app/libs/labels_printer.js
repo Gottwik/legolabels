@@ -68,7 +68,7 @@ function get_part_image (image_url) {
 			console.log('file exists')
 			resolve(output_filename)
 		} else {
-			var output_file = fs.createWriteStream(system_prefix + output_filename)
+			// var output_file = fs.createWriteStream(system_prefix + output_filename)
 			console.log('BBBBBBBBBBBBBBBBBBBBB')
 
 			console.log('ensuring directory existence', system_prefix + output_filename)
