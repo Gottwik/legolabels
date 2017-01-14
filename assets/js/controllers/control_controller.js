@@ -50,7 +50,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 		$http.get(url_service.get_url('search_for_parts'), search_options)
 			.then(function (data) {
-
 				// check if this result is for the last query
 				if (data.config.query != last_query) {
 					return
@@ -64,6 +63,7 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 				}
 
 				$scope.found_parts = _.take(data.data.results, 10)
+				console.log($scope.found_parts)
 			})
 	}
 
