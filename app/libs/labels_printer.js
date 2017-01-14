@@ -55,8 +55,9 @@ function get_part_image (image_url) {
 			resolve(output_filename)
 		} else {
 			var output_file = fs.createWriteStream(system_prefix + output_filename)
-			console.log('file does not existexists')
+			console.log('file does not exist')
 
+			console.log('ensuring directory existence', system_prefix + output_filename)
 			enduro_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
 					console.log('file exists')
