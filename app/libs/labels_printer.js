@@ -58,10 +58,10 @@ function get_part_image (image_url) {
 			console.log('file does not exist')
 
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			enduro_helpers.ensure_directory_existence('temp')
+			enduro_helpers.ensure_directory_existence('temp/image.png')
 				.then(() => {
 					console.log('WHOOOOAAAAAA')
-					resolve('crap')
+					resolve('crap§')
 					// http.get(image_url)
 					// .on('response', function (res) {
 
