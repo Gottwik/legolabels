@@ -60,36 +60,31 @@ function get_part_image (image_url) {
 
 		// use http
 		image_url = image_url.replace('https', 'http')
-		console.log('CMD_FOLDER', CMD_FOLDER)
 		var system_prefix = CMD_FOLDER + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
 		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
-			console.log('file exists')
 			resolve(output_filename)
 		} else {
-			// var output_file = fs.createWriteStream(system_prefix + output_filename)
-			console.log('BBBBBBBBBBBBBBBBBBBBB')
 
-			console.log('ensuring directory existence', system_prefix + output_filename)
-			// ensure_directory_existence('/assets/image.png')
-				// .then(() => {
-					console.log('WHOOOOAAAAAA')
-					resolve('crap')
-					// http.get(image_url)
-					// .on('response', function (res) {
+			ensure_directory_existence('/assets/image.png')
+				.then(() => {
+					var output_file = fs.createWriteStream(system_prefix + output_filename)
 
-					// 	res.on('data', function (chunk) {
-					// 		output_file.write(chunk)
-					// 	})
+					http.get(image_url)
+					.on('response', function (res) {
 
-					// 	res.on('end', function () {
-					// 		output_file.end()
-					// 		resolve(output_filename)
-					// 	})
+						res.on('data', function (chunk) {
+							output_file.write(chunk)
+						})
 
-					// }).end()
-				// })
+						res.on('end', function () {
+							output_file.end()
+							resolve(output_filename)
+						})
+
+					}).end()
+				})
 		}
 	})
 }
@@ -299,32 +294,30 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		get_part_image(part.image)
 			.then((image_buffer) => {
 
-				console.log('image should be downloaded...', image_buffer)
+				var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
-		// 		var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
+				// image area is higher than wide
+				var image_width = image_area_width - label_setup.label_layout.image_padding * 2
+				var image_height = image_width / label_variables.image_ratio
 
-		// 		// image area is higher than wide
-		// 		var image_width = image_area_width - label_setup.label_layout.image_padding * 2
-		// 		var image_height = image_width / label_variables.image_ratio
+				var image_x_offset = label_setup.label_layout.image_padding
+				var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
 
-		// 		var image_x_offset = label_setup.label_layout.image_padding
-		// 		var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
+				// image area is wider than high
+				if (image_area_width > label_setup.label_size.label_height) {
 
-		// 		// image area is wider than high
-		// 		if (image_area_width > label_setup.label_size.label_height) {
+				}
 
-		// 		}
-
-		// 		// image
-		// 		doc
-		// 			.image(
-		// 				image_buffer,
-		// 				mm(current_x + image_x_offset),
-		// 				mm(current_y + image_y_offset), {
-		// 					width: mm(image_width),
-		// 					height: mm(image_height)
-		// 				}
-		// 			)
+				// image
+				doc
+					.image(
+						image_buffer,
+						mm(current_x + image_x_offset),
+						mm(current_y + image_y_offset), {
+							width: mm(image_width),
+							height: mm(image_height)
+						}
+					)
 				resolve()
 			})
 
