@@ -14,7 +14,6 @@ lego_labels.controller('login_controller', function ($scope, $rootScope, auth, $
 				.then(function (user_logged_in_response) {
 					$rootScope.first_login = user_logged_in_response.data.first_login
 					$location.path('/app')
-					introJs().start()
 				})
 		})
 	})
