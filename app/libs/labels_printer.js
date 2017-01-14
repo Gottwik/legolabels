@@ -41,9 +41,9 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 function ensure_directory_existence (file_path) {
 	console.log('111111111')
 	return new Promise(function (resolve, reject) {
-		console.log('2222222222')
+		console.log('2222222222', file_path)
 		mkdirp(file_path, function (err) {
-			console.log('33333333s')
+			console.log('33333333')
 			if (err) {
 				console.log(err)
 				kiska_logger.err_block(err)
@@ -72,8 +72,8 @@ function get_part_image (image_url) {
 			console.log('BBBBBBBBBBBBBBBBBBBBB')
 
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			ensure_directory_existence('/assets/image.png')
-				.then(() => {
+			// ensure_directory_existence('/assets/image.png')
+				// .then(() => {
 					console.log('WHOOOOAAAAAA')
 					resolve('crap')
 					// http.get(image_url)
@@ -89,7 +89,7 @@ function get_part_image (image_url) {
 					// 	})
 
 					// }).end()
-				})
+				// })
 		}
 	})
 }
