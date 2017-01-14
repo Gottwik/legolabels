@@ -58,22 +58,23 @@ function get_part_image (image_url) {
 			console.log('file does not exist')
 
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			enduro_helpers.ensure_directory_existence('app')
+			enduro_helpers.ensure_directory_existence('temp')
 				.then(() => {
-					console.log('file exists')
-					http.get(image_url)
-					.on('response', function (res) {
+					console.log('WHOOOOAAAAAA')
+					resolve('crap')
+					// http.get(image_url)
+					// .on('response', function (res) {
 
-						res.on('data', function (chunk) {
-							output_file.write(chunk)
-						})
+					// 	res.on('data', function (chunk) {
+					// 		output_file.write(chunk)
+					// 	})
 
-						res.on('end', function () {
-							output_file.end()
-							resolve(output_filename)
-						})
+					// 	res.on('end', function () {
+					// 		output_file.end()
+					// 		resolve(output_filename)
+					// 	})
 
-					}).end()
+					// }).end()
 				})
 		}
 	})
