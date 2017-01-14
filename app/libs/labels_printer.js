@@ -73,7 +73,7 @@ function get_part_image (image_url) {
 
 			console.log('enduro_helpers', enduro_helpers.ensure_directory_existence)
 			console.log('ensuring directory existence', system_prefix + output_filename)
-			ensure_directory_existence('temp/image.png')
+			ensure_directory_existence('assets/image.png')
 				.then(() => {
 					console.log('WHOOOOAAAAAA')
 					resolve('crap')
