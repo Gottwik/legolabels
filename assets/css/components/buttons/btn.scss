@@ -58,6 +58,17 @@
 		box-shadow: 0px 0px 50px rgba(#000, .7)
 	}
 
+	&.inverted {
+		background-color: scheme(1);
+		color: $white;
+		border-color: scheme(1);
+
+		&:hover {
+			background-color: $white;
+			color: darken(scheme(1), 10%);
+		}
+	}
+
 	// environments
 	.blue &,
 	.dark &,
