@@ -1,0 +1,18 @@
+.blog_entry {
+
+	.back {
+		text-decoration: none;
+
+		i {
+			@include font-size(icon2x);
+			margin-right: 10px;
+			position: relative;
+			top: 4px;
+		}
+	}
+
+	.blog_title {
+		font-weight: 300;
+		margin-bottom: -15px;
+	}
+}

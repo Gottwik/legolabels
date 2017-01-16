@@ -1,0 +1,10 @@
+.blog_teaser {
+	.heading_link {
+		text-decoration: none;
+	}
+
+	.blog_entry_title {
+		@include font-size(lg);
+		margin-bottom: -10px;
+	}
+}

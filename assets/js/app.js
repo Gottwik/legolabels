@@ -12,7 +12,12 @@ lego_labels
 			})
 			.when('/app', {
 				templateUrl: '/layout/app',
-				// controller: 'pagesplit_controller'
+			})
+			.when('/blog', {
+				templateUrl: '/layout/blog',
+			})
+			.when('/blog/:blog_slug', {
+				templateUrl: function (params) { return '/blog/' + params.blog_slug },
 			})
 			.otherwise({ redirectTo: '/' })
 

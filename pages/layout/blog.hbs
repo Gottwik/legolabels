@@ -1,0 +1,31 @@
+{{>home_header}}
+
+<div class="panel topper" style="background-image: url('https://c1.staticflickr.com/6/5488/11030946903_cbb99605af_k.jpg');">
+	<div class="attribution">
+		<i class="fa fa-camera inline"></i>Photo by Ralphio Mendeza
+	</div>
+	<div class="contentbox">
+		<div class="contentbox_content">
+			<h1>LegoLabels Blog</h1>
+		</div>
+	</div>
+</div>
+
+<div class="panel">
+	<div class="panel_body extra_padded">
+		{{#blog}}
+			{{#each this}}
+				<article class="blog_teaser">
+					<div class="article_body">
+						<a class="heading_link" href="#/blog/{{page_slug}}">
+							<h2 class="blog_entry_title">{{content.title}}</h2>
+						</a>
+						<h5>{{content.date}}</h5>
+						{{{content.teaser.abstracted_content.marked_doc}}}
+						<a href="#/blog/{{page_slug}}">Read more...</a>
+					</div>
+				</article>
+			{{/each}}
+		{{/blog}}
+	</div>
+</div>

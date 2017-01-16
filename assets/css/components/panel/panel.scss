@@ -1,6 +1,7 @@
 .panel {
 	background-size: cover;
 	position: relative;
+	background-position: center center;
 
 	// modifiers
 	&.blue {
@@ -27,6 +28,26 @@
 
 	&.screen {
 		height: calc(100vh - #{$header_height});
+	}
+
+	&.topper {
+		height: 40vh;
+
+		&:before {
+			@include full();
+			content: '';
+			background-color: rgba($white, .8);
+		}
+
+		> .contentbox {
+			position: relative;
+			z-index: 1;
+		}
+
+		// children
+		.attribution {
+			background-color: $grey;
+		}
 	}
 
 	&.fixed {
