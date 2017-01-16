@@ -30,6 +30,14 @@ local_app.prototype.init = function (app) {
 		require(path.resolve(file)).init(app)
 	})
 
+	// create /usercount endpoint for checking if somebody registered
+	app.get('/usercount', function (req, res) {
+		user_manager.get_user_count()
+			.then((user_count) => {
+				res.send('users: ' + user_count)
+			})
+	})
+
 }
 
 module.exports = new local_app()

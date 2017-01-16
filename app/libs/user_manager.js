@@ -44,4 +44,17 @@ user_manager.prototype.users_first_login = function (user_id) {
 	return Promise.all(first_login_actions)
 }
 
+user_manager.prototype.get_user_count = function () {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.user_collection.count({}, (err, user_count) => {
+			if (err) { return reject(err) }
+
+			console.log(user_count)
+			resolve(user_count)
+		})
+	})
+}
+
 module.exports = new user_manager()
