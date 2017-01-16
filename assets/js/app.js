@@ -3,8 +3,9 @@ lego_labels = angular
 
 // routing configuration
 lego_labels
-	.config(function ($routeProvider, lockProvider) {
+	.config(function ($routeProvider, lockProvider, $locationProvider) {
 
+		$locationProvider.hashPrefix('')
 		$routeProvider
 			.when('/', {
 				templateUrl: '/layout/home',
