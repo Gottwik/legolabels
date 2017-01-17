@@ -1,3 +1,12 @@
+// Override bootstrap variables here
+$grid-breakpoints: (
+	xs: 0,
+	sm: 544px,
+	md: 768px,
+	lg: 1280px,
+	xl: 1400px
+) !default;
+
 $grid-gutter-width-base: 10px;
 
 $header_height: 60px;
