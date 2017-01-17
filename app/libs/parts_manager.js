@@ -191,4 +191,10 @@ parts_manager.prototype.insert_firstlogin_parts = function (user_id) {
 	})
 }
 
+parts_manager.prototype.get_all_parts = function () {
+	var self = this
+
+	return self.parts_collection.find({}).toArray_async()
+}
+
 module.exports = new parts_manager()

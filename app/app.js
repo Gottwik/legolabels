@@ -1,7 +1,11 @@
 var local_app = function () {}
 
 // vendor dependencies
-var mongo_client = require('mongodb').MongoClient
+var Promise = require('bluebird')
+mongo = require('mongodb')
+Promise.promisifyAll(mongo, { suffix: '_async'})
+
+var mongo_client = mongo.MongoClient
 var glob = require('glob')
 var path = require('path')
 
@@ -29,15 +33,6 @@ local_app.prototype.init = function (app) {
 	glob.sync(path.join(CMD_FOLDER, 'app', 'api_endpoints', '**', '*.js')).forEach(function (file) {
 		require(path.resolve(file)).init(app)
 	})
-
-	// create /usercount endpoint for checking if somebody registered
-	app.get('/usercount', function (req, res) {
-		user_manager.get_user_count()
-			.then((user_count) => {
-				res.send('users: ' + user_count)
-			})
-	})
-
 }
 
 module.exports = new local_app()

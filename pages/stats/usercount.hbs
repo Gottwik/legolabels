@@ -1,0 +1,14 @@
+
+{{#each usercount}}
+	<div>
+		<h1>{{@key}}</h1>
+
+		<ul>
+			{{#each this}}
+				<li>{{part.part_id}} ({{part.name}})</li>
+			{{/each}}
+		</ul>
+
+		<hr>
+	</div>
+{{/each}}
