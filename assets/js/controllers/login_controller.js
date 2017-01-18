@@ -10,15 +10,13 @@ lego_labels.controller('login_controller', function ($scope, $rootScope, auth, $
 
 			store.set('profile', profile)
 			store.set('token', auth_result.id_token)
-			var aa = user_service.user_logged_in()
+			user_service.user_logged_in()
 				.then(function (user_logged_in_response) {
-					console.log('asdasd')
 					$rootScope.first_login = user_logged_in_response.data.first_login
 					$location.path('/app')
 				}, (err) => {
 					console.log('error', err)
 				})
-			console.log(aa)
 		})
 	})
 

@@ -1,4 +1,4 @@
-{{#each usercount}}
+{{#each usercount.parts}}
 	<div>
 		<h1>{{@key}}</h1>
 
@@ -11,3 +11,20 @@
 		<hr>
 	</div>
 {{/each}}
+
+{{!-- {{#each usercount.setups}}
+	<div>
+		<h1>{{@key}}</h1>
+
+		<ul>
+			{{#each this}}
+				{{log this}}
+				<li>{{part.part_id}} ({{part.name}})</li>
+			{{/each}}
+		</ul>
+
+		<hr>
+	</div>
+{{/each}}
+
+ --}}

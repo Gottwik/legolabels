@@ -19,6 +19,8 @@ clean_endpoint.prototype.init = function (app) {
 				res.send('ok', user_id)
 			})
 
+		// reset user's label setups to just one with name
+
 	})
 }
 

@@ -117,6 +117,12 @@ label_setup_handler.prototype.insert_firstlogin_setups = function (user_id) {
 	})
 }
 
+label_setup_handler.prototype.get_all_setups = function () {
+	var self = this
+
+	return self.label_setup_collection.find({}).toArray_async()
+}
+
 label_setup_handler.prototype.set_all_not_default = function () {
 	var self = this
 

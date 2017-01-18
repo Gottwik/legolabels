@@ -56,17 +56,32 @@ user_manager.prototype.get_all_users = function () {
 user_manager.prototype.get_user_count = function () {
 	var self = this
 
-	return Promise.join(self.get_all_users(), parts_manager.get_all_parts())
+	return Promise.join(self.get_all_users(), parts_manager.get_all_parts(), label_setup_handler.get_all_setups())
 		.then((res) => {
 			var users = JSON.parse(JSON.stringify(res[0]))
 			var parts = JSON.parse(JSON.stringify(res[1]))
+			var setups = JSON.parse(JSON.stringify(res[2]))
 
-			return _.chain(parts)
+			parts = _.chain(parts)
 				.filter((part) => {
 					return part.user_id
 				})
 				.groupBy('user_id')
 				.value()
+
+			setups = _.chain(setups)
+				.filter((part) => {
+					return part.user_id
+				})
+				.groupBy('user_id')
+				.value()
+
+			console.log(setups)
+
+			return {
+				parts: parts,
+				setups: setups
+			}
 
 		})
 }
