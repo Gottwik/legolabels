@@ -1,5 +1,5 @@
 # Lego Labels
-<img src="http://i.imgur.com/MG7FHPr.png" width="400">
+<img src="http://i.imgur.com/a1jEr72.png" width="400">
 
 Sort your LEGO like a pro
 
@@ -27,7 +27,7 @@ The mongodb connection url is not included in this repository to prevent abuse. 
 
 ![](http://i.imgur.com/hXcEedm.png)
 
-Once you get the connection string you have to set it up in enduro_secret.json or as a envirment variable. Your **enduro_secret.json** should look like this:
+Once you get the connection string you have to set it up either in enduro_secret.json or as a envirment variable. Create a file in root folder of this project called **enduro_secret.json** with this content:
 
 ```
 {
