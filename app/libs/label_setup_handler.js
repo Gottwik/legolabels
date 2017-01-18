@@ -105,7 +105,7 @@ label_setup_handler.prototype.insert_firstlogin_setups = function (user_id) {
 
 			_.map(firstlogin_setups, (setup) => {
 				setup.user_id = user_id
-				delete setup.firstlogin_part
+				delete setup.firstlogin_setup
 				delete setup._id
 			})
 
@@ -114,6 +114,26 @@ label_setup_handler.prototype.insert_firstlogin_setups = function (user_id) {
 			})
 		})
 
+	})
+}
+
+label_setup_handler.prototype.set_all_not_default = function () {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.label_setup_collection.update({}, {$set: {firstlogin_setup: false}}, { multi: true }, () => {
+			resolve()
+		})
+	})
+}
+
+label_setup_handler.prototype.delete_all_labels_by_user_id = function (user_id) {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.label_setup_collection.remove({user_id: user_id}, () => {
+			resolve()
+		})
 	})
 }
 

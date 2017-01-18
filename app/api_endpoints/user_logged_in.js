@@ -10,7 +10,7 @@ user_logged_in_endpoint.prototype.init = function (app) {
 		user_manager.user_logged_in(JSON.parse(req.query.user))
 			.then((user) => {
 				res.send(user)
-			})
+			}, () => {})
 	})
 }
 

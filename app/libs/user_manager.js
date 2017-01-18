@@ -26,6 +26,8 @@ user_manager.prototype.user_logged_in = function (user) {
 					self.users_first_login(user.userId)
 						.then(() => {
 							resolve(user_status)
+						}, (e) => {
+							resolve({success: false, message: e})
 						})
 				})
 			} else {
