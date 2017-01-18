@@ -17,7 +17,21 @@ lego_labels.factory('url_service', function () {
 	}
 
 	service.get_url = function (key) {
-		return api_urls[key]
+		var url = api_urls[key]
+
+		// just return the url if it already contains http
+		if (url.indexOf('http') + 1) {
+			return url
+		}
+
+		// add the base to the url if it doesn't contian http
+		return this.get_base_url() + url
+	}
+
+	service.get_base_url = function () {
+		return (window.location.href.indexOf('localhost') + 1)
+			?	'http://localhost:5000'
+			:	'/admin_api/'
 	}
 
 	return service
