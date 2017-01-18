@@ -74,6 +74,11 @@ user_manager.prototype.get_user_count = function () {
 					return part.user_id
 				})
 				.groupBy('user_id')
+				.mapValues((setups) => {
+					return _.map(setups, function (setup) {
+						return setup.label_setup.label_info.name
+					})
+				})
 				.value()
 
 			console.log(setups)

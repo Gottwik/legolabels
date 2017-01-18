@@ -123,6 +123,9 @@ label_setup_handler.prototype.get_all_setups = function () {
 	return self.label_setup_collection.find({}).toArray_async()
 }
 
+
+// temp utilities
+
 label_setup_handler.prototype.set_all_not_default = function () {
 	var self = this
 
@@ -139,6 +142,32 @@ label_setup_handler.prototype.delete_all_labels_by_user_id = function (user_id) 
 	return new Promise(function (resolve, reject) {
 		self.label_setup_collection.remove({user_id: user_id}, () => {
 			resolve()
+		})
+	})
+}
+
+label_setup_handler.prototype.trim_default_setup = function (user_id) {
+	var self = this
+
+	return new Promise(function (resolve, reject) {
+		self.label_setup_collection.find({user_id: user_id}).toArray((err, setups) => {
+			setups = _.chain(setups).filter((setup) => {
+				return setup.label_setup.label_info.name == 'Small Labels'
+			})
+			.drop(1)
+			.value()
+
+			var removes = []
+
+			_.each(setups, (setup) => {
+				removes.push(self.label_setup_collection.remove_async({_id: object_id(setup._id)}))
+			})
+
+			Promise.all(removes)
+				.then(() => {
+					resolve()
+				})
+
 		})
 	})
 }
