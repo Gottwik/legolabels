@@ -31,7 +31,7 @@ lego_labels.factory('url_service', function () {
 	service.get_base_url = function () {
 		return (window.location.href.indexOf('localhost') + 1)
 			?	'http://localhost:5000'
-			:	'/admin_api/'
+			:	''
 	}
 
 	return service
