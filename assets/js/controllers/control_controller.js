@@ -63,7 +63,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 				}
 
 				$scope.found_parts = _.take(data.data.results, 10)
-				console.log($scope.found_parts)
 			})
 	}
 

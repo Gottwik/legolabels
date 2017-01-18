@@ -3,7 +3,6 @@ lego_labels.factory('user_service', function ($http, store, authManager, $locati
 
 	service.user_logged_in = function (user_id) {
 		var self = this
-		console.log(self.get_logged_in_user())
 		return $http.get(url_service.get_url('user_logged_in'), {params: {user: self.get_logged_in_user()}})
 	}
 

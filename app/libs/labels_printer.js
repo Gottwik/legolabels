@@ -1,10 +1,10 @@
 var labels_printer = function () {}
 
 // vendor dependencies
+var Promise = require('bluebird')
 var pdfkit = require('pdfkit')
 var http = require('http')
 var fs = require('fs')
-var mkdirp = require('mkdirp')
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
@@ -66,119 +66,116 @@ function get_part_image (image_url) {
 							resolve(output_filename)
 						})
 
-					}).end()
+					})
+					.end()
 				})
 		}
 	})
 }
 
 function print_labels (doc, parts, label_setup) {
-	return new Promise(function (resolve, reject) {
+	var label_variables = {}
 
-		var label_variables = {}
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	preps doc
+	// * ———————————————————————————————————————————————————————— * //
+	doc.lineWidth(.1)
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	preps doc
-		// * ———————————————————————————————————————————————————————— * //
-		doc.lineWidth(.1)
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	constants
+	// * ———————————————————————————————————————————————————————— * //
+	label_variables.image_width = 100
+	label_variables.image_height = 75
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	constants
-		// * ———————————————————————————————————————————————————————— * //
-		label_variables.image_width = 100
-		label_variables.image_height = 75
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	precalculates variables
+	// * ———————————————————————————————————————————————————————— * //
+	label_variables.number_of_parts = parts.length
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	precalculates variables
-		// * ———————————————————————————————————————————————————————— * //
-		label_variables.number_of_parts = parts.length
+	// page width without the margins
+	label_variables.clean_page_width = label_setup.page_setup.page_width - label_setup.page_setup.page_padding * 2
 
-		// page width without the margins
-		label_variables.clean_page_width = label_setup.page_setup.page_width - label_setup.page_setup.page_padding * 2
+	label_variables.number_of_cols = Math.min(label_variables.number_of_parts, Math.floor(label_variables.clean_page_width / label_setup.label_size.label_width))
 
-		label_variables.number_of_cols = Math.min(label_variables.number_of_parts, Math.floor(label_variables.clean_page_width / label_setup.label_size.label_width))
+	label_variables.number_of_rows = Math.ceil(label_variables.number_of_parts / label_variables.number_of_cols)
 
-		label_variables.number_of_rows = Math.ceil(label_variables.number_of_parts / label_variables.number_of_cols)
+	label_variables.label_area_height = label_variables.number_of_rows * label_setup.label_size.label_height
+	label_variables.label_area_width = label_variables.number_of_cols * label_setup.label_size.label_width
 
-		label_variables.label_area_height = label_variables.number_of_rows * label_setup.label_size.label_height
-		label_variables.label_area_width = label_variables.number_of_cols * label_setup.label_size.label_width
+	label_variables.start_x = (label_setup.page_setup.page_width - label_variables.label_area_width) / 2
+	label_variables.start_y = (label_setup.page_setup.page_height - label_variables.label_area_height) / 2
 
-		label_variables.start_x = (label_setup.page_setup.page_width - label_variables.label_area_width) / 2
-		label_variables.start_y = (label_setup.page_setup.page_height - label_variables.label_area_height) / 2
+	label_variables.image_ratio = label_variables.image_width / label_variables.image_height
 
-		label_variables.image_ratio = label_variables.image_width / label_variables.image_height
+	label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
 
-		label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
+	label_variables.category_stamp_radius = 2
 
-		label_variables.category_stamp_radius = 2
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	crop marks
+	// * ———————————————————————————————————————————————————————— * //
+	if (label_setup.markings.crop_marks) {
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	crop marks
-		// * ———————————————————————————————————————————————————————— * //
-		if (label_setup.markings.crop_marks) {
+		// horizontal crop marks
+		for (current_row in _.range(label_variables.number_of_rows + 1)) {
+			doc
+				.moveTo(mm(label_variables.start_x - 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+				.lineTo(mm(label_variables.start_x - 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+				.stroke()
 
-			// horizontal crop marks
-			for (current_row in _.range(label_variables.number_of_rows + 1)) {
-				doc
-					.moveTo(mm(label_variables.start_x - 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
-					.lineTo(mm(label_variables.start_x - 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
-					.stroke()
-
-				doc
-					.moveTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
-					.lineTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
-					.stroke()
-			}
-
-			// vertical crop marks
-			for (current_col in _.range(label_variables.number_of_cols + 1)) {
-				doc
-					.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 13))
-					.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 3))
-					.stroke()
-
-				doc
-					.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 3))
-					.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 13))
-					.stroke()
-
-			}
+			doc
+				.moveTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 3), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+				.lineTo(mm(label_variables.start_x + label_variables.number_of_cols * label_setup.label_size.label_width + 13), mm(label_variables.start_y + label_setup.label_size.label_height * current_row))
+				.stroke()
 		}
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	legolabels stamp
-		// * ———————————————————————————————————————————————————————— * //
-		doc
-			.image(
-				CMD_FOLDER + '/assets/img/pdf_elements/pdf_stamp.png',
-				mm(label_setup.page_setup.page_width - 55),
-				mm(15), {
-					width: mm(40)
-				}
-			)
+		// vertical crop marks
+		for (current_col in _.range(label_variables.number_of_cols + 1)) {
+			doc
+				.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 13))
+				.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y - 3))
+				.stroke()
 
-		// * ———————————————————————————————————————————————————————— * //
-		// * 	labels
-		// * ———————————————————————————————————————————————————————— * //
+			doc
+				.moveTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 3))
+				.lineTo(mm(label_variables.start_x + label_setup.label_size.label_width * current_col), mm(label_variables.start_y + label_setup.label_size.label_height * label_variables.number_of_rows + 13))
+				.stroke()
 
-		var label_promises = []
+		}
+	}
 
-		var current_part = 0
-		var current_col = 0
-		var current_row = 0
-		_.each(parts, (part) => {
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	legolabels stamp
+	// * ———————————————————————————————————————————————————————— * //
+	doc
+		.image(
+			CMD_FOLDER + '/assets/img/pdf_elements/pdf_stamp.png',
+			mm(label_setup.page_setup.page_width - 55),
+			mm(15), {
+				width: mm(40)
+			}
+		)
 
-			label_promises.push(print_part(doc, part.part, label_setup, label_variables, current_col, current_row))
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	labels
+	// * ———————————————————————————————————————————————————————— * //
 
-			current_part++
-			current_col = current_part % label_variables.number_of_cols
-			current_row = Math.floor(current_part / label_variables.number_of_cols)
-		})
+	var label_promises = []
 
-		Promise.all(label_promises)
-			.then(() => {
-				resolve()
-			})
+	var current_part = 0
+	var current_col = 0
+	var current_row = 0
+	_.each(parts, (part) => {
+
+		label_promises.push(print_part(doc, part.part, label_setup, label_variables, current_col, current_row))
+
+		current_part++
+		current_col = current_part % label_variables.number_of_cols
+		current_row = Math.floor(current_part / label_variables.number_of_cols)
+	})
+
+	return Promise.each(label_promises, (label) => {
+		return label + '.'
 	})
 }
 
