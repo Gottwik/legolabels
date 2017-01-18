@@ -25,9 +25,9 @@ The mongodb connection url is not included in this repository to prevent abuse. 
 * click 'create new' to create new mongodb deployment
 * mlab shows you the connection string, just add your credentials.
 
-![Imgur](http://i.imgur.com/hXcEedm.png
+![](http://i.imgur.com/hXcEedm.png)
 
-Once you get the connection string you have to set it up in enduro_secret.json or as a envirment variable. Your enduro_secret.json should look like this:
+Once you get the connection string you have to set it up in enduro_secret.json or as a envirment variable. Your **enduro_secret.json** should look like this:
 
 ```
 {
