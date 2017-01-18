@@ -27,11 +27,11 @@
 	"part_type_id": "18",
 	"desc": "Bricks Printed"
 }, {
-	"lego_color": 7,
+	"lego_color": 29,
 	"part_type_id": "38",
 	"desc": "Bricks Round and Cones"
 }, {
-	"lego_color": 8,
+	"lego_color": 72,
 	"part_type_id": "19",
 	"desc": "Bricks Sloped"
 }, {
@@ -75,7 +75,7 @@
 	"part_type_id": "32",
 	"desc": "Mechanical"
 }, {
-	"lego_color": 19,
+	"lego_color": 25,
 	"part_type_id": "26",
 	"desc": "Minifig Accessories"
 }, {
@@ -107,11 +107,11 @@
 	"part_type_id": "10",
 	"desc": "Plates"
 }, {
-	"lego_color": 27,
+	"lego_color": 1,
 	"part_type_id": "13",
 	"desc": "Plates Angled"
 }, {
-	"lego_color": 28,
+	"lego_color": 6,
 	"part_type_id": "39",
 	"desc": "Plates Round and Dishes"
 }, {
@@ -175,7 +175,7 @@
 	"part_type_id": "9",
 	"desc": "Technic Pins"
 }, {
-	"lego_color": 44,
+	"lego_color": 72,
 	"part_type_id": "25",
 	"desc": "Technic Special"
 }, {

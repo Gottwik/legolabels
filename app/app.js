@@ -9,16 +9,21 @@ var mongo_client = mongo.MongoClient
 var glob = require('glob')
 var path = require('path')
 
-// local dependencies
+// global dependencies
 global.parts_manager = require('./libs/parts_manager')
 global.user_manager = require('./libs/user_manager')
 global.labels_printer = require('./libs/labels_printer')
 global.label_setup_handler = require('./libs/label_setup_handler')
 
+// local dependencies
+var preflight_check = require('./libs/preflight_check')
+
 // constants
 var DATABASE_URL = (global.config.secret && global.config.secret.DATABASE_URL) || process.env.DATABASE_URL
 
 local_app.prototype.init = function (app) {
+
+	preflight_check.check(DATABASE_URL)
 
 	// try to connect to mongodb
 	mongo_client.connect(DATABASE_URL, function (err, mongo_db) {
