@@ -13,7 +13,7 @@ user_manager.prototype.user_logged_in = function (user) {
 	var self = this
 
 	return new Promise(function (resolve, reject) {
-		self.user_collection.find({ user_id: user.userId }).toArray((err, users) => {
+		self.user_collection.find({ user_id: user.user_id }).toArray((err, users) => {
 			if (err) { return reject(err) }
 
 			var user_status = {
@@ -22,8 +22,8 @@ user_manager.prototype.user_logged_in = function (user) {
 
 			if (!users.length) {
 				user_status.first_login = true
-				self.user_collection.insert({ user_id: user.userId, profile: users[0] }, () => {
-					self.users_first_login(user.userId)
+				self.user_collection.insert({ user_id: user.user_id, profile: users[0] }, () => {
+					self.users_first_login(user.user_id)
 						.then(() => {
 							resolve(user_status)
 						}, (e) => {

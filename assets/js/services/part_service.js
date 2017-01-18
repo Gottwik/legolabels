@@ -2,11 +2,11 @@ lego_labels.factory('part_service', function ($rootScope, $http, user_service, u
 	var service = {}
 
 	service.add_part = function (part_id) {
-		return $http.get(url_service.get_url('add_part'), {params: {part_id: part_id, user_id: user_service.get_logged_in_user().userId}})
+		return $http.get(url_service.get_url('add_part'), {params: {part_id: part_id, user_id: user_service.get_logged_in_user().user_id}})
 	}
 
 	service.get_parts = function () {
-		return $http.get(url_service.get_url('get_parts'), {params: {user_id: user_service.get_logged_in_user().userId}})
+		return $http.get(url_service.get_url('get_parts'), {params: {user_id: user_service.get_logged_in_user().user_id}})
 	}
 
 	service.delete_part = function (part_id) {
