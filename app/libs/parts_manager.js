@@ -177,6 +177,10 @@ parts_manager.prototype.insert_firstlogin_parts = function (user_id) {
 		self.parts_collection.find({firstlogin_part: true}).toArray((err, firstlogin_parts) => {
 			if (err) { return reject(err) }
 
+			if (!firstlogin_parts.length) {
+				resolve
+			}
+
 			_.map(firstlogin_parts, (part) => {
 				part.user_id = user_id
 				delete part.firstlogin_part
