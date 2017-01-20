@@ -10,6 +10,7 @@ lego_labels.controller('login_controller', function ($scope, $rootScope, auth, $
 
 			store.set('profile', profile)
 			store.set('token', auth_result.id_token)
+
 			user_service.user_logged_in()
 				.then(function (user_logged_in_response) {
 					$rootScope.first_login = user_logged_in_response.data.first_login
