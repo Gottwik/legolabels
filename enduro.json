@@ -2,7 +2,7 @@
 	"project_name": "lego labels",
 	"project_slug": "ll",
 	"s3": {
-		"bucket": "martingottweis.legolabels",
+		"bucket": "legolabels",
 		"region": "eu-west-1"
 	}
 }
