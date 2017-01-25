@@ -1,6 +1,12 @@
 .blog_teaser {
 	.heading_link {
 		text-decoration: none;
+
+		&:link,
+		&:visited {
+			color: scheme(1);
+
+		}
 	}
 
 	.blog_entry_title {
