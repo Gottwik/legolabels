@@ -1,10 +1,19 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	app controller
+// * 	/get_config endpoint
 // * ———————————————————————————————————————————————————————— * //
-lego_labels.controller('app_controller', function ($scope, $rootScope, $http, url_service) {
-	$http.get(url_service.get_url('get_config'))
-		.then(function (config_response) {
-			$rootScope.rebrickable_api_key = config_response.data.rebrickable_api_key
-		})
+var get_config_endpoint = function () {}
 
-})
+// local dependencies
+
+get_config_endpoint.prototype.init = function (app) {
+	app.get('/get_config', function (req, res) {
+
+		var config = {}
+
+		config.rebrickable_api_key = REBRICKABLE_API_KEY
+
+		res.send(config)
+	})
+}
+
+module.exports = new get_config_endpoint()

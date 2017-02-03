@@ -14,6 +14,7 @@ global.parts_manager = require('./libs/parts_manager')
 global.user_manager = require('./libs/user_manager')
 global.labels_printer = require('./libs/labels_printer')
 global.label_setup_handler = require('./libs/label_setup_handler')
+global.REBRICKABLE_API_KEY = (global.config.secret && global.config.secret.REBRICKABLE_API_KEY) || process.env.REBRICKABLE_API_KEY
 
 // local dependencies
 var preflight_check = require('./libs/preflight_check')

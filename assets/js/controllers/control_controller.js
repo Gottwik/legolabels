@@ -13,7 +13,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 	var search_options = {
 		params: {
-			key: 'Ajz15RKnAW',
 			format: 'json',
 			type: 'P',
 		}
@@ -45,6 +44,8 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 		// set the query
 		search_options.params.search = query
 		search_options.search = query // to check which query it was
+		search_options.params.key = $rootScope.rebrickable_api_key
+		console.log($rootScope.rebrickable_api_key)
 
 		search_options.cache = true
 

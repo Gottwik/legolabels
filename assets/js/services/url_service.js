@@ -14,6 +14,7 @@ lego_labels.factory('url_service', function () {
 		delete_part: '/delete_part',
 		update_color: '/update_color',
 		user_logged_in: '/user_logged_in',
+		get_config: '/get_config',
 	}
 
 	service.get_url = function (key) {

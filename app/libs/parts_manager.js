@@ -141,7 +141,7 @@ parts_manager.prototype.get_part_by_part_id = function (part_id) {
 	return new Promise(function (resolve, reject) {
 
 		var part_request_options = {
-			key: 'Ajz15RKnAW',
+			key: REBRICKABLE_API_KEY,
 			format: 'json',
 			part_num: part_id,
 		}

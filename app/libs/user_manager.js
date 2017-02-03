@@ -17,8 +17,9 @@ user_manager.prototype.user_logged_in = function (user) {
 			if (err) { return reject(err) }
 
 			var user_status = {
-				first_login: false
+				first_login: false,
 			}
+
 			if (!users.length) {
 				user_status.first_login = true
 				self.user_collection.insert(user, () => {
