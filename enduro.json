@@ -4,5 +4,6 @@
 	"s3": {
 		"bucket": "legolabels",
 		"region": "eu-west-1"
-	}
+	},
+	"juicebox_enabled": false
 }

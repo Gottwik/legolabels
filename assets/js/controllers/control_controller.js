@@ -43,15 +43,15 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 		last_query = query
 
 		// set the query
-		search_options.params.query = query
-		search_options.query = query // to check which query it was
+		search_options.params.search = query
+		search_options.search = query // to check which query it was
 
 		search_options.cache = true
 
 		$http.get(url_service.get_url('search_for_parts'), search_options)
 			.then(function (data) {
 				// check if this result is for the last query
-				if (data.config.query != last_query) {
+				if (data.config.search != last_query) {
 					return
 				}
 
@@ -63,6 +63,7 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 				}
 
 				$scope.found_parts = _.take(data.data.results, 10)
+				console.log($scope.found_parts)
 			})
 	}
 
@@ -85,6 +86,7 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 				$rootScope.loader_part = false
 
+				console.log(response.data)
 				var new_part = response.data.inserted_part
 
 				// select the part

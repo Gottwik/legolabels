@@ -15,17 +15,17 @@
 						<div class="result row" ng-repeat="found_part in found_parts">
 							<div class="col col-md-2">
 								<div class="result_image">
-									<img ng-src="\{{found_part.img_url}}">
+									<img ng-src="\{{found_part.part_img_url}}">
 								</div>
 							</div>
 							<div class="col col-md-7">
-								<div class="result_part_id">\{{found_part.part_id}}</div>
-								<div class="result_category">\{{found_part.part_type}}</div>
-								<div class="result_name">\{{found_part.descr}}</div>
+								<div class="result_part_id">\{{found_part.part_num}}</div>
+								{{!-- <div class="result_category">\{{found_part.part_type}}</div> --}}
+								<div class="result_name">\{{found_part.name}}</div>
 							</div>
 
 							<div class="col col-md-3">
-								<button class="btn " ng-click="add_part(found_part.part_id)"><i class="fa fa-save"></i>Add</button>
+								<button class="btn " ng-click="add_part(found_part.part_num)"><i class="fa fa-save"></i>Add</button>
 							</div>
 
 						</div>

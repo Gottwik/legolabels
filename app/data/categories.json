@@ -1,229 +1,287 @@
-[{
-	"lego_color": 0,
-	"part_type_id": "16",
-	"desc": "Bars, Ladders and Fences"
-}, {
-	"lego_color": 1,
-	"part_type_id": "15",
-	"desc": "Baseplates"
-}, {
-	"lego_color": 2,
-	"part_type_id": "52",
-	"desc": "Belville, Scala and Fabuland"
-}, {
-	"lego_color": 3,
-	"part_type_id": "42",
-	"desc": "Bionicle, Hero Factory and Constraction"
-}, {
-	"lego_color": 4,
-	"part_type_id": "3",
-	"desc": "Bricks"
-}, {
-	"lego_color": 5,
-	"part_type_id": "20",
-	"desc": "Bricks Curved"
-}, {
-	"lego_color": 6,
-	"part_type_id": "18",
-	"desc": "Bricks Printed"
-}, {
-	"lego_color": 29,
-	"part_type_id": "38",
-	"desc": "Bricks Round and Cones"
-}, {
-	"lego_color": 72,
-	"part_type_id": "19",
-	"desc": "Bricks Sloped"
-}, {
-	"lego_color": 9,
-	"part_type_id": "21",
-	"desc": "Bricks Special"
-}, {
-	"lego_color": 10,
-	"part_type_id": "22",
-	"desc": "Bricks Wedged"
-}, {
-	"lego_color": 11,
-	"part_type_id": "51",
-	"desc": "Clikits"
-}, {
-	"lego_color": 12,
-	"part_type_id": "23",
-	"desc": "Containers"
-}, {
-	"lego_color": 13,
-	"part_type_id": "49",
-	"desc": "Duplo, Quatro and Primo"
-}, {
-	"lego_color": 14,
-	"part_type_id": "43",
-	"desc": "Flags, Signs, Plastics and Cloth"
-}, {
-	"lego_color": 15,
-	"part_type_id": "35",
-	"desc": "Hinges, Arms and Turntables"
-}, {
-	"lego_color": 16,
-	"part_type_id": "54",
-	"desc": "HO Scale"
-}, {
-	"lego_color": 17,
-	"part_type_id": "48",
-	"desc": "Magnets and Holders"
-}, {
-	"lego_color": 18,
-	"part_type_id": "32",
-	"desc": "Mechanical"
-}, {
-	"lego_color": 25,
-	"part_type_id": "26",
-	"desc": "Minifig Accessories"
-}, {
-	"lego_color": 20,
-	"part_type_id": "6",
-	"desc": "Minifigs"
-}, {
-	"lego_color": 21,
-	"part_type_id": "56",
-	"desc": "Non-Buildable Figures (Duplo, Fabuland, etc)"
-}, {
-	"lego_color": 22,
-	"part_type_id": "14",
-	"desc": "Non-LEGO"
-}, {
-	"lego_color": 23,
-	"part_type_id": "999",
-	"desc": "Other"
-}, {
-	"lego_color": 24,
-	"part_type_id": "27",
-	"desc": "Panels"
-}, {
-	"lego_color": 25,
-	"part_type_id": "28",
-	"desc": "Plants and Animals"
-}, {
-	"lego_color": 1,
-	"part_type_id": "10",
-	"desc": "Plates"
-}, {
-	"lego_color": 1,
-	"part_type_id": "13",
-	"desc": "Plates Angled"
-}, {
-	"lego_color": 6,
-	"part_type_id": "39",
-	"desc": "Plates Round and Dishes"
-}, {
-	"lego_color": 27,
-	"part_type_id": "29",
-	"desc": "Plates Special"
-}, {
-	"lego_color": 30,
-	"part_type_id": "11",
-	"desc": "Pneumatics"
-}, {
-	"lego_color": 31,
-	"part_type_id": "8",
-	"desc": "Power Functions, Mindstorms and Electric"
-}, {
-	"lego_color": 32,
-	"part_type_id": "44",
-	"desc": "Rock"
-}, {
-	"lego_color": 33,
-	"part_type_id": "41",
-	"desc": "String, Bands and Reels"
-}, {
-	"lego_color": 34,
-	"part_type_id": "45",
-	"desc": "Supports, Girders and Cranes"
-}, {
-	"lego_color": 35,
-	"part_type_id": "1",
-	"desc": "Technic Axles"
-}, {
-	"lego_color": 36,
-	"part_type_id": "2",
-	"desc": "Technic Beams"
-}, {
-	"lego_color": 37,
-	"part_type_id": "17",
-	"desc": "Technic Beams Special"
-}, {
-	"lego_color": 38,
-	"part_type_id": "24",
-	"desc": "Technic Bricks"
-}, {
-	"lego_color": 39,
-	"part_type_id": "4",
-	"desc": "Technic Bushes"
-}, {
-	"lego_color": 40,
-	"part_type_id": "5",
-	"desc": "Technic Connectors"
-}, {
-	"lego_color": 41,
-	"part_type_id": "7",
-	"desc": "Technic Gears"
-}, {
-	"lego_color": 42,
-	"part_type_id": "50",
-	"desc": "Technic Panels"
-}, {
-	"lego_color": 43,
-	"part_type_id": "9",
-	"desc": "Technic Pins"
-}, {
-	"lego_color": 72,
-	"part_type_id": "25",
-	"desc": "Technic Special"
-}, {
-	"lego_color": 45,
-	"part_type_id": "46",
-	"desc": "Technic Steering, Suspension and Engine"
-}, {
-	"lego_color": 14,
-	"part_type_id": "12",
-	"desc": "Tiles"
-}, {
-	"lego_color": 47,
-	"part_type_id": "30",
-	"desc": "Tiles Printed"
-}, {
-	"lego_color": 25,
-	"part_type_id": "31",
-	"desc": "Tiles Special"
-}, {
-	"lego_color": 49,
-	"part_type_id": "55",
-	"desc": "Tools"
-}, {
-	"lego_color": 50,
-	"part_type_id": "36",
-	"desc": "Transportation - Land"
-}, {
-	"lego_color": 51,
-	"part_type_id": "47",
-	"desc": "Transportation - Sea and Air"
-}, {
-	"lego_color": 52,
-	"part_type_id": "37",
-	"desc": "Tubes and Hoses"
-}, {
-	"lego_color": 53,
-	"part_type_id": "33",
-	"desc": "Wheels and Tyres"
-}, {
-	"lego_color": 54,
-	"part_type_id": "34",
-	"desc": "Windows and Doors"
-}, {
-	"lego_color": 55,
-	"part_type_id": "40",
-	"desc": "Windscreens and Fuselage"
-}, {
-	"lego_color": 56,
-	"part_type_id": "53",
-	"desc": "Znap"
-}]
+{
+	"1": {
+		"id": 1,
+		"name": "Baseplates",
+		"lego_color": 1
+	},
+	"2": {
+		"id": 2,
+		"name": "Bricks Printed",
+		"lego_color": 6
+	},
+	"3": {
+		"id": 3,
+		"name": "Bricks Sloped",
+		"lego_color": 72
+	},
+	"4": {
+		"id": 4,
+		"name": "Duplo, Quatro and Primo",
+		"lego_color": 13
+	},
+	"5": {
+		"id": 5,
+		"name": "Bricks Special",
+		"lego_color": 9
+	},
+	"6": {
+		"id": 6,
+		"name": "Bricks Wedged",
+		"lego_color": 10
+	},
+	"7": {
+		"id": 7,
+		"name": "Containers",
+		"lego_color": 12
+	},
+	"8": {
+		"id": 8,
+		"name": "Technic Bricks",
+		"lego_color": 38
+	},
+	"9": {
+		"id": 9,
+		"name": "Plates Special",
+		"lego_color": 27
+	},
+	"10": {
+		"id": 10,
+		"name": "Tiles Printed",
+		"lego_color": 47
+	},
+	"11": {
+		"id": 11,
+		"name": "Bricks",
+		"lego_color": 4
+	},
+	"12": {
+		"id": 12,
+		"name": "Technic Connectors",
+		"lego_color": 40
+	},
+	"13": {
+		"id": 13,
+		"name": "Minifigs",
+		"lego_color": 20
+	},
+	"14": {
+		"id": 14,
+		"name": "Plates",
+		"lego_color": 1
+	},
+	"15": {
+		"id": 15,
+		"name": "Tiles Special",
+		"lego_color": 25
+	},
+	"16": {
+		"id": 16,
+		"name": "Windows and Doors",
+		"lego_color": 54
+	},
+	"17": {
+		"id": 17,
+		"name": "Non-LEGO",
+		"lego_color": 22
+	},
+	"18": {
+		"id": 18,
+		"name": "Hinges, Arms and Turntables",
+		"lego_color": 15
+	},
+	"19": {
+		"id": 19,
+		"name": "Tiles",
+		"lego_color": 14
+	},
+	"20": {
+		"id": 20,
+		"name": "Bricks Round and Cones",
+		"lego_color": 29
+	},
+	"21": {
+		"id": 21,
+		"name": "Plates Round and Dishes",
+		"lego_color": 6
+	},
+	"22": {
+		"id": 22,
+		"name": "Pneumatics",
+		"lego_color": 30
+	},
+	"23": {
+		"id": 23,
+		"name": "Panels",
+		"lego_color": 24
+	},
+	"24": {
+		"id": 24,
+		"name": "Other",
+		"lego_color": 23
+	},
+	"25": {
+		"id": 25,
+		"name": "Technic Steering, Suspension and Engine",
+		"lego_color": 45
+	},
+	"26": {
+		"id": 26,
+		"name": "Technic Special",
+		"lego_color": 72
+	},
+	"27": {
+		"id": 27,
+		"name": "Minifig Accessories",
+		"lego_color": 25
+	},
+	"28": {
+		"id": 28,
+		"name": "Plants and Animals",
+		"lego_color": 25
+	},
+	"29": {
+		"id": 29,
+		"name": "Wheels and Tyres",
+		"lego_color": 53
+	},
+	"30": {
+		"id": 30,
+		"name": "Tubes and Hoses",
+		"lego_color": 52
+	},
+	"31": {
+		"id": 31,
+		"name": "String, Bands and Reels",
+		"lego_color": 33
+	},
+	"32": {
+		"id": 32,
+		"name": "Bars, Ladders and Fences",
+		"lego_color": 0
+	},
+	"33": {
+		"id": 33,
+		"name": "Rock",
+		"lego_color": 32
+	},
+	"34": {
+		"id": 34,
+		"name": "Supports, Girders and Cranes",
+		"lego_color": 34
+	},
+	"35": {
+		"id": 35,
+		"name": "Transportation - Sea and Air",
+		"lego_color": 51
+	},
+	"36": {
+		"id": 36,
+		"name": "Transportation - Land",
+		"lego_color": 50
+	},
+	"37": {
+		"id": 37,
+		"name": "Bricks Curved",
+		"lego_color": 5
+	},
+	"38": {
+		"id": 38,
+		"name": "Flags, Signs, Plastics and Cloth",
+		"lego_color": 14
+	},
+	"39": {
+		"id": 39,
+		"name": "Magnets and Holders",
+		"lego_color": 17
+	},
+	"40": {
+		"id": 40,
+		"name": "Technic Panels",
+		"lego_color": 42
+	},
+	"41": {
+		"id": 41,
+		"name": "Bionicle, Hero Factory and Constraction",
+		"lego_color": 3
+	},
+	"42": {
+		"id": 42,
+		"name": "Belville, Scala and Fabuland",
+		"lego_color": 2
+	},
+	"43": {
+		"id": 43,
+		"name": "Znap",
+		"lego_color": 56
+	},
+	"44": {
+		"id": 44,
+		"name": "Mechanical",
+		"lego_color": 18
+	},
+	"45": {
+		"id": 45,
+		"name": "Power Functions, Mindstorms and Electric",
+		"lego_color": 31
+	},
+	"46": {
+		"id": 46,
+		"name": "Technic Axles",
+		"lego_color": 35
+	},
+	"47": {
+		"id": 47,
+		"name": "Windscreens and Fuselage",
+		"lego_color": 55
+	},
+	"48": {
+		"id": 48,
+		"name": "Clikits",
+		"lego_color": 11
+	},
+	"49": {
+		"id": 49,
+		"name": "Plates Angled",
+		"lego_color": 1
+	},
+	"50": {
+		"id": 50,
+		"name": "HO Scale",
+		"lego_color": 16
+	},
+	"51": {
+		"id": 51,
+		"name": "Technic Beams",
+		"lego_color": 36
+	},
+	"52": {
+		"id": 52,
+		"name": "Technic Gears",
+		"lego_color": 41
+	},
+	"53": {
+		"id": 53,
+		"name": "Technic Pins",
+		"lego_color": 43
+	},
+	"54": {
+		"id": 54,
+		"name": "Technic Bushes",
+		"lego_color": 39
+	},
+	"55": {
+		"id": 55,
+		"name": "Technic Beams Special",
+		"lego_color": 37
+	},
+	"56": {
+		"id": 56,
+		"name": "Tools",
+		"lego_color": 49
+	},
+	"57": {
+		"id": 57,
+		"name": "Non-Buildable Figures (Duplo, Fabuland, etc)",
+		"lego_color": 21
+	}
+}

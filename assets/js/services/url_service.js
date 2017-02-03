@@ -2,7 +2,7 @@ lego_labels.factory('url_service', function () {
 	var service = {}
 
 	var api_urls = {
-		search_for_parts: 'https://rebrickable.com/api/search',
+		search_for_parts: 'https://rebrickable.com/api/v3/lego/parts/',
 		add_part: '/add_part',
 		get_parts: '/get_parts',
 		print_labels: '/print_labels',

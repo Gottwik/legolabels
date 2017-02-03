@@ -5,6 +5,7 @@ var Promise = require('bluebird')
 var pdfkit = require('pdfkit')
 var http = require('http')
 var fs = require('fs')
+var size_of = require('image-size')
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
@@ -82,12 +83,6 @@ function print_labels (doc, parts, label_setup) {
 	doc.lineWidth(.1)
 
 	// * ———————————————————————————————————————————————————————— * //
-	// * 	constants
-	// * ———————————————————————————————————————————————————————— * //
-	label_variables.image_width = 100
-	label_variables.image_height = 75
-
-	// * ———————————————————————————————————————————————————————— * //
 	// * 	precalculates variables
 	// * ———————————————————————————————————————————————————————— * //
 	label_variables.number_of_parts = parts.length
@@ -104,8 +99,6 @@ function print_labels (doc, parts, label_setup) {
 
 	label_variables.start_x = (label_setup.page_setup.page_width - label_variables.label_area_width) / 2
 	label_variables.start_y = (label_setup.page_setup.page_height - label_variables.label_area_height) / 2
-
-	label_variables.image_ratio = label_variables.image_width / label_variables.image_height
 
 	label_variables.text_block_start_x = label_setup.label_size.label_width * (label_setup.label_layout.image_percentage + label_setup.label_layout.image_separation)
 
@@ -211,7 +204,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 			.fillColor(label_setup.label_layout.text_color)
 			.fontSize(process_font_size(label_setup.font_sizes.part_id))
 			.text(
-				part.part_id,
+				part.part_num,
 				mm(current_x + label_variables.text_block_start_x),
 				mm(current_y + label_setup.label_layout.label_part_id_y_offset)
 			)
@@ -272,13 +265,21 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 		// // * 	image
 		// // * ———————————————————————————————————————————————————————— * //
 		get_part_image(part.image)
-			.then((image_buffer) => {
+			.then((image_path) => {
+
+				// * ———————————————————————————————————————————————————————— * //
+				// * 	constants
+				// * ———————————————————————————————————————————————————————— * //
+
+				var image_dimensions = size_of(image_path)
+
+				var image_ratio = image_dimensions.width / image_dimensions.height
 
 				var image_area_width = label_setup.label_size.label_width * label_setup.label_layout.image_percentage
 
 				// image area is higher than wide
 				var image_width = image_area_width - label_setup.label_layout.image_padding * 2
-				var image_height = image_width / label_variables.image_ratio
+				var image_height = image_width / image_ratio
 
 				var image_x_offset = label_setup.label_layout.image_padding
 				var image_y_offset = (label_setup.label_size.label_height - image_height) / 2
@@ -291,7 +292,7 @@ function print_part (doc, part, label_setup, label_variables, current_col, curre
 				// image
 				doc
 					.image(
-						image_buffer,
+						image_path,
 						mm(current_x + image_x_offset),
 						mm(current_y + image_y_offset), {
 							width: mm(image_width),

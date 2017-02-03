@@ -66,13 +66,19 @@ parts_manager.prototype.get_parts = function (user_id) {
 	})
 }
 
+// As we try to group parts by category by using the same color
+// this function tries to set the color of the part
+// and tries to find the closest color if category color
+// is not available
 parts_manager.prototype.resolve_part_image = function (part) {
 	var self = this
 
 	return new Promise(function (resolve, reject) {
-		var color_code = 8 // default to black color
+		// default to black color
+		var color_code = 8
 
-		var category = _.find(self.categories, {desc: part.category})
+		// finds and stores category of the image
+		var category = self.categories[part.part_cat_id]
 
 		// set the color code to the predefined
 		if (category) {
@@ -81,34 +87,18 @@ parts_manager.prototype.resolve_part_image = function (part) {
 
 		// checks if parts is available in that color and pick the closest if not
 		closest_color = _.chain(part.colors).sortBy(function (color) {
-			return Math.abs(parseInt(color.rb_color_id) - color_code)
+			return Math.abs(parseInt(color.color_id) - color_code)
 		}).value()[0]
 
-		part.color_code = closest_color.rb_color_id
+		part.color_code = closest_color.color_id
 		part.color_name = closest_color.color_name
 
-		part.category_color = '#' + _.find(self.colors, {rb_color_id: part.color_code}).rgb
+		part.category = category.name
+		part.category_color = '#' + _.find(self.colors, {rb_color_id: part.color_code.toString()}).rgb
 
-		self.get_image_url(part)
-			.then((image) => {
-				part.image = image
-				resolve(part)
-			})
-	})
-}
+		part.image = closest_color.part_img_url
 
-parts_manager.prototype.get_image_url = function (part) {
-	return new Promise(function (resolve, reject) {
-		var image = 'https://rebrickable.com/img/pieces/' + part.color_code + '/' + part.part_id + '.png'
-
-		request(image, function (error, response, body) {
-			if (error || response.statusCode != 200 || response.headers['content-type'].indexOf('image/png') == -1) {
-				return resolve(part.part_img_url)
-			}
-
-			return resolve(image)
-		})
-
+		resolve(part)
 	})
 }
 
@@ -127,6 +117,7 @@ parts_manager.prototype.update_color = function (part_id, new_color) {
 
 	return self.get_part_by_part_id(new_color.part_id)
 		.then((part) => {
+			console.log(part)
 			part.color_code = new_color.color_code
 			return self.get_image_url(part)
 		})
@@ -152,20 +143,32 @@ parts_manager.prototype.get_part_by_part_id = function (part_id) {
 		var part_request_options = {
 			key: 'Ajz15RKnAW',
 			format: 'json',
-			part_id: part_id,
+			part_num: part_id,
 		}
 
 		request.get({
-			url: 'https://rebrickable.com/api/get_part',
+			url: 'https://rebrickable.com/api/v3/lego/parts/',
 			qs: part_request_options
 		}, function (error, response, body) {
 			if (error || response.statusCode != 200) {
 				return reject()
 			}
 
-			var parsed_part = JSON.parse(body)
+			var parsed_part = JSON.parse(body).results[0]
 
-			resolve(parsed_part)
+			request.get({
+				url: 'https://rebrickable.com/api/v3/lego/parts/' + part_id + '/colors/',
+				qs: part_request_options
+			}, function (error, response, body) {
+				if (error || response.statusCode != 200) {
+					return reject()
+				}
+
+				parsed_part.colors = JSON.parse(body).results
+
+				resolve(parsed_part)
+			})
+
 		})
 	})
 }
