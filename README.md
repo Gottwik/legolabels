@@ -15,7 +15,7 @@ To get started quickly just:
 
 Alternativelly I recommend installing [enduro](http://www.endurojs.com/) globally by `npm i enduro -g`. This way you can just cd into the project and run `enduro`. This will also start development server at localhost:3000 with browsersync to live refresh scss, handlebars or javascript updates.
 
-## Setting mongodb
+## Setting mongodb & rebrickable api
 
 This project uses mongodb. I used [mlab](https://mlab.com/).
 
@@ -27,6 +27,8 @@ The mongodb connection url is not included in this repository to prevent abuse. 
 
 ![](http://i.imgur.com/hXcEedm.png)
 
+Also, don't forget to add your rebrickable api key to the same file.
+
 Once you get the connection string you have to set it up either in enduro_secret.json or as a envirment variable. Create a file in root folder of this project called **enduro_secret.json** with this content:
 
 ```
@@ -36,7 +38,8 @@ Once you get the connection string you have to set it up either in enduro_secret
 			"S3_KEY": "",
 			"S3_SECRET": ""
 		},
-		"DATABASE_URL": "<your mongodb connection url>"
+		"DATABASE_URL": "<your mongodb connection url>",
+		"REBRICKABLE_API_KEY": "<your rebrickalbe api key>"
 	}
 }
 ```
