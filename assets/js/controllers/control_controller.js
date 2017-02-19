@@ -87,7 +87,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 				$rootScope.loader_part = false
 
-				console.log(response.data)
 				var new_part = response.data.inserted_part
 
 				// select the part
@@ -95,6 +94,8 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 				// add the part to the beginning
 				$rootScope.parts.unshift(new_part)
+
+				$('.search_box').focus()
 
 			})
 	}
