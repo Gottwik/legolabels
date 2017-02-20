@@ -45,7 +45,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 		search_options.params.search = query
 		search_options.search = query // to check which query it was
 		search_options.params.key = $rootScope.rebrickable_api_key
-		console.log($rootScope.rebrickable_api_key)
 
 		search_options.cache = true
 
@@ -64,7 +63,6 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 				}
 
 				$scope.found_parts = _.take(data.data.results, 10)
-				console.log($scope.found_parts)
 			})
 	}
 

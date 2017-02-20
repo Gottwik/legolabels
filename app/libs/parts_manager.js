@@ -117,12 +117,9 @@ parts_manager.prototype.update_color = function (part_id, new_color) {
 
 	return self.get_part_by_part_id(new_color.part_id)
 		.then((part) => {
-			console.log(part)
-			part.color_code = new_color.color_code
-			return self.get_image_url(part)
-		})
-		.then((new_image_url) => {
 			return new Promise(function (resolve, reject) {
+
+				var new_image_url = _.find(part.colors, { color_id: new_color.color_code }).part_img_url
 
 				var updated_attributes = {
 					'part.image': new_image_url,

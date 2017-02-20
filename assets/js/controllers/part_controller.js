@@ -54,16 +54,18 @@ lego_labels.controller('part_controller', function ($scope, $rootScope, part_ser
 		// prevent updating color on the first update
 		if (new_value == old_value) { return }
 
-		var color_name = _.find($scope.part.part.colors, {rb_color_id: Number(new_value)}).color_name
+		var color_name = _.find($scope.part.part.colors, {color_id: Number(new_value)}).color_name
 
 		var new_color = {
 			color_code: new_value,
 			color_name: color_name,
-			part_id: $scope.part.part.part_id,
+			part_id: $scope.part.part.part_num,
 		}
+		console.log(new_color)
 
 		part_service.update_color($scope.part._id, new_color)
 			.then(function (color_change_response) {
+				console.log(color_change_response.data.new_image_url)
 				$scope.part.part.image = color_change_response.data.new_image_url
 				$scope.close_color_overlay()
 			})

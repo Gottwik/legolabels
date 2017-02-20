@@ -24,9 +24,7 @@
 						<div class="part_overlay">
 							<div class="overlay" ng-click="close_color_overlay(); $event.stopPropagation()"></div>
 							<div class="part_overlay_body">
-								<select ng-model="part.part.color_code">
-									<option ng-repeat="color in part.part.colors" value="\{{color.rb_color_id}}">\{{color.color_name}} (\{{color.rb_color_id}})</option>
-								</select>
+								<select ng-model="part.part.color_code" ng-options="color.color_id as color.color_name for color in part.part.colors"></select>
 							</div>
 						</div>
 
