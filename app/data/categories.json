@@ -57,7 +57,7 @@
 	"12": {
 		"id": 12,
 		"name": "Technic Connectors",
-		"lego_color": 40
+		"lego_color": 71
 	},
 	"13": {
 		"id": 13,
@@ -97,7 +97,7 @@
 	"20": {
 		"id": 20,
 		"name": "Bricks Round and Cones",
-		"lego_color": 29
+		"lego_color": 70
 	},
 	"21": {
 		"id": 21,
@@ -197,7 +197,7 @@
 	"40": {
 		"id": 40,
 		"name": "Technic Panels",
-		"lego_color": 42
+		"lego_color": 25
 	},
 	"41": {
 		"id": 41,
@@ -252,22 +252,22 @@
 	"51": {
 		"id": 51,
 		"name": "Technic Beams",
-		"lego_color": 36
+		"lego_color": 27
 	},
 	"52": {
 		"id": 52,
 		"name": "Technic Gears",
-		"lego_color": 41
+		"lego_color": 0
 	},
 	"53": {
 		"id": 53,
 		"name": "Technic Pins",
-		"lego_color": 43
+		"lego_color": 1
 	},
 	"54": {
 		"id": 54,
 		"name": "Technic Bushes",
-		"lego_color": 39
+		"lego_color": 14
 	},
 	"55": {
 		"id": 55,

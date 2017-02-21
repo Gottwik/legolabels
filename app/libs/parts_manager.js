@@ -74,28 +74,33 @@ parts_manager.prototype.resolve_part_image = function (part) {
 	var self = this
 
 	return new Promise(function (resolve, reject) {
-		// default to black color
+		// default to dark grey
 		var color_code = 8
 
 		// finds and stores category of the image
 		var category = self.categories[part.part_cat_id]
 
 		// set the color code to the predefined
-		if (category) {
-			color_code = category.lego_color
-		}
+		color_code = category.lego_color
+
+		// find closest color
+		// we could just access the color, but colors were assigned
+		// to categories in ascending order, but some color ids
+		// are missing.
+		var part_color = _.chain(self.colors).sortBy(function (color) {
+			return Math.abs(parseInt(color.rb_color_id) - color_code)
+		}).value()[0]
 
 		// checks if parts is available in that color and pick the closest if not
 		closest_color = _.chain(part.colors).sortBy(function (color) {
 			return Math.abs(parseInt(color.color_id) - color_code)
 		}).value()[0]
 
-		part.color_code = closest_color.color_id
+		// set part attributes
 		part.color_name = closest_color.color_name
-
+		part.color_code = closest_color.color_id
+		part.category_color = '#' + part_color.rgb
 		part.category = category.name
-		part.category_color = '#' + _.find(self.colors, {rb_color_id: part.color_code.toString()}).rgb
-
 		part.image = closest_color.part_img_url
 
 		resolve(part)
