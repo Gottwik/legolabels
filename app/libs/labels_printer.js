@@ -9,7 +9,6 @@ var size_of = require('image-size')
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
-var enduro_helpers = require(ENDURO_FOLDER + '/libs/flat_utilities/enduro_helpers')
 
 labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 
@@ -47,11 +46,11 @@ function get_part_image (image_url) {
 		var system_prefix = CMD_FOLDER + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
-		if (enduro_helpers.file_exists_sync(system_prefix + output_filename)) {
+		if (enduro.flat_helpers.file_exists_sync(system_prefix + output_filename)) {
 			resolve(output_filename)
 		} else {
 
-			enduro_helpers.ensure_directory_existence(system_prefix + output_filename)
+			enduro.flat_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
 					var output_file = fs.createWriteStream(system_prefix + output_filename)
 

@@ -2,7 +2,6 @@ var _ = require('lodash')
 var Promise = require('bluebird')
 
 var pagelist_generator = require(ENDURO_FOLDER + '/libs/build_tools/pagelist_generator')
-var flat_file_handler = require(ENDURO_FOLDER + '/libs/flat_utilities/flat_file_handler')
 
 __templating_engine.registerHelper('blog', function (options) {
 
@@ -17,7 +16,7 @@ __templating_engine.registerHelper('blog', function (options) {
 				var page = pages[page_id]
 
 				function get_content (page) {
-					get_content_promises.push(flat_file_handler.load(page.fullpath).then((content) => { page.content = content }))
+					get_content_promises.push(enduro.flat.load(page.fullpath).then((content) => { page.content = content }))
 				}
 
 				get_content(page)
