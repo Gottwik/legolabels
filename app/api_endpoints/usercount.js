@@ -4,7 +4,7 @@
 var usercount_endpoint = function () {}
 
 // local dependencies
-var temper = enduro.temper
+var temper = enduro.api.temper
 
 usercount_endpoint.prototype.init = function (app) {
 	app.get('/usercount', function (req, res) {

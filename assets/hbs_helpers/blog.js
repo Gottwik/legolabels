@@ -1,9 +1,9 @@
 var _ = require('lodash')
 var Promise = require('bluebird')
 
-var pagelist_generator = require(ENDURO_FOLDER + '/libs/build_tools/pagelist_generator')
+var pagelist_generator = enduro.api.pagelist_generator
 
-__templating_engine.registerHelper('blog', function (options) {
+enduro.templating_engine.registerHelper('blog', function (options) {
 
 	var pages
 	return pagelist_generator.get_cms_list()
@@ -16,7 +16,7 @@ __templating_engine.registerHelper('blog', function (options) {
 				var page = pages[page_id]
 
 				function get_content (page) {
-					get_content_promises.push(enduro.flat.load(page.fullpath).then((content) => { page.content = content }))
+					get_content_promises.push(enduro.api.flat.load(page.fullpath).then((content) => { page.content = content }))
 				}
 
 				get_content(page)

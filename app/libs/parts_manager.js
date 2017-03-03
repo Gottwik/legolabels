@@ -13,14 +13,14 @@ parts_manager.prototype.init = function (db) {
 	self.parts_collection = db.collection('legolabels_parts')
 
 	// load categories
-	fs.readFile(path.join(CMD_FOLDER, 'app', 'data', 'categories.json'), 'utf8', function (err, categories) {
+	fs.readFile(path.join(enduro.project_path, 'app', 'data', 'categories.json'), 'utf8', function (err, categories) {
 		if (err) { console.log(err) }
 
 		self.categories = JSON.parse(categories)
 	})
 
 	// load colors
-	fs.readFile(path.join(CMD_FOLDER, 'app', 'data', 'colors.json'), 'utf8', function (err, colors) {
+	fs.readFile(path.join(enduro.project_path, 'app', 'data', 'colors.json'), 'utf8', function (err, colors) {
 		if (err) { console.log(err) }
 
 		self.colors = JSON.parse(colors)

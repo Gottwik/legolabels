@@ -14,13 +14,13 @@ global.parts_manager = require('./libs/parts_manager')
 global.user_manager = require('./libs/user_manager')
 global.labels_printer = require('./libs/labels_printer')
 global.label_setup_handler = require('./libs/label_setup_handler')
-global.REBRICKABLE_API_KEY = (global.config.secret && global.config.secret.REBRICKABLE_API_KEY) || process.env.REBRICKABLE_API_KEY
+global.REBRICKABLE_API_KEY = (enduro.config.secret && enduro.config.secret.REBRICKABLE_API_KEY) || process.env.REBRICKABLE_API_KEY
 
 // local dependencies
 var preflight_check = require('./libs/preflight_check')
 
 // constants
-var DATABASE_URL = (global.config.secret && global.config.secret.DATABASE_URL) || process.env.DATABASE_URL
+var DATABASE_URL = (enduro.config.secret && enduro.config.secret.DATABASE_URL) || process.env.DATABASE_URL
 
 local_app.prototype.init = function (app) {
 
@@ -36,7 +36,7 @@ local_app.prototype.init = function (app) {
 	})
 
 	// hook up /api_endpoints folder
-	glob.sync(path.join(CMD_FOLDER, 'app', 'api_endpoints', '**', '*.js')).forEach(function (file) {
+	glob.sync(path.join(enduro.project_path, 'app', 'api_endpoints', '**', '*.js')).forEach(function (file) {
 		require(path.resolve(file)).init(app)
 	})
 }

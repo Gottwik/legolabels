@@ -6,6 +6,7 @@ var pdfkit = require('pdfkit')
 var http = require('http')
 var fs = require('fs')
 var size_of = require('image-size')
+var _ = require('lodash')
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
@@ -43,14 +44,14 @@ function get_part_image (image_url) {
 
 		// use http
 		image_url = image_url.replace('https', 'http')
-		var system_prefix = CMD_FOLDER + '/'
+		var system_prefix = enduro.project_path + '/'
 		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
-		if (enduro.flat_helpers.file_exists_sync(system_prefix + output_filename)) {
+		if (enduro.api.flat_helpers.file_exists_sync(system_prefix + output_filename)) {
 			resolve(output_filename)
 		} else {
 
-			enduro.flat_helpers.ensure_directory_existence(system_prefix + output_filename)
+			enduro.api.flat_helpers.ensure_directory_existence(system_prefix + output_filename)
 				.then(() => {
 					var output_file = fs.createWriteStream(system_prefix + output_filename)
 
@@ -141,7 +142,7 @@ function print_labels (doc, parts, label_setup) {
 	// * ———————————————————————————————————————————————————————— * //
 	doc
 		.image(
-			CMD_FOLDER + '/assets/img/pdf_elements/pdf_stamp.png',
+			enduro.project_path + '/assets/img/pdf_elements/pdf_stamp.png',
 			mm(label_setup.page_setup.page_width - 55),
 			mm(15), {
 				width: mm(40)
