@@ -3,7 +3,9 @@ lego_labels.factory('url_service', function () {
 
 	var api_urls = {
 		search_for_parts: 'https://rebrickable.com/api/v3/lego/parts/',
+		search_for_sets: 'https://rebrickable.com/api/v3/lego/sets/',
 		add_part: '/add_part',
+		add_parts: '/add_parts',
 		get_parts: '/get_parts',
 		print_labels: '/print_labels',
 		get_default_setup: '/get_default_setup',
@@ -12,6 +14,7 @@ lego_labels.factory('url_service', function () {
 		delete_setup: '/delete_setup',
 		edit_setup: '/edit_setup',
 		delete_part: '/delete_part',
+		delete_parts: '/delete_parts',
 		update_color: '/update_color',
 		user_logged_in: '/user_logged_in',
 		get_config: '/get_config',

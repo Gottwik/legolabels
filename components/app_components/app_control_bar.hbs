@@ -6,7 +6,14 @@
 			<div class="card color1 search_bar_card">
 				<div class="card-body">
 					<h2>1. Add Parts</h2>
-					<input type="text" class="huge search_box" placeholder="Input part number (3002)" ng-model="searchtext" {{!-- ng-blur="clear_searchtext()" --}} />
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" class="huge search_box" placeholder="Part number" ng-model="searchtext" {{!-- ng-blur="clear_searchtext()" --}} />
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="huge search_box_set" placeholder="Set number" ng-model="searchtext_set" {{!-- ng-blur="clear_searchtext()" --}} />
+						</div>
+					</div>
 					<div class="part_search_results light" ng-show="searchtext">
 
 						<div class="loader" ng-show="loading">{{>loader}}</div>
@@ -29,8 +36,23 @@
 							</div>
 
 						</div>
+					</div>
 
+					<div class="set_search_results light" ng-show="searchtext_set">
 
+						<div class="loader" ng-show="loading">{{>loader}}</div>
+						<div class="no_part" ng-show="no_set"><i class="fa fa-frown-o large"></i>No set found</div>
+
+						<div class="result_image">
+							<img ng-src="\{{found_set.set_img_url}}">
+						</div>
+
+						<div class="result_part_id">\{{found_set.set_num}}</div>
+						<div class="part_info">\{{found_set.name}}</div>
+						<div class="part_count">\{{found_set.num_parts}} parts</div>
+						<div class="wedge-4x"></div>
+
+						<button class="btn" ng-click="add_set(found_set.set_num)"><i class="fa fa-save"></i>Add</button>
 					</div>
 				</div>
 				<div class="card-next"><i class="fa fa-share"></i></div>

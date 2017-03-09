@@ -6,6 +6,7 @@
 				<li class="btn" ng-class="{'disabled': parts.length <= get_selected_part_count()}" ng-click="select_app_parts()"><i class="fa fa-check-square-o"></i>select all</li>
 				<li class="btn" ng-class="{'disabled': get_selected_part_count() == 0}" ng-click="deselect_app_parts()"><i class="fa fa-square-o"></i> deselect all</li>
 				<li class="btn" ng-click="sort_parts('part.category')">Sort by category</li>
+				<li class="btn" ng-click="deleted_selected_parts()">Delete selected parts</li>
 			</ul>
 		</div>
 	</div>

@@ -1,9 +1,13 @@
 .search_bar_card {
 
-	input {
+	.card-body > .row {
 		position: absolute;
+		width: calc(100% - 30px) !important;
+		bottom: -15px;
+	}
+
+	input {
 		bottom: -10px;
-		width: calc(100% - 40px) !important;
 	}
 
 	.no_part {

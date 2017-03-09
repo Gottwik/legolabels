@@ -26,6 +26,10 @@ lego_labels.controller('parts_controller', function ($scope, $rootScope, part_se
 		$rootScope.parts = _.orderBy($rootScope.parts, sort_by)
 	}
 
+	$scope.deleted_selected_parts = function () {
+		part_service.delete_selected()
+	}
+
 	$rootScope.get_selected_part_count = part_service.get_selected_part_count
 
 })

@@ -41,16 +41,29 @@ parts_manager.prototype.add_part = function (part_id, user_id) {
 		})
 		.then((part) => {
 			return new Promise(function (resolve, reject) {
-
 				part_to_be_inserted.part = part
 
+				var new_part_to_be_inserted = JSON.parse(JSON.stringify(part_to_be_inserted))
+
 				// inserts into db
-				self.parts_collection.insert(part_to_be_inserted, () => {
-					resolve(part_to_be_inserted)
+				self.parts_collection.insert(new_part_to_be_inserted, () => {
+					resolve(new_part_to_be_inserted)
 				})
 			})
 
 		})
+}
+
+parts_manager.prototype.add_parts = function (part_ids, user_id) {
+	var self = this
+
+	var adding_parts_promises = []
+
+	for (part_id of part_ids) {
+		adding_parts_promises.push(self.add_part(part_id, user_id))
+	}
+
+	return Promise.all(adding_parts_promises)
 
 }
 
@@ -115,6 +128,18 @@ parts_manager.prototype.delete_part = function (part_id) {
 			resolve()
 		})
 	})
+}
+
+parts_manager.prototype.delete_parts = function (part_ids) {
+	var self = this
+
+	var delete_promises = []
+
+	for (part_id of part_ids) {
+		delete_promises.push(self.delete_part(part_id))
+	}
+
+	return Promise.all(delete_promises)
 }
 
 parts_manager.prototype.update_color = function (part_id, new_color) {
