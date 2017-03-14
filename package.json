@@ -12,7 +12,7 @@
   "dependencies": {
     "bluebird": "^3.4.7",
     "bower": "^1.7.7",
-    "enduro": "1.4.5",
+    "enduro": "1.4.12",
     "extend": "^3.0.0",
     "glob": "^7.1.1",
     "image-size": "^0.5.1",

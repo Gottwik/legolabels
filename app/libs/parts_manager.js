@@ -35,10 +35,7 @@ parts_manager.prototype.add_part = function (part_id, user_id) {
 	part_to_be_inserted.user_id = user_id
 	part_to_be_inserted.timestamp = +new Date
 
-	return self.get_part_by_part_id(part_id)
-		.then((part) => {
-			return self.resolve_part_image(part) // adds image to part
-		})
+	return self.get_part_details(part_id)
 		.then((part) => {
 			return new Promise(function (resolve, reject) {
 				part_to_be_inserted.part = part
@@ -54,16 +51,39 @@ parts_manager.prototype.add_part = function (part_id, user_id) {
 		})
 }
 
+parts_manager.prototype.get_part_details = function (part_id) {
+	var self = this
+
+	return self.get_part_by_part_id(part_id)
+		.delay(50)
+		.then((part) => {
+			console.log(i++)
+			return self.resolve_part_image(part) // adds image to part
+		})
+}
+
 parts_manager.prototype.add_parts = function (part_ids, user_id) {
 	var self = this
 
-	var adding_parts_promises = []
+	return Promise.mapSeries(part_ids, (next) => {
+		return self.get_part_details(next)
+	})
+	.then((parts) => {
+		parts = parts.map((part) => {
+			var part_to_be_inserted = {}
+			part_to_be_inserted.user_id = user_id
+			part_to_be_inserted.timestamp = +new Date
+			part_to_be_inserted.part = part
+			return part_to_be_inserted
+		})
 
-	for (part_id of part_ids) {
-		adding_parts_promises.push(self.add_part(part_id, user_id))
-	}
-
-	return Promise.all(adding_parts_promises)
+		// inserts into db
+		return new Promise(function (resolve, reject) {
+			self.parts_collection.insert(parts, () => {
+				resolve(parts)
+			})
+		})
+	})
 
 }
 
@@ -133,13 +153,15 @@ parts_manager.prototype.delete_part = function (part_id) {
 parts_manager.prototype.delete_parts = function (part_ids) {
 	var self = this
 
-	var delete_promises = []
+	var object_part_ids = part_ids.map((part_id) => {
+		return object_id(part_id)
+	})
 
-	for (part_id of part_ids) {
-		delete_promises.push(self.delete_part(part_id))
-	}
-
-	return Promise.all(delete_promises)
+	return new Promise(function (resolve, reject) {
+		self.parts_collection.remove({_id: { $in: object_part_ids }}, () => {
+			resolve()
+		})
+	})
 }
 
 parts_manager.prototype.update_color = function (part_id, new_color) {
@@ -178,6 +200,7 @@ parts_manager.prototype.get_part_by_part_id = function (part_id) {
 			qs: part_request_options
 		}, function (error, response, body) {
 			if (error || response.statusCode != 200) {
+				console.log(error, response.statusCode)
 				return reject()
 			}
 
@@ -188,6 +211,7 @@ parts_manager.prototype.get_part_by_part_id = function (part_id) {
 				qs: part_request_options
 			}, function (error, response, body) {
 				if (error || response.statusCode != 200) {
+					console.log(error, response.statusCode)
 					return reject()
 				}
 

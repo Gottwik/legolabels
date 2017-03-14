@@ -31,19 +31,19 @@
 	<script src="/assets/js/app.js"></script>
 
 	{{#files '/assets/js/services'}}
-		<script src="/assets/js/services{{this}}"></script>
+		<script src="/assets/js/services{{relative_path}}"></script>
 	{{/files}}
 
 	{{#files '/assets/js/controllers'}}
-		<script src="/assets/js/controllers{{this}}"></script>
+		<script src="/assets/js/controllers{{relative_path}}"></script>
 	{{/files}}
 
 	{{#files '/assets/js/directives'}}
-		<script src="/assets/js/directives{{this}}"></script>
+		<script src="/assets/js/directives{{relative_path}}"></script>
 	{{/files}}
 
 	{{#files '/assets/js/utilities'}}
-		<script src="/assets/js/utilities{{this}}"></script>
+		<script src="/assets/js/utilities{{relative_path}}"></script>
 	{{/files}}
 
 	{{>analytics}}

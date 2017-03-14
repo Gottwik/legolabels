@@ -16,7 +16,10 @@
 			<div class="parts_padder">
 
 				<div class="part" ng-show="loader_part">
-					<div class="loader">{{>loader}}</div>
+					<div class="loader">
+						{{>loader}}
+					</div>
+					<div ng-if="parts_to_process" style="position: absolute; top: 0;">parts to load: \{{parts_to_process}}</div>
 				</div>
 
 				<div class="part" ng-class="{'selected': part.selected, 'overlay_open': part.color_overlay_open}" ng-click="select($event)" ng-repeat="part in parts" ng-controller="part_controller">

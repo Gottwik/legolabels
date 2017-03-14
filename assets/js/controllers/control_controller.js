@@ -139,20 +139,13 @@ lego_labels.controller('control_controller', function ($scope, $rootScope, $http
 
 		set_service.add_set(set_id)
 			.then((response) => {
-				console.log(response)
 				$rootScope.loader_part = false
 
 				var new_parts = response.data.inserted_parts
 
-				// // select the part
-				// new_part.selected = true
-
-				// add the part to the beginning
-				console.log(new_parts)
 				$rootScope.parts.unshift(...new_parts)
 
 				$('.search_box').focus()
-
 			})
 	}
 

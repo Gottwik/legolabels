@@ -15,6 +15,9 @@ lego_labels.factory('set_service', function ($rootScope, $http, user_service, ur
 
 		return $http.get(url_service.get_url('search_for_sets') + set_id + '/parts/', search_options)
 			.then(function (data) {
+				$rootScope.parts_to_process = data.data.results.length
+				console.log($rootScope.parts_to_process)
+
 				var part_ids = data.data.results.map(function (part) {
 					return part.part.part_num
 				})
