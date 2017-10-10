@@ -7,6 +7,7 @@ var http = require('http')
 var fs = require('fs')
 var size_of = require('image-size')
 var _ = require('lodash')
+const download = require('download');
 
 // local dependencies
 var label_setup_handler = require('./label_setup_handler')
@@ -40,38 +41,22 @@ labels_printer.prototype.print_labels = function (parts, label_setup, res) {
 }
 
 function get_part_image (image_url) {
-	return new Promise(function (resolve, reject) {
 
-		// use http
-		image_url = image_url.replace('https', 'http')
-		var system_prefix = enduro.project_path + '/'
-		var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
+	// use http
+	image_url = image_url.replace('https', 'http')
 
-		if (enduro.api.flat_helpers.file_exists_sync(system_prefix + output_filename)) {
-			resolve(output_filename)
-		} else {
+	var system_prefix = enduro.project_path + '/'
+	var output_filename = 'temp/' + image_url.split(/\//).splice(-2, 2).join('_')
 
-			enduro.api.flat_helpers.ensure_directory_existence(system_prefix + output_filename)
-				.then(() => {
-					var output_file = fs.createWriteStream(system_prefix + output_filename)
+	if (enduro.api.flat_helpers.file_exists_sync(system_prefix + output_filename)) {
+		return Promise.resolve(output_filename)
+	} else {
 
-					http.get(image_url)
-					.on('response', function (res) {
-
-						res.on('data', function (chunk) {
-							output_file.write(chunk)
-						})
-
-						res.on('end', function () {
-							output_file.end()
-							resolve(output_filename)
-						})
-
-					})
-					.end()
-				})
-		}
-	})
+		return enduro.api.flat_helpers.ensure_directory_existence(system_prefix + output_filename)
+			.then(() => {
+				return download(image_url, 'temp')
+			})
+	}
 }
 
 function print_labels (doc, parts, label_setup) {
